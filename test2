@@ -1,0 +1,31 @@
+var y : real = 1.0; //declare y and set it to 1.0
+
+write 5 + 5;
+
+def funcPow(x : real, n : int) :real
+{
+    var x : real = 1.0; //declare y and set it to 1.0
+    var y : real = 1.0; //declare y and set it to 1.0
+    write funcPow(5,5);
+
+    write -5;
+    if( n>=0 )
+    {
+        while(n>0)
+        {
+            set y = y * x;  //Assignment y = y *x;
+            set n = n -1;   //Assignment n = n-1;
+        }
+    }
+    else
+    {
+        while(n<0)
+        {
+            set y = y / x;    //Assignment y = y / x;
+            set n = n + 1;    //Assignment n = n + 1;
+        }
+    }
+    return y;               //return y as the result
+}
+
+
