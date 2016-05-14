@@ -1,0 +1,7 @@
+int sum = 0;
+sum = n_1 + n_2 + 1.23;
+return sum;
+_identifier
+1not_identifier
+string_literal_1
+string_literal_2

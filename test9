@@ -1,0 +1,7 @@
+def power(x : int, y : int) : int {
+	if (y == 1) {
+		return x;
+	} else {
+		return x * power(x, y - 1);
+	}
+}

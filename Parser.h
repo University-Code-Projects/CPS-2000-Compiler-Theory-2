@@ -40,8 +40,6 @@ private:
     ASTExpressionNode * ParseTerm();
     ASTExpressionNode * ParseFactor();
 
-
-
     ASTExpressionNode * ParseBinaryOperation(int prec, ASTExpressionNode * lhs);
 
     ASTUnaryNode * ParseUnary();

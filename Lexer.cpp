@@ -68,7 +68,6 @@ std::string Lexer::getProgramToText(){
 }
 
 std::string Lexer::blockGet(){
-    std::cout << "entry in block get" << std::endl;
     char lastChar = inputText[charIndex];
     std::string ret = "";
     ret+= lastChar;
@@ -161,6 +160,22 @@ std::string Lexer::relationalOpGet(){
     return boolOp;
 }
 
+std::string Lexer::commentGet() {
+    char lastChar = inputText[charIndex];
+    std::string comment;
+
+    comment+= lastChar;
+    charIndex++;
+    lastChar = inputText[charIndex];
+    while(lastChar != '\n'){
+        comment += lastChar;
+        charIndex++;
+        lastChar = inputText[charIndex];
+
+    }
+    return comment;
+}
+
 Lexer::Token Lexer::getNextToken() {
     if((unsigned int) charIndex == inputText.length()-1){
         //std::cout << "char index == length" << std::endl;
@@ -227,14 +242,14 @@ Lexer::Token Lexer::getNextToken() {
             if (inputText[charIndex] == '/') {
                 std::string comm = "";
                 comm += lastChar;
-                comm += stringGet();
+                comm += commentGet();
                 //getNextToken();
                 return Lexer::Token(TOK_comment, comm);
             }else if (inputText[charIndex] == '*'){
                 std::string comm = "";
                 comm += lastChar;
                 comm += blockGet();
-                std::cout << "Comment" << comm << std::endl;
+                //std::cout << "Comment" << comm << std::endl;
                 return Lexer::Token(TOK_comment, comm);
             }else{
                 return  (Lexer::Token(TOK_multOp,lastChar));

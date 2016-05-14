@@ -88,6 +88,7 @@ private:
     float digitGet();
     std::string identifierGet();
     std::string stringGet();
+    std::string commentGet();
     std::string blockGet();
     std::string relationalOpGet();
 

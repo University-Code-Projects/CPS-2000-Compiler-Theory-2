@@ -18,7 +18,10 @@ ASTNode * Parser::Parse(){
     CurrToken = lex.getNextToken();
 
     while((CurrToken.token_type != Lexer::TOK_eof)&&(CurrToken.token_type != Lexer::TOK_error)){
+        //std::cout << "Going into state"<< CurrToken.toString() << std::endl;
         statement = ParseStatement();
+        //std::cout <<"Coming from state" << CurrToken.toString() << std::endl;
+
         //save to the root node as a child
         //CurrToken = lex.getNextToken();
         if(statement != nullptr) {
@@ -38,8 +41,8 @@ ASTNode * Parser::Parse(){
 ASTStatementNode * Parser::ParseStatement(){
 
     ASTStatementNode * statement = nullptr;
-    std::cout << "Entry in Parse Statement" << std::endl;
-    std::cout << CurrToken.toString() << std::endl;
+    //std::cout << "Entry in Parse Statement" << std::endl;
+    //std::cout << CurrToken.toString() << std::endl;
 
     if(CurrToken.token_type == Lexer::TOK_comment){
         CurrToken = lex.getNextToken();
@@ -52,8 +55,11 @@ ASTStatementNode * Parser::ParseStatement(){
             statement = ParseVariableDecl();
             break;
         case Lexer::TOK_set:
-            //std::cout<< "Variable Assignment"  << std::endl;
+            //std::cerr<< "Variable Assignment"  << std::endl;
             statement = ParseAssignment();
+        //std::cerr << "Return from statement" << std::endl;
+            //std::cerr << CurrToken.toString() << std::endl;
+
             break;
         case Lexer::TOK_write:
             //std::cout<< "Write Statement"  << std::endl;
@@ -87,9 +93,7 @@ ASTStatementNode * Parser::ParseStatement(){
             Error("No statement found");
             break;
     }
-    if(CurrToken.token_type == Lexer::TOK_comment){
-        CurrToken = lex.getNextToken();
-    }
+
     //std::cout << CurrToken.toString() << std::endl;
     return statement;
 }
@@ -127,7 +131,7 @@ ASTStatementNode * Parser::ParseVariableDecl(){
     std::string type = CurrToken.id;
 
     CurrToken = lex.getNextToken();
-    std::cout << CurrToken.toString() << std::endl;
+    //std::cout << CurrToken.toString() << std::endl;
 
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("'=' was not found in Variable Declaration");
@@ -193,6 +197,7 @@ ASTStatementNode * Parser::ParseAssignment(){
             //afterwards link the the ASTStatementNode
         }
     }
+
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("';' was not found in Assignment");
     }else{
@@ -207,7 +212,7 @@ ASTStatementNode * Parser::ParseAssignment(){
 
     }
     //std::cout << CurrToken.toString() << std::endl;
-    //std::cout << "Assingment Return " << std::endl;
+    //std::cerr << "Assingment Return " << std::endl;
     return statement;
 }
 
@@ -453,13 +458,16 @@ ASTStatementNode * Parser::ParseBlock(){
     }
 
     statement = ParseStatement();
-    block->addStatement(statement);
-
-    while(CurrToken.id[0] != '}'){
-        statement = ParseStatement();
+    if(statement != nullptr) {
         block->addStatement(statement);
     }
 
+    while(CurrToken.id[0] != '}') {
+        statement = ParseStatement();
+        if (statement != nullptr) {
+            block->addStatement(statement);
+        }
+    }
 
 
     if(CurrToken.token_type != Lexer::TOK_punc){
@@ -474,15 +482,6 @@ ASTStatementNode * Parser::ParseBlock(){
     }
     return block;
 }
-
-/*
-ASTExpressionNode * Parser::ParseSubExpression() {
-    ASTFunctionCallNode * call = new ASTFunctionCallNode();
-
-    //return call;
-}
-
- */
 
 ASTExpressionNode * Parser::ParseIdentifier(){
     //std::cout << "Entry in Parse Identifier" << std::endl;
@@ -527,7 +526,7 @@ ASTExpressionNode * Parser::ParseTerm(){
     //save it as a new Term
     ASTExpressionNode * lhs = ParseFactor();
 
-    std::cout << "RETURN FROM FACTOR" << std::endl;
+    //std::cout << "RETURN FROM FACTOR" << std::endl;
 
     //XMLPrint * v = new XMLPrint();
     //lhs->Accept(v);
@@ -593,7 +592,7 @@ ASTExpressionNode * Parser::ParseFactor(){
                 //ParseSubExpression();
 
                 //std::cerr << "Checking after parsee actual param" << std::endl;
-                std::cerr << CurrToken.toString() << std::endl;
+                //std::cerr << CurrToken.toString() << std::endl;
 
                 if(CurrToken.token_type != Lexer::TOK_punc){
                     Error("')' was not found in Function Call");
@@ -641,8 +640,12 @@ ASTExpressionNode * Parser::ParseFactor(){
 
         case Lexer::TOK_punc: {
             if(CurrToken.id == "(") {
-                ASTExpressionNode * subExpr = ParseExpression();
                 CurrToken = lex.getNextToken();
+
+
+                ASTExpressionNode * expr = ParseExpression();
+                ASTSubExpressionNode * subExpr = new ASTSubExpressionNode(expr);
+
                 if(CurrToken.id != ")"){
                     Error("')' was not found at the end of the expression in Sub Expression Creation");
                 }
@@ -827,7 +830,7 @@ ASTUnaryNode *Parser::ParseUnary() {
     //ASTUnaryNode *unary = new ASTUnaryNode(symbol,expr);
     ASTUnaryNode * unary = new ASTUnaryNode(symbol,expr);
 
-    std::cout << "FROM PARSE UNARY" << std::endl;
+    //std::cout << "FROM PARSE UNARY" << std::endl;
     //XMLPrint * v = new XMLPrint();
     //unary->Accept(v);
     return unary;

@@ -1,0 +1,11 @@
+var i : int = 0;
+while (i < 10) {
+	set i = i + 1;
+}
+
+var y : real = 0;
+if (2 <= 3) {
+    set y = 3 - 1;
+} else {
+	set y = 3 + 1;
+}
