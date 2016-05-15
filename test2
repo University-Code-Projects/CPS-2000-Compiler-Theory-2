@@ -1,5 +1,8 @@
 var y : real = 1.0; //declare y and set it to 1.0
 
+//var y : int = 1; //declare y and set it to 1.0
+
+
 write 5 + 5;
 
 def funcPow(x : real, n : int) :real
