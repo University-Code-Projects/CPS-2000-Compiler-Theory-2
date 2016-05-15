@@ -1,5 +1,7 @@
+
+
 def funcSquare(x:real) : real{
     return x*x;
 }
 
-write funcSquare(2.5);
+write funcSquare(2.6);

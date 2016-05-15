@@ -6,7 +6,7 @@ def funcPow(x : real, n : int) :real
 {
     var x : real = 1.0; //declare y and set it to 1.0
     var y : real = 1.0; //declare y and set it to 1.0
-    write funcPow(5,5);
+    write funcPow(5.5,5);
 
     write -5;
     if( n>=0 )

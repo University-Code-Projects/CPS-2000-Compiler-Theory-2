@@ -217,14 +217,14 @@ ASTStatementNode * Parser::ParseAssignment(){
 }
 
 ASTStatementNode * Parser::ParseWriteStatement(){
-    //std::cout << "Entry in Parse Write" << std::endl;
+    std::cout << "Entry in Parse Write" << std::endl;
 
     ASTWriteNode * statement = nullptr;
 
     //consuming current token which is the write token;
     CurrToken = lex.getNextToken();
 
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
+    std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     ASTExpressionNode * expr = ParseExpression();
 
 
@@ -586,7 +586,6 @@ ASTExpressionNode * Parser::ParseFactor(){
                 //consuming the '('
                 CurrToken = lex.getNextToken();//getting the equation
 
-
                 ASTActualParametersNode * params = ParseActualParams();
 
                 //ParseSubExpression();
@@ -639,18 +638,25 @@ ASTExpressionNode * Parser::ParseFactor(){
 
 
         case Lexer::TOK_punc: {
-            if(CurrToken.id == "(") {
+            if (CurrToken.id == "(") {
                 CurrToken = lex.getNextToken();
 
 
-                ASTExpressionNode * expr = ParseExpression();
-                ASTSubExpressionNode * subExpr = new ASTSubExpressionNode(expr);
+                ASTExpressionNode *expr = ParseExpression();
+                ASTSubExpressionNode *subExpr = new ASTSubExpressionNode(expr);
 
-                if(CurrToken.id != ")"){
+                if (CurrToken.id != ")") {
                     Error("')' was not found at the end of the expression in Sub Expression Creation");
                 }
                 ans = subExpr;//new sub expression node
-            }else{
+            } /*else if(CurrToken.id == ")"){
+
+
+                //NO PARAMETERS FOUND HENCE RETURN NULL
+
+                //return ans;
+            }*/
+            else{
                 Error("Token is of the incorrect format");
             }
             break;
@@ -724,19 +730,22 @@ ASTActualParametersNode * Parser::ParseActualParams(){
     //std::cout << "Entry in Parse Actual Params" << std::endl;
 
     ASTActualParametersNode * actualParameter = new ASTActualParametersNode();
-    ASTExpressionNode * params = ParseExpression();
+    if(CurrToken.id == ")"){
+        return actualParameter;
+    }else {
+        ASTExpressionNode *params = ParseExpression();
 
-    actualParameter->addParameter(params);
-
-    while(CurrToken.id[0] == ','){
-        //consuming the ','
-        CurrToken = lex.getNextToken();
-        params = ParseExpression();
         actualParameter->addParameter(params);
+
+        while (CurrToken.id[0] == ',') {
+            //consuming the ','
+            CurrToken = lex.getNextToken();
+            params = ParseExpression();
+            actualParameter->addParameter(params);
+        }
+        return actualParameter;
+
     }
-    return actualParameter;
-
-
 /*
 
     ASTExpressionNode * params = ParseExpression();
