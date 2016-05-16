@@ -5,3 +5,4 @@ def funcSquare(x:real) : real{
 }
 
 write funcSquare(2.6);
+

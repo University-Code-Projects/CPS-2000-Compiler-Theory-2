@@ -1,10 +1,14 @@
-#include "SemanticAnalysis.h"
+//
+// Created by cps200x on 5/16/16.
+//
 
-SemanticAnalysis::SemanticAnalysis() {
+#include "InterpreterExecution.h"
+
+InterpreterExecution::InterpreterExecution() {
 
 }
 
-void SemanticAnalysis::typeSet(std::string type) {
+void InterpreterExecution::typeSet(std::string type) {
     if(type == "real"){
         this->Type = SymbolTable::primitive_type::r;
     }else if(type == "int"){
@@ -16,7 +20,7 @@ void SemanticAnalysis::typeSet(std::string type) {
     }
 }
 
-std::string SemanticAnalysis::typePrint(SymbolTable::primitive_type type) {
+std::string InterpreterExecution::typePrint(SymbolTable::primitive_type type) {
     std::string result = "";
     switch (type){
         case 0:
@@ -35,18 +39,37 @@ std::string SemanticAnalysis::typePrint(SymbolTable::primitive_type type) {
     return result;
 }
 
-void SemanticAnalysis::Error(std::string error) {
+std::string InterpreterExecution::valuePrint(SymbolTable::primitive_type type) {
+    std::string result = "";
+    switch (type){
+        case 0:
+            result += std::to_string(this->iValue);
+            break;
+        case 1:
+            result += std::to_string(this->rValue);
+            break;
+        case 2:
+            result += std::to_string(this->bValue);
+            break;
+        case 3:
+            result += this->sValue;
+            break;
+    }
+    return result;
+}
+
+void InterpreterExecution::Error(std::string error) {
     std::cerr << "Semantic Error : " << error << std::endl;
     exit(1);
 }
 
-void SemanticAnalysis::visit(ASTNode *node) {}
+void InterpreterExecution::visit(ASTNode *node) {}
 
-void SemanticAnalysis::visit(ASTExpressionNode *node) {}
+void InterpreterExecution::visit(ASTExpressionNode *node) {}
 
-void SemanticAnalysis::visit(ASTStatementNode *node) {}
+void InterpreterExecution::visit(ASTStatementNode *node) {}
 
-void SemanticAnalysis::visit(ASTProgramNode *node) {
+void InterpreterExecution::visit(ASTProgramNode *node) {
     this->st = SymbolTable();
 
     this->Type = SymbolTable::primitive_type::n;
@@ -70,9 +93,6 @@ void SemanticAnalysis::visit(ASTProgramNode *node) {
             node->statements.at(i)->Accept(this);
             this->st.scopePrint();
         }
-
-        this->st.scopePrint();
-
         if(this->st.deleteScope() == true){
             std::cout << "Global Scope Deleted" << std::endl;
         }else{
@@ -84,23 +104,39 @@ void SemanticAnalysis::visit(ASTProgramNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTIntegerNode *node) {
+void InterpreterExecution::visit(ASTIntegerNode *node) {
+    this->iValue = node->value;
+    this->rValue = 0.0;
+    this->bValue = false;
+    this->sValue = "";
     typeSet("int");
 }
 
-void SemanticAnalysis::visit(ASTFloatNode *node) {
+void InterpreterExecution::visit(ASTFloatNode *node) {
+    this->rValue = node->value;
+    this->iValue = 0;
+    this->bValue = false;
+    this->sValue = "";
     typeSet("real");
 }
 
-void SemanticAnalysis::visit(ASTBoolNode *node) {
+void InterpreterExecution::visit(ASTBoolNode *node) {
+    this->iValue = 0;
+    this->rValue = 0.0;
+    this->sValue = "";
+    this->bValue = node->value;
     typeSet("bool");
 }
 
-void SemanticAnalysis::visit(ASTStringNode *node) {
+void InterpreterExecution::visit(ASTStringNode *node) {
+    this->iValue = 0;
+    this->rValue = 0.0;
+    this->bValue = false;
+    this->sValue = node->value;
     typeSet("string");
 }
 
-void SemanticAnalysis::visit(ASTIdentifierNode *node) {
+void InterpreterExecution::visit(ASTIdentifierNode *node) {
     //this->ident = node->value;
 
     if(this->param){
@@ -177,43 +213,130 @@ void SemanticAnalysis::visit(ASTIdentifierNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTBinaryNode *node) {
+void InterpreterExecution::visit(ASTBinaryNode *node) {
     SymbolTable::primitive_type typeRhs = SymbolTable::primitive_type::n;
     SymbolTable::primitive_type typeLhs= SymbolTable::primitive_type::n;
+
+    int currIValue;
+    float currRValue;
+    bool currBValue;
+    std::string currSValue;
+
 
     if (node->lhs != nullptr) {
         node->lhs->Accept(this);
         typeLhs = this->Type;
+        switch (typeLhs){
+            case 0:
+                currIValue = this->iValue;
+                break;
+            case 1:
+                currRValue = this->rValue;
+                break;
+            case 2:
+                currBValue = this->bValue;
+                break;
+            case 3:
+                currSValue = this->sValue;
+                break;
+        }
     }
+
+
 
     if (node->rhs != nullptr){
         node->rhs->Accept(this);
         typeRhs = this->Type;
+
+
     }
 
     if(typeLhs != typeRhs){
         Error(typePrint(typeLhs) + " and " + typePrint(typeRhs) + " cannot be evaluated, since both are different type" );
     }else{
         this->Type = typeLhs;
-    }
-    this->operation = node->operation;
-}
 
-void SemanticAnalysis::visit(ASTUnaryNode *node) {
+        this->operation = node->operation;
+
+        switch (this->Type){
+            case 0:
+                if(this->operation == "+"){
+                    this->iValue = currIValue + this->iValue;
+                }else if(this->operation == "-"){
+                    this->iValue = currIValue - this->iValue;
+                }else if(this->operation == "*"){
+                    this->iValue = currIValue * this->iValue;
+                }else if(this->operation == "/"){
+                    this->iValue = currIValue / this->iValue;
+                }
+                break;
+            case 1:
+                if(this->operation == "+"){
+                    this->rValue = currRValue + this->rValue;
+                }else if(this->operation == "-"){
+                    this->rValue = ((currRValue) - (this->rValue));
+                }else if(this->operation == "*"){
+                    this->rValue = currRValue * this->rValue;
+                }else if(this->operation == "/"){
+                    this->rValue = currRValue / this->rValue;
+                }
+                break;
+            case 2:
+                //if(this->operation == "not"){
+                //    this->bValue = not (this->bValue);
+                if(this->operation == "and"){
+                    this->bValue = (currBValue) and (this->bValue);
+                }else if(this->operation == "or"){
+                    this->bValue = (currBValue) or (this->bValue);
+                }/*else if(this->operation == ">"){
+                    if(currBValue > this->bValue){
+
+                    }
+                }else if(this->operation == "<"){
+
+                }else if(this->operation == "=="){
+
+                }else if(this->operation == "!="){
+
+                }else if(this->operation == "<="){
+
+                }else if(this->operation == ">="){
+
+                }
+                */
+                break;
+            case 3:
+                if(this->operation == "+") {
+                    //this->sValue = (currSValue + this->sValue);
+                    currSValue.erase(currSValue.size()-1);//removing the " from the 1st string
+                    this->sValue.erase(0,1);//removing the " from the last string
+                    this->sValue = currSValue+ this->sValue;
+                }
+                break;
+        }
+    }
+ }
+
+void InterpreterExecution::visit(ASTUnaryNode *node) {
     this->exists = true;
     node->lhs->Accept(this);
     if(node->operation == "not"){
         if (this->Type != 2) {//check for bool
             Error("Expression is not a Boolean, not operation invalid");
+        }else{
+            //get value of identifier and not it
+            this->bValue = not this->bValue;
         }
     } else {// + /- case
         if (this->Type == 3) {//checking for string
             Error("Unary Expression - String cannot be added / subtracted");
+        }else{
+            //get value of identifier and not it
         }
     }
 }
 
-void SemanticAnalysis::visit(ASTVariableDeclNode *node) {
+void InterpreterExecution::visit(ASTVariableDeclNode *node) {
 
     this->exists = false;
     typeSet(node->Type);
@@ -232,7 +355,23 @@ void SemanticAnalysis::visit(ASTVariableDeclNode *node) {
         if(this->Type != identType){
             Error("Type of Identifier and Expression do not match");
         }else if(this->st.insertInScope(this->ident, this->Type)){
-            //std::cout << "Variable Added" << std::endl;
+            std::cout << "Variable Added" << std::endl;
+            std::cout <<"Contents of equation : " << valuePrint(this->Type) << std::endl;
+            switch (this->Type){
+                case 0:
+                    this->st.setValue(this->ident,this->iValue);
+                    break;
+                case 1:
+                    this->st.setValue(this->ident,this->rValue);
+                    break;
+                case 2:
+                    this->st.setValue(this->ident,this->bValue);
+                    break;
+                case 3:
+                    this->st.setValue(this->ident,this->sValue);
+                    break;
+            }
+            //this->st.setValue(this->ident,this->iValue);
             //this->st.scopePrint();
         }else{
             Error("Variable was not added");
@@ -240,7 +379,7 @@ void SemanticAnalysis::visit(ASTVariableDeclNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTAssignmentNode *node) {
+void InterpreterExecution::visit(ASTAssignmentNode *node) {
     this->exists = true;
     node->Identifier->Accept(this);
     std::string identifier = this->ident;
@@ -271,18 +410,18 @@ void SemanticAnalysis::visit(ASTAssignmentNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTSubExpressionNode *node) {
+void InterpreterExecution::visit(ASTSubExpressionNode *node) {
     this->exists = true;
     node->Expr->Accept(this);
 }
 
-void SemanticAnalysis::visit(ASTFunctionCallNode *node) {
+void InterpreterExecution::visit(ASTFunctionCallNode *node) {
     this->exists = true;
     node->Identifier->Accept(this);
     node->Parameters->Accept(this);
 }
 
-void SemanticAnalysis::visit(ASTActualParametersNode *node) {
+void InterpreterExecution::visit(ASTActualParametersNode *node) {
     this->exists = true;
     if(node->parameters.size() != this->funcParam.size()){
         Error("Number of Parameters given in the function call does not match the Number of Parameters in the Function Declaration");
@@ -302,7 +441,7 @@ void SemanticAnalysis::visit(ASTActualParametersNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTReturnNode *node) {
+void InterpreterExecution::visit(ASTReturnNode *node) {
     this->exists = true;
     node->Expr->Accept(this);
     if(this->Type != this->funcType){
@@ -310,7 +449,7 @@ void SemanticAnalysis::visit(ASTReturnNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTFunctionDeclNode *node) {
+void InterpreterExecution::visit(ASTFunctionDeclNode *node) {
     this->exists = false;
     node->Identifier->Accept(this);
     this->funcName = this->ident;
@@ -337,7 +476,7 @@ void SemanticAnalysis::visit(ASTFunctionDeclNode *node) {
 
 }
 
-void SemanticAnalysis::visit(ASTFormalParameterNode *node) {
+void InterpreterExecution::visit(ASTFormalParameterNode *node) {
     this->param = true;
     node->Identifier->Accept(this);
 
@@ -363,7 +502,7 @@ void SemanticAnalysis::visit(ASTFormalParameterNode *node) {
     this->param = false;
 }
 
-void SemanticAnalysis::visit(ASTFormalParametersNode *node) {
+void InterpreterExecution::visit(ASTFormalParametersNode *node) {
     this->funcParam.clear();
     for(int i =0; i < node->parameters.size(); i++){
         this->para.clear();
@@ -372,12 +511,12 @@ void SemanticAnalysis::visit(ASTFormalParametersNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTWriteNode *node) {
+void InterpreterExecution::visit(ASTWriteNode *node) {
     this->exists = true;
     node->Expr->Accept(this);
 }
 
-void SemanticAnalysis::visit(ASTIfStatementNode *node) {
+void InterpreterExecution::visit(ASTIfStatementNode *node) {
     this->exists = true;
     node->Expression->Accept(this);
     if((this->operation == ">") || (this->operation == "<") || (this->operation == "==") || (this->operation == "!=") || (this->operation == "<=") || (this->operation == ">=")|| (this->operation == "and")|| (this->operation == "or")|| (this->operation == "not")){
@@ -388,7 +527,7 @@ void SemanticAnalysis::visit(ASTIfStatementNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTWhileNode *node) {
+void InterpreterExecution::visit(ASTWhileNode *node) {
     this->exists = true;
     node->Expr->Accept(this);
     if((this->operation == ">") || (this->operation == "<") || (this->operation == "==") || (this->operation == "!=") || (this->operation == "<=") || (this->operation == ">=")||(this->operation == "and")||(this->operation == "or")|| (this->operation == "not")){
@@ -398,7 +537,7 @@ void SemanticAnalysis::visit(ASTWhileNode *node) {
     }
 }
 
-void SemanticAnalysis::visit(ASTBlockNode *node) {
+void InterpreterExecution::visit(ASTBlockNode *node) {
 
     if(this->st.createScope()){
         //std::cout << "Creating an inner scope" << std::endl;

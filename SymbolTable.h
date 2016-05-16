@@ -16,11 +16,9 @@ public:
 
     struct varValue{
         primitive_type t;
-        union Data{
-            int i;
-            float r;
-            bool b;
-        }Data;
+        int i;
+        float r;
+        bool b;
         std::string s;
     };
     struct funcValue{
@@ -69,17 +67,20 @@ public:
 
     bool isParam(std::string funcName,primitive_type funcType,std::string name);
 
-    //bool setParam(std::string funcName, std::string name,primitive_type type);
-
-    //int getNoOfParam(std::string name, primitive_type type);
-    //std::vector<std::map< std::string,SymbolTable::primitive_type>> getFuncParam(std::string name, primitive_type type);
-
     void scopePrint();
 
     primitive_type getType(std::string name);
     primitive_type getParamType(std::string funcName, std::string name);
 
-    //std::vector<std::map< std::string,SymbolTable::primitive_type>> getParam(std::string name, primitive_type type);
+    bool setValue(std::string name, int value);
+    bool setValue(std::string name, float value);
+    bool setValue(std::string name, bool value);
+    bool setValue(std::string name, std::string value);
+
+    int getIntValue(std::string name);
+    float getFloatValue(std::string name);
+    bool getBoolValue(std::string name);
+    std::string getStringValue(std::string name);
 };
 
 #endif //ASSIGNMENT_5_SYMBOLTABLE_H

@@ -1,4 +1,6 @@
 
+var b : int = 5; //declare y and set it to 1.0
+
 var y : real = 1.0; //declare y and set it to 1.0
 
 set y = 2.2;

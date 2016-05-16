@@ -1,15 +1,17 @@
 //
-// Created by cps200x on 5/13/16.
+// Created by cps200x on 5/16/16.
 //
 
-#ifndef ASSIGNMENT_5_SEMANTICANALYSIS_H
-#define ASSIGNMENT_5_SEMANTICANALYSIS_H
+#ifndef ASSIGNMENT_5_INTERPRETEREXECUTION_H
+#define ASSIGNMENT_5_INTERPRETEREXECUTION_H
+
+
 
 #include "Visitor.h"
 #include "../SymbolTable.h"
 #include "../ASTNodes/Include.h"
 
-class SemanticAnalysis : public Visitor{
+class InterpreterExecution : public Visitor{
 private:
 
     SymbolTable st;
@@ -27,12 +29,20 @@ private:
     bool exists;
     bool param;
 
+    int iValue;
+    float rValue;
+    bool bValue;
+    std::string sValue;
+
 public:
 
-    SemanticAnalysis();
+    InterpreterExecution();
 
     void typeSet(std::string type);
+
     std::string typePrint(SymbolTable::primitive_type type);
+
+    std::string valuePrint(SymbolTable::primitive_type type);
 
     void Error(std::string error);
 
@@ -70,4 +80,5 @@ public:
     virtual void visit(ASTBlockNode *);
 
 };
-#endif //ASSIGNMENT_5_SEMANTICANALYSIS_H
+
+#endif //ASSIGNMENT_5_INTERPRETEREXECUTION_H

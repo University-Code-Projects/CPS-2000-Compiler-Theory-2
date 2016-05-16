@@ -1,3 +1,4 @@
+
 def power(x : int, y : int) : int {
 	if (y == 1) {
 		return x;

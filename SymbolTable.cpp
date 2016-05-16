@@ -79,42 +79,6 @@ bool SymbolTable::inCurrentScope(std::string name) {
     return false;
 }
 
-/*
- * Used to check if a variable is a parameter of a function or not
- */
-/*
-bool SymbolTable::isParam(std::string funcName,primitive_type funcType,std::string name) {
-    if(!this->inScope(funcName)){//check if function exists in the scope
-        return false;
-    }else{
-        std::multimap<std::string, stValue>::iterator mit;
-        for(int i = 0; i < this->scopeStack.size(); i++) {
-            std::multimap<std::string, stValue> curr =this->scopeStack.at(i);
-
-            for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
-                if(mit->first == name){//check function name
-                    if(mit->second.fv.t.t == funcType){//and function type
-                        std::multimap<std::string, primitive_type>::iterator pit;
-
-                        for(int j = 0; j < mit->second.fv.param.size(); j++){//iterating the parameters of vectors
-                            std::map<std::string, primitive_type> param = mit->second.fv.param.at(i);
-
-                            for(pit = param.begin(); pit != param.end(); pit++){//iterating the map (should only iterate once
-                                if(pit->first == name){//checking if parameter is found
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-}
-*/
-
 bool SymbolTable::isParam(std::string funcName, primitive_type funcType, std::string name) {
     if(!this->inScope(funcName)) {//check if function exists in the scope
         return false;
@@ -158,19 +122,24 @@ void SymbolTable::scopePrint() {
                 switch (mit->second.vv.t) {
                     case 0:
                         std::cout << " Type : " << "int    ";
-                        //std::cout << " Value : " << it->second.vv.Data.i << "\t";
+                        std::cout << " Value : " << mit->second.vv.i << "\t";
                         break;
                     case 1:
                         std::cout << " Type : " << "real   ";
-                        //std::cout << " Value : " << it->second.vv.Data.r << "\t";
+                        std::cout << " Value : " << mit->second.vv.r << "\t";
                         break;
                     case 2:
                         std::cout << " Type : " << "bool   ";
-                        //std::cout << " Value : " << it->second.vv.Data.b << "\t";
+                        std::cout << " Value : " ;
+                        if(mit->second.vv.b){
+                            std::cout << "true" << "\t";
+                        } else{
+                            std::cout << "false" << "\t";
+                        }
                         break;
                     case 3:
                         std::cout << " Type : " << "string ";
-                        //std::cout << " Value : " << it->second.vv.s << "\t";
+                        std::cout << " Value : " << mit->second.vv.s << "\t";
                         break;
 
                 }
@@ -178,15 +147,15 @@ void SymbolTable::scopePrint() {
                 switch (mit->second.fv.t.t) {
                     case 0:
                         std::cout << " Type : " << "int    ";
-                        //std::cout << " Value : " << it->second.fv.t.Data.i << "\t";
+                        //std::cout << " Value : " << it->second.fv.t.i << "\t";
                         break;
                     case 1:
                         std::cout << " Type : " << "real   ";
-                        //std::cout << " Value : " << it->second.fv.t.Data.r << "\t";
+                        //std::cout << " Value : " << it->second.fv.t.r << "\t";
                         break;
                     case 2:
                         std::cout << " Type : " << "bool   ";
-                        //std::cout << " Value : " << it->second.fv.t.Data.b << "\t";
+                        //std::cout << " Value : " << it->second.fv.t.b << "\t";
                         break;
                     case 3:
                         std::cout << " Type : " << "string ";
@@ -249,12 +218,14 @@ SymbolTable::primitive_type SymbolTable::getType(std::string name) {
 }
 
 SymbolTable::primitive_type SymbolTable::getParamType(std::string funcName,std::string name) {
+    //std::cerr << "Type : " << typePrint(this->Type) << std::endl;
+
     if(inScope((funcName))){
         for(int i = 0 ; i < this->scopeStack.size(); i ++){
             std::multimap<std::string, stValue>::iterator mit;
             std::multimap<std::string, stValue> curr = this->scopeStack.at(this->scopeStack.size()-i-1);
             for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
-                if(mit->first == name){
+                if(mit->first == funcName){
                     std::map<std::string, primitive_type >::iterator it;
                     for(int j =0; j < mit->second.fv.param.size(); j++){
                         for(it = mit->second.fv.param.at(j).begin();it != mit->second.fv.param.at(j).end(); it++ ){
@@ -271,24 +242,105 @@ SymbolTable::primitive_type SymbolTable::getParamType(std::string funcName,std::
         return n;
     }
 }
-/*
-SymbolTable::primitive_type SymbolTable::getParamType(std::string funcName,std::string name) {
-    std::map<std::string, stValue>::iterator mit;
-    std::multimap<std::string, stValue> curr = this->scopeStack.at(this->scopeStack.size()-1);
 
-    for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
-        if(mit->first == funcName){
-
-            std::map<std::string, SymbolTable::primitive_type >::iterator it;
-            for(int i = 0; i < mit->second.fv.param.size(); i++){
-
-                for(it = mit->second.fv.param.at(i).begin(); it !=mit->second.fv.param.at(i).end(); it++){
-                    if(it->first == name){
-                        return it->second;
+bool SymbolTable::setValue(std::string name, int value) {
+    if (inScope(name)) {
+        for(int i = 0 ; i < this->scopeStack.size(); i ++){
+            std::multimap<std::string, stValue>::iterator mit;
+            for(mit = this->scopeStack.at(this->scopeStack.size()-i-1).begin(); mit != this->scopeStack.at(this->scopeStack.size()-i-1).end(); mit++) {//should only iterate once as one 1 map per vector
+                if(mit->first == name){
+                    if(mit->second.func == true){
+                        std::cerr << "Cannot modify Value of a function" << std::endl;
+                    }else{
+                        //this->scopeStack.at(this->scopeStack.size()-i-1).
+                        mit->second.vv.i = value;
+                        return true;
                     }
                 }
             }
         }
+    } else {
+        return false;
     }
 }
-*/
+
+bool SymbolTable::setValue(std::string name, float value) {
+    if (inScope(name)) {
+        for(int i = 0 ; i < this->scopeStack.size(); i ++){
+            std::multimap<std::string, stValue>::iterator mit;
+            for(mit = this->scopeStack.at(this->scopeStack.size()-i-1).begin(); mit != this->scopeStack.at(this->scopeStack.size()-i-1).end(); mit++) {//should only iterate once as one 1 map per vector
+                if(mit->first == name){
+                    if(mit->second.func == true){
+                        std::cerr << "Cannot modify Value of a function" << std::endl;
+                    }else{
+                        //this->scopeStack.at(this->scopeStack.size()-i-1).
+                        mit->second.vv.r = value;
+                        return true;
+                    }
+                }
+            }
+        }
+    } else {
+        return false;
+    }
+}
+
+bool SymbolTable::setValue(std::string name, bool value) {
+    if (inScope(name)) {
+        for(int i = 0 ; i < this->scopeStack.size(); i ++){
+            std::multimap<std::string, stValue>::iterator mit;
+            for(mit = this->scopeStack.at(this->scopeStack.size()-i-1).begin(); mit != this->scopeStack.at(this->scopeStack.size()-i-1).end(); mit++) {//should only iterate once as one 1 map per vector
+                if(mit->first == name){
+                    if(mit->second.func == true){
+                        std::cerr << "Cannot modify Value of a function" << std::endl;
+                    }else{
+                        //this->scopeStack.at(this->scopeStack.size()-i-1).
+                        mit->second.vv.b = value;
+                        return true;
+                    }
+                }
+            }
+        }
+    } else {
+        return false;
+    }
+}
+
+bool SymbolTable::setValue(std::string name, std::string value) {
+    if (inScope(name)) {
+        for(int i = 0 ; i < this->scopeStack.size(); i ++){
+            std::multimap<std::string, stValue>::iterator mit;
+            for(mit = this->scopeStack.at(this->scopeStack.size()-i-1).begin(); mit != this->scopeStack.at(this->scopeStack.size()-i-1).end(); mit++) {//should only iterate once as one 1 map per vector
+                if(mit->first == name){
+                    if(mit->second.func == true){
+                        std::cerr << "Cannot modify Value of a function" << std::endl;
+                    }else{
+                        //this->scopeStack.at(this->scopeStack.size()-i-1).
+                        std::cout << "Value " << value << std::endl;
+                        mit->second.vv.s = value;
+                        return true;
+                    }
+                }
+            }
+        }
+    } else {
+        return false;
+    }
+}
+
+int SymbolTable::getIntValue(std::string name) {
+    return 0;
+}
+
+float SymbolTable::getFloatValue(std::string name) {
+    return 0;
+}
+
+bool SymbolTable::getBoolValue(std::string name) {
+    return false;
+}
+
+std::string SymbolTable::getStringValue(std::string name) {
+
+    //return std::basic_string<char, char_traits < _CharT>, allocator < _CharT >> ();
+}

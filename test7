@@ -3,7 +3,7 @@ while (i < 10) {
 	set i = i + 1;
 }
 
-var y : real = 0;
+var y : int = 0;
 if (2 <= 3) {
     set y = 3 - 1;
 } else {
