@@ -217,14 +217,14 @@ ASTStatementNode * Parser::ParseAssignment(){
 }
 
 ASTStatementNode * Parser::ParseWriteStatement(){
-    std::cout << "Entry in Parse Write" << std::endl;
+    //std::cout << "Entry in Parse Write" << std::endl;
 
     ASTWriteNode * statement = nullptr;
 
     //consuming current token which is the write token;
     CurrToken = lex.getNextToken();
 
-    std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
+    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     ASTExpressionNode * expr = ParseExpression();
 
 

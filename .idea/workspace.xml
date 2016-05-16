@@ -11,8 +11,10 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05beb8a5-4b4e-4205-8f46-7eb293f3407f" name="Default" comment="">
+    <list default="true" id="05beb8a5-4b4e-4205-8f46-7eb293f3407f" name="Default" comment="New version of semantic analysis, still to implement remaining functions">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Parser.cpp" afterPath="$PROJECT_DIR$/Parser.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test2" afterPath="$PROJECT_DIR$/test2" />
     </list>
     <ignored path="Assignment_5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,62 +34,68 @@
     <favorites_list name="Assignment_5" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.44756097">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="SymbolTable.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/SymbolTable.cpp">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+                  <caret line="250" column="93" selection-start-line="250" selection-start-column="93" selection-end-line="250" selection-end-column="93" />
                   <folding>
                     <element signature="e#26#117#0" expanded="false" />
                     <element signature="e#26#178#0" expanded="false" />
                     <element signature="e#180#227#0" expanded="false" />
                     <element signature="e#180#372#0" expanded="false" />
                     <element signature="e#374#414#0" expanded="false" />
-                    <element signature="e#374#584#0" expanded="false" />
-                    <element signature="e#586#626#0" expanded="false" />
-                    <element signature="e#586#859#0" expanded="false" />
-                    <element signature="e#861#901#0" expanded="false" />
-                    <element signature="e#861#1224#0" expanded="false" />
-                    <element signature="e#1226#1290#0" expanded="false" />
-                    <element signature="e#1226#1745#0" expanded="false" />
-                    <element signature="e#1747#1807#0" expanded="false" />
-                    <element signature="e#1747#2209#0" expanded="false" />
-                    <element signature="e#2211#2284#0" expanded="false" />
-                    <element signature="e#2211#3650#0" expanded="false" />
-                    <element signature="e#3652#3692#0" expanded="false" />
-                    <element signature="e#3652#6572#0" expanded="false" />
+                    <element signature="e#374#616#0" expanded="false" />
+                    <element signature="e#618#658#0" expanded="false" />
+                    <element signature="e#893#933#0" expanded="false" />
+                    <element signature="e#893#1256#0" expanded="false" />
+                    <element signature="e#1258#1322#0" expanded="false" />
+                    <element signature="e#1258#1777#0" expanded="false" />
+                    <element signature="e#1779#1839#0" expanded="false" />
+                    <element signature="e#1779#2241#0" expanded="false" />
+                    <element signature="e#2243#2316#0" expanded="false" />
+                    <element signature="e#2317#3715#0" expanded="false" />
+                    <element signature="e#2317#4681#0" expanded="false" />
+                    <element signature="e#4683#4723#0" expanded="false" />
+                    <element signature="e#4683#7656#0" expanded="false" />
+                    <element signature="e#7658#8905#0" expanded="false" />
+                    <element signature="e#8907#9934#0" expanded="false" />
+                    <element signature="e#9935#10734#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SemanticAnalysis.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
+          <file leaf-file-name="test2" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/test2">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.67826086">
-                  <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
-                  <folding>
-                    <element signature="e#31#72#0" expanded="false" />
-                    <element signature="e#2517#2775#0" expanded="false" />
-                    <element signature="e#2777#3418#0" expanded="false" />
-                    <element signature="e#4238#4653#0" expanded="false" />
-                  </folding>
+                <state vertical-scroll-proportion="0.4006678">
+                  <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SymbolTable.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/SymbolTable.h">
+          <file leaf-file-name="Parser.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Parser.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="27" column="69" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="69" />
+                <state vertical-scroll-proportion="-16.0">
+                  <caret line="659" column="22" selection-start-line="659" selection-start-column="22" selection-end-line="659" selection-end-column="22" />
                   <folding>
-                    <element signature="e#112#131#0" expanded="true" />
-                    <element signature="e#264#430#1" expanded="false" />
-                    <element signature="e#616#1200#1" expanded="false" />
+                    <element signature="e#3302#5396#0" expanded="false" />
+                    <element signature="e#7988#8595#0" expanded="false" />
+                    <element signature="e#8597#11417#0" expanded="false" />
+                    <element signature="e#11419#13220#0" expanded="false" />
+                    <element signature="e#13222#14513#0" expanded="false" />
+                    <element signature="e#14515#15596#0" expanded="false" />
+                    <element signature="e#19750#20744#0" expanded="false" />
+                    <element signature="e#24593#25628#0" expanded="false" />
+                    <element signature="e#25630#26345#0" expanded="false" />
+                    <element signature="e#26347#26964#0" expanded="false" />
+                    <element signature="e#26966#27462#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -97,7 +105,17 @@
             <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+                  <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SymbolTable.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SymbolTable.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="59" column="6" selection-start-line="59" selection-start-column="6" selection-end-line="59" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -107,22 +125,40 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="test2" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/test2">
+          <file leaf-file-name="SemanticAnalysis.cpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.052173913">
-                  <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test3" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test3">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="17" />
-                  <folding />
+                <state vertical-scroll-proportion="0.33978873">
+                  <caret line="293" column="60" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+                  <folding>
+                    <element signature="e#31#72#0" expanded="false" />
+                    <element signature="e#74#459#0" expanded="false" />
+                    <element signature="e#461#872#0" expanded="false" />
+                    <element signature="e#874#998#0" expanded="false" />
+                    <element signature="e#1163#2243#0" expanded="false" />
+                    <element signature="e#2245#2319#0" expanded="false" />
+                    <element signature="e#2321#2394#0" expanded="false" />
+                    <element signature="e#2396#2468#0" expanded="false" />
+                    <element signature="e#2470#2546#0" expanded="false" />
+                    <element signature="e#2548#5857#0" expanded="false" />
+                    <element signature="e#3574#4355#0" expanded="false" />
+                    <element signature="e#4833#5774#0" expanded="false" />
+                    <element signature="e#5859#6600#0" expanded="false" />
+                    <element signature="e#6602#7017#0" expanded="false" />
+                    <element signature="e#7019#7888#0" expanded="false" />
+                    <element signature="e#7890#9083#0" expanded="false" />
+                    <element signature="e#9085#9200#0" expanded="false" />
+                    <element signature="e#9202#9358#0" expanded="false" />
+                    <element signature="e#9360#10231#0" expanded="false" />
+                    <element signature="e#10233#10496#0" expanded="false" />
+                    <element signature="e#10498#11285#0" expanded="false" />
+                    <element signature="e#11287#12010#0" expanded="false" />
+                    <element signature="e#12012#12278#0" expanded="false" />
+                    <element signature="e#12280#12387#0" expanded="false" />
+                    <element signature="e#12389#12952#0" expanded="false" />
+                    <element signature="e#12954#13462#0" expanded="false" />
+                    <element signature="e#13464#14013#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -185,13 +221,13 @@
         <option value="$PROJECT_DIR$/test11" />
         <option value="$PROJECT_DIR$/test12" />
         <option value="$PROJECT_DIR$/test13" />
-        <option value="$PROJECT_DIR$/Parser.cpp" />
         <option value="$PROJECT_DIR$/test4" />
         <option value="$PROJECT_DIR$/main.cpp" />
-        <option value="$PROJECT_DIR$/SymbolTable.h" />
         <option value="$PROJECT_DIR$/Visitors/SemanticAnalysis.h" />
+        <option value="$PROJECT_DIR$/Parser.cpp" />
         <option value="$PROJECT_DIR$/SymbolTable.cpp" />
         <option value="$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp" />
+        <option value="$PROJECT_DIR$/SymbolTable.h" />
         <option value="$PROJECT_DIR$/test2" />
       </list>
     </option>
@@ -205,7 +241,7 @@
     <option name="x" value="65" />
     <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="959" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -265,6 +301,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Visitors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ASTNodes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -339,30 +389,36 @@
       <option name="project" value="LOCAL" />
       <updated>1463308981523</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="New version of semantic analysis, still to implement remaining functions">
+      <created>1463308988401</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1463308988401</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="959" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17248908" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.104803495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38863108" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38790408" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29814386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34410843" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39907193" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39833158" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -393,7 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -401,13 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTStatementNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -446,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ASTNodes/ASTActualParametersNode.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -464,13 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTBlockNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -523,24 +557,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTFormalParametersNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6896552">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ASTNodes/ASTFormalParameterNode.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6034483">
           <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTExpressionNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3448276">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -572,13 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Lexer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -586,24 +599,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTBinaryNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ASTNodes/ASTWriteNode.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTProgramNode.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -618,7 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36548224">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -629,37 +627,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Parser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2268431">
-          <caret line="551" column="24" selection-start-line="551" selection-start-column="24" selection-end-line="551" selection-end-column="24" />
-          <folding>
-            <element signature="e#3302#5396#0" expanded="false" />
-            <element signature="e#7984#8591#0" expanded="false" />
-            <element signature="e#8593#11413#0" expanded="false" />
-            <element signature="e#11415#13216#0" expanded="false" />
-            <element signature="e#13218#14509#0" expanded="false" />
-            <element signature="e#14511#15592#0" expanded="false" />
-            <element signature="e#19746#20740#0" expanded="false" />
-            <element signature="e#24589#25624#0" expanded="false" />
-            <element signature="e#25626#26341#0" expanded="false" />
-            <element signature="e#26343#26960#0" expanded="false" />
-            <element signature="e#26962#27458#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test3">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.12620193">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="17" />
           <folding />
         </state>
@@ -669,7 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -677,7 +646,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -685,7 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -693,7 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -701,7 +667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -709,7 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -717,7 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.036057692">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,7 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28846154">
           <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -733,75 +695,188 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTFormalParametersNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SymbolTable.h">
+    <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="69" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="69" />
-          <folding>
-            <element signature="e#112#131#0" expanded="true" />
-            <element signature="e#264#430#1" expanded="false" />
-            <element signature="e#616#1200#1" expanded="false" />
-          </folding>
+          <caret line="247" column="41" selection-start-line="247" selection-start-column="41" selection-end-line="247" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTBlockNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTBinaryNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48677886">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25240386">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16304348">
+          <caret line="10" column="75" selection-start-line="10" selection-start-column="75" selection-end-line="10" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTProgramNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTExpressionNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASTNodes/ASTStatementNode.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61893207">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Parser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.0">
+          <caret line="659" column="22" selection-start-line="659" selection-start-column="22" selection-end-line="659" selection-end-column="22" />
+          <folding>
+            <element signature="e#3302#5396#0" expanded="false" />
+            <element signature="e#7988#8595#0" expanded="false" />
+            <element signature="e#8597#11417#0" expanded="false" />
+            <element signature="e#11419#13220#0" expanded="false" />
+            <element signature="e#13222#14513#0" expanded="false" />
+            <element signature="e#14515#15596#0" expanded="false" />
+            <element signature="e#19750#20744#0" expanded="false" />
+            <element signature="e#24593#25628#0" expanded="false" />
+            <element signature="e#25630#26345#0" expanded="false" />
+            <element signature="e#26347#26964#0" expanded="false" />
+            <element signature="e#26966#27462#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33978873">
+          <caret line="293" column="60" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+          <folding>
+            <element signature="e#31#72#0" expanded="false" />
+            <element signature="e#74#459#0" expanded="false" />
+            <element signature="e#461#872#0" expanded="false" />
+            <element signature="e#874#998#0" expanded="false" />
+            <element signature="e#1163#2243#0" expanded="false" />
+            <element signature="e#2245#2319#0" expanded="false" />
+            <element signature="e#2321#2394#0" expanded="false" />
+            <element signature="e#2396#2468#0" expanded="false" />
+            <element signature="e#2470#2546#0" expanded="false" />
+            <element signature="e#2548#5857#0" expanded="false" />
+            <element signature="e#3574#4355#0" expanded="false" />
+            <element signature="e#4833#5774#0" expanded="false" />
+            <element signature="e#5859#6600#0" expanded="false" />
+            <element signature="e#6602#7017#0" expanded="false" />
+            <element signature="e#7019#7888#0" expanded="false" />
+            <element signature="e#7890#9083#0" expanded="false" />
+            <element signature="e#9085#9200#0" expanded="false" />
+            <element signature="e#9202#9358#0" expanded="false" />
+            <element signature="e#9360#10231#0" expanded="false" />
+            <element signature="e#10233#10496#0" expanded="false" />
+            <element signature="e#10498#11285#0" expanded="false" />
+            <element signature="e#11287#12010#0" expanded="false" />
+            <element signature="e#12012#12278#0" expanded="false" />
+            <element signature="e#12280#12387#0" expanded="false" />
+            <element signature="e#12389#12952#0" expanded="false" />
+            <element signature="e#12954#13462#0" expanded="false" />
+            <element signature="e#13464#14013#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SymbolTable.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <caret line="250" column="93" selection-start-line="250" selection-start-column="93" selection-end-line="250" selection-end-column="93" />
           <folding>
             <element signature="e#26#117#0" expanded="false" />
             <element signature="e#26#178#0" expanded="false" />
             <element signature="e#180#227#0" expanded="false" />
             <element signature="e#180#372#0" expanded="false" />
             <element signature="e#374#414#0" expanded="false" />
-            <element signature="e#374#584#0" expanded="false" />
-            <element signature="e#586#626#0" expanded="false" />
-            <element signature="e#586#859#0" expanded="false" />
-            <element signature="e#861#901#0" expanded="false" />
-            <element signature="e#861#1224#0" expanded="false" />
-            <element signature="e#1226#1290#0" expanded="false" />
-            <element signature="e#1226#1745#0" expanded="false" />
-            <element signature="e#1747#1807#0" expanded="false" />
-            <element signature="e#1747#2209#0" expanded="false" />
-            <element signature="e#2211#2284#0" expanded="false" />
-            <element signature="e#2211#3650#0" expanded="false" />
-            <element signature="e#3652#3692#0" expanded="false" />
-            <element signature="e#3652#6572#0" expanded="false" />
+            <element signature="e#374#616#0" expanded="false" />
+            <element signature="e#618#658#0" expanded="false" />
+            <element signature="e#893#933#0" expanded="false" />
+            <element signature="e#893#1256#0" expanded="false" />
+            <element signature="e#1258#1322#0" expanded="false" />
+            <element signature="e#1258#1777#0" expanded="false" />
+            <element signature="e#1779#1839#0" expanded="false" />
+            <element signature="e#1779#2241#0" expanded="false" />
+            <element signature="e#2243#2316#0" expanded="false" />
+            <element signature="e#2317#3715#0" expanded="false" />
+            <element signature="e#2317#4681#0" expanded="false" />
+            <element signature="e#4683#4723#0" expanded="false" />
+            <element signature="e#4683#7656#0" expanded="false" />
+            <element signature="e#7658#8905#0" expanded="false" />
+            <element signature="e#8907#9934#0" expanded="false" />
+            <element signature="e#9935#10734#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SymbolTable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="6" selection-start-line="59" selection-start-column="6" selection-end-line="59" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test2">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.052173913">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.4006678">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67826086">
-          <caret line="155" column="10" selection-start-line="155" selection-start-column="10" selection-end-line="155" selection-end-column="10" />
-          <folding>
-            <element signature="e#31#72#0" expanded="false" />
-            <element signature="e#2517#2775#0" expanded="false" />
-            <element signature="e#2777#3418#0" expanded="false" />
-            <element signature="e#4238#4653#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

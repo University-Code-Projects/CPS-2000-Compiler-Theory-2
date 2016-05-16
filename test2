@@ -1,15 +1,20 @@
+
 var y : real = 1.0; //declare y and set it to 1.0
 
-//var y : int = 1; //declare y and set it to 1.0
+set y = 2.2;
 
+var x : real = 1.0; //declare y and set it to 1.0
+
+set y = y * x; //declare y and set it to 1.0
 
 write 5 + 5;
 
-def funcPow(x : real, n : int) :real
+def funcPow(x : real, n : int, y: real) :real
 {
-    var x : real = 1.0; //declare y and set it to 1.0
-    var y : real = 1.0; //declare y and set it to 1.0
-    write funcPow(5.5,5);
+    var z : real = 1.0; //declare y and set it to 1.0
+    var a : real = 1.0; //declare y and set it to 1.0
+
+    write funcPow(z,n,a);
 
     write -5;
     if( n>=0 )
@@ -30,5 +35,10 @@ def funcPow(x : real, n : int) :real
     }
     return y;               //return y as the result
 }
+
+write funcPow(5.1,5, 1.3);
+
+
+
 
 
