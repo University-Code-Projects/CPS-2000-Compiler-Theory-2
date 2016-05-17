@@ -59,7 +59,6 @@ void SemanticAnalysis::visit(ASTProgramNode *node) {
     this->exists = false;
 
     this->funcParam.clear();
-    this->para.clear();
 
     if(this->st.createScope() == true){
         std::cout << "Global Scope created" << std::endl;
@@ -290,12 +289,12 @@ void SemanticAnalysis::visit(ASTActualParametersNode *node) {
         for (int i = 0; i < node->parameters.size(); i++) {
             node->parameters.at(i)->Accept(this);
 
-            std::map<std::string, SymbolTable::primitive_type>::iterator it;
+            std::map<std::string, SymbolTable::varValue>::iterator it;
             for (it = this->funcParam.at(i).begin(); it != this->funcParam.at(i).end(); it++) {
-                if (this->Type != it->second) {
+                if (this->Type != it->second.t) {
 
                     this->st.scopePrint();
-                    Error("Parameter "+ std::to_string(i+1) +" has type " + typePrint(this->Type) + " and expecting the type " +  typePrint(it->second));
+                    Error("Parameter "+ std::to_string(i+1) +" has type " + typePrint(this->Type) + " and expecting the type " +  typePrint(it->second.t));
                 }
             }
         }
@@ -326,7 +325,9 @@ void SemanticAnalysis::visit(ASTFunctionDeclNode *node) {
     }
 
     if(this->st.insertInScope(this->funcName,this->funcType, this->funcParam)){
-        //std::cout<<"Insert Successful" << std::endl;
+
+        std::cout<<"Insert Successful" << std::endl;
+
     }else{
         Error("Function was not added");
     }
@@ -359,16 +360,30 @@ void SemanticAnalysis::visit(ASTFormalParameterNode *node) {
         }
     }
 */
-    this->para.insert(std::pair<std::string, SymbolTable::primitive_type>(this->ident,this->Type));
+    SymbolTable::varValue var = this->st.varValues(this->Type);
+    std::cerr <<"Parameter" <<var.t << std::endl;
+
+    this->para.insert(std::pair<std::string, SymbolTable::varValue>(this->ident,var));
+    //this->para = std::pair<std::string, SymbolTable::varValue>(this->ident, var);
+
     this->param = false;
 }
 
 void SemanticAnalysis::visit(ASTFormalParametersNode *node) {
     this->funcParam.clear();
     for(int i =0; i < node->parameters.size(); i++){
+
         this->para.clear();
         node->parameters.at(i)->Accept(this);
         this->funcParam.push_back(para);
+
+        //this->funcParam.insert(para);
+
+
+
+
+        //this->funcParam.insert(para.size()-1,para);
+        //this->funcParam.push_back(para);
     }
 }
 

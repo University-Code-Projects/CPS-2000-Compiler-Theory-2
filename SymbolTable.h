@@ -23,7 +23,7 @@ public:
     };
     struct funcValue{
         varValue t;
-        std::vector<std::map< std::string,SymbolTable::primitive_type>> param;//using map since parameters cannot have same names
+        std::vector<std::map< std::string,SymbolTable::varValue>> param;//using map since parameters cannot have same names
     };
 
     struct stValue{
@@ -41,7 +41,7 @@ public:
             fv.t.t = type;
         }
 
-        stValue(primitive_type type, bool function,std::vector<std::map< std::string,SymbolTable::primitive_type>> funcParam){
+        stValue(primitive_type type, bool function,std::vector<std::map< std::string,SymbolTable::varValue>> funcParam){
             func = true;
             fv.t.t = type;
             fv.param = funcParam;
@@ -53,13 +53,25 @@ public:
     //multimap used since map cannot have 2 strings of the same name (funcDec of same name, different types)
     std::vector<std::multimap<std::string, stValue>> scopeStack;
 
+
+    varValue varValues(primitive_type type){
+        varValue variable;
+        variable.t = type;
+        variable.i =0;
+        variable.r =0;
+        variable.b =0;
+        variable.s ="";
+        return variable;
+    }
+
+
     SymbolTable();
 
     bool createScope();
     bool deleteScope();
 
     bool insertInScope(std::string name, primitive_type type);
-    bool insertInScope(std::string name, primitive_type type, std::vector<std::map< std::string,SymbolTable::primitive_type>> funcParam);
+    bool insertInScope(std::string name, primitive_type type, std::vector<std::map< std::string,SymbolTable::varValue>> funcParam);
 
     bool inScope(std::string name);
 
@@ -71,6 +83,20 @@ public:
 
     primitive_type getType(std::string name);
     primitive_type getParamType(std::string funcName, std::string name);
+
+    bool setParamValue(std::string funcName,std::string name, int value);
+    bool setParamValue(std::string funcName,std::string name, float value);
+    bool setParamValue(std::string funcName,std::string name, bool value);
+    bool setParamValue(std::string funcName,std::string name, std::string value);
+
+    int getIntValue(std::string funcName,std::string name);
+    float getFloatValue(std::string funcName,std::string name);
+    bool getBoolValue(std::string funcName,std::string name);
+    std::string getStringValue(std::string funcName,std::string name);
+
+
+
+
 
     bool setValue(std::string name, int value);
     bool setValue(std::string name, float value);

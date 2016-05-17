@@ -17,8 +17,10 @@ private:
 
     SymbolTable::primitive_type funcType;
 
-    std::vector<std::map< std::string,SymbolTable::primitive_type>> funcParam;
-    std::map< std::string,SymbolTable::primitive_type > para;
+    std::vector<std::map< std::string,SymbolTable::varValue>> funcParam;
+    std::map< std::string,SymbolTable::varValue> para;
+
+    //std::pair< std::string,SymbolTable::varValue> para;
 
     std::string ident;
     std::string funcName;
