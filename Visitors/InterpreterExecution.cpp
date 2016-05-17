@@ -49,7 +49,12 @@ std::string InterpreterExecution::valuePrint(SymbolTable::primitive_type type) {
             result += std::to_string(this->rValue);
             break;
         case 2:
-            result += std::to_string(this->bValue);
+            if(this->bValue){
+                result += "true";
+            }else{
+                result += "false";
+            }
+            //result += std::to_string(this->bValue);
             break;
         case 3:
             result += this->sValue;
@@ -144,14 +149,45 @@ void InterpreterExecution::visit(ASTIdentifierNode *node) {
     }else {
         if (this->exists) {//check if a varibale exists
             if (this->st.inScope(node->value)) {//found in the current scope/ any previous scopes
+
                 this->ident = node->value;
                 this->Type = this->st.getType(node->value);
 
+                switch (this->Type) {
+                    case 0:
+                        this->iValue = this->st.getIntValue(node->value);
+                        break;
+                    case 1:
+                        this->rValue = this->st.getFloatValue(node->value);
+                        break;
+                    case 2:
+                        this->bValue = this->st.getBoolValue(node->value);;
+                        break;
+                    case 3:
+                        this->sValue = this->st.getStringValue(node->value);;
+                        break;
+                }
             } else {
                 if(this->st.isParam(this->funcName,this->funcType, node->value)){
                     this->ident = node->value;
-
                     this->Type = this->st.getParamType(this->funcName, node->value);
+
+                    //it is a parameter need to get the value
+                    switch (this->Type) {
+                        case 0:
+                            this->iValue = this->st.getIntValue(node->value);
+                            break;
+                        case 1:
+                            this->rValue = this->st.getFloatValue(node->value);
+                            break;
+                        case 2:
+                            this->bValue = this->st.getBoolValue(node->value);;
+                            break;
+                        case 3:
+                            this->sValue = this->st.getStringValue(node->value);;
+                            break;
+                    }
+
 
                 }else{
                     Error(node->value + " is not defined as a parameter");
@@ -242,13 +278,9 @@ void InterpreterExecution::visit(ASTBinaryNode *node) {
         }
     }
 
-
-
     if (node->rhs != nullptr){
         node->rhs->Accept(this);
         typeRhs = this->Type;
-
-
     }
 
     if(typeLhs != typeRhs){
@@ -257,7 +289,7 @@ void InterpreterExecution::visit(ASTBinaryNode *node) {
         this->Type = typeLhs;
 
         this->operation = node->operation;
-
+        std::cout << "Boolean found with operator " << this->operation<< std::endl;
         switch (this->Type){
             case 0:
                 if(this->operation == "+"){
@@ -268,6 +300,42 @@ void InterpreterExecution::visit(ASTBinaryNode *node) {
                     this->iValue = currIValue * this->iValue;
                 }else if(this->operation == "/"){
                     this->iValue = currIValue / this->iValue;
+                }else if(this->operation == ">"){
+                    if(currIValue > this->iValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "<"){
+                    if(currIValue > this->iValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "=="){
+                    if(currIValue == this->iValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "!="){
+                    if(currIValue != this->iValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "<="){
+                    if(currIValue <= this->iValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == ">=") {
+                    if(currIValue >= this->iValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
                 }
                 break;
             case 1:
@@ -279,18 +347,57 @@ void InterpreterExecution::visit(ASTBinaryNode *node) {
                     this->rValue = currRValue * this->rValue;
                 }else if(this->operation == "/"){
                     this->rValue = currRValue / this->rValue;
+                }else if(this->operation == ">"){
+                    if(currRValue > this->rValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "<"){
+                    if(currRValue > this->rValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "=="){
+                    if(currRValue == this->rValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "!="){
+                    if(currRValue != this->rValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == "<="){
+                    if(currRValue <= this->rValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
+                }else if(this->operation == ">=") {
+                    if(currRValue >= this->rValue){
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
+                    }
                 }
                 break;
             case 2:
                 //if(this->operation == "not"){
                 //    this->bValue = not (this->bValue);
+
                 if(this->operation == "and"){
                     this->bValue = (currBValue) and (this->bValue);
                 }else if(this->operation == "or"){
                     this->bValue = (currBValue) or (this->bValue);
-                }/*else if(this->operation == ">"){
+                }else if(this->operation == ">"){
                     if(currBValue > this->bValue){
-
+                        this->bValue = true;
+                    }else{
+                        this->bValue = false;
                     }
                 }else if(this->operation == "<"){
 
@@ -303,7 +410,6 @@ void InterpreterExecution::visit(ASTBinaryNode *node) {
                 }else if(this->operation == ">="){
 
                 }
-                */
                 break;
             case 3:
                 if(this->operation == "+") {
@@ -325,7 +431,8 @@ void InterpreterExecution::visit(ASTUnaryNode *node) {
             Error("Expression is not a Boolean, not operation invalid");
         }else{
             //get value of identifier and not it
-            this->bValue = not this->bValue;
+            this->bValue = not (this->bValue);
+            this->operation = node->operation;
         }
     } else {// + /- case
         if (this->Type == 3) {//checking for string
@@ -514,14 +621,37 @@ void InterpreterExecution::visit(ASTFormalParametersNode *node) {
 void InterpreterExecution::visit(ASTWriteNode *node) {
     this->exists = true;
     node->Expr->Accept(this);
+    std::cout << this->ident << " with value : " << valuePrint(this->Type) << std::endl;
 }
 
 void InterpreterExecution::visit(ASTIfStatementNode *node) {
     this->exists = true;
     node->Expression->Accept(this);
-    if((this->operation == ">") || (this->operation == "<") || (this->operation == "==") || (this->operation == "!=") || (this->operation == "<=") || (this->operation == ">=")|| (this->operation == "and")|| (this->operation == "or")|| (this->operation == "not")){
-        node->Block->Accept(this);
-        node->ElseBlock->Accept(this);
+
+    if((this->operation == ">") || (this->operation == "<") || (this->operation == "==") || (this->operation == "!=") || (this->operation == "<=") || (this->operation == ">=")){
+
+//working in here
+
+        std::cout << "relation operation found "<< this->operation<< " reuslt ";
+        if(this->bValue){
+            std::cout << "true" << std::endl;
+        }else{
+            std::cout << "false" << std::endl;
+        }
+        if(this->st.getBoolValue(this->ident)) {
+            node->Block->Accept(this);
+        }else {
+            node->ElseBlock->Accept(this);
+        }
+
+    }else if(this->st.getType(this->ident) == 2) {//identifier in if is found to be a boolean
+        std::cout << "Parsing the block" << std::endl;
+
+        if(this->st.getBoolValue(this->ident)) {
+            node->Block->Accept(this);
+        }else {
+            node->ElseBlock->Accept(this);
+        }
     }else{
         Error("Operator " + this->operation + " is not allowed in if statement, expecting a relation Operation");
     }

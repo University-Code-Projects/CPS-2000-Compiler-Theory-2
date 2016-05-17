@@ -1,6 +1,17 @@
 
 var a : int = 5*5;
 var b : real = 5.5 - 5.4;
-var c : bool = not false;
+var c : bool = false;
 var d : string = "testing" + " for pluss";
+var g : int = 5*4;
 
+//write a;
+//write b;
+//write c;
+//write d;
+
+if(a > g){
+var e : string = "testing" + " for pluss";
+}else{
+var f : string = "testing" + " for pluss";
+}

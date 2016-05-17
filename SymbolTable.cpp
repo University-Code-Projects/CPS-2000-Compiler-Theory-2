@@ -179,12 +179,6 @@ void SymbolTable::scopePrint() {
             std::cout << "\n";
         }
     }
-    /*
-    for(it = this->scopeStack.begin(); it != this->scopeStack.end(); it++){
-
-
-    }
-    */
 }
 
 SymbolTable::primitive_type SymbolTable::getType(std::string name) {
@@ -329,18 +323,65 @@ bool SymbolTable::setValue(std::string name, std::string value) {
 }
 
 int SymbolTable::getIntValue(std::string name) {
-    return 0;
+    for(int i = 0 ; i < this->scopeStack.size(); i ++){
+        std::multimap<std::string, stValue>::iterator mit;
+        std::multimap<std::string, stValue> curr = this->scopeStack.at(this->scopeStack.size()-i-1);
+        for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
+            if(mit->first == name){
+                if(mit->second.func == true){
+                    return mit->second.fv.t.i;
+                }else{
+                    return mit->second.vv.i;
+                }
+            }
+        }
+    }
 }
 
 float SymbolTable::getFloatValue(std::string name) {
-    return 0;
+    for(int i = 0 ; i < this->scopeStack.size(); i ++){
+        std::multimap<std::string, stValue>::iterator mit;
+        std::multimap<std::string, stValue> curr = this->scopeStack.at(this->scopeStack.size()-i-1);
+        for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
+            if(mit->first == name){
+                if(mit->second.func == true){
+                    return mit->second.fv.t.r;
+                }else{
+                    return mit->second.vv.r;
+                }
+            }
+        }
+    }
 }
 
 bool SymbolTable::getBoolValue(std::string name) {
-    return false;
+    for(int i = 0 ; i < this->scopeStack.size(); i ++){
+        std::multimap<std::string, stValue>::iterator mit;
+        std::multimap<std::string, stValue> curr = this->scopeStack.at(this->scopeStack.size()-i-1);
+        for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
+            if(mit->first == name){
+                if(mit->second.func == true){
+                    return mit->second.fv.t.b;
+                }else{
+                    return mit->second.vv.b;
+                }
+            }
+        }
+    }
 }
 
 std::string SymbolTable::getStringValue(std::string name) {
-
-    //return std::basic_string<char, char_traits < _CharT>, allocator < _CharT >> ();
+    for(int i = 0 ; i < this->scopeStack.size(); i ++){
+        std::multimap<std::string, stValue>::iterator mit;
+        std::multimap<std::string, stValue> curr = this->scopeStack.at(this->scopeStack.size()-i-1);
+        for(mit = curr.begin(); mit != curr.end(); mit++) {//should only iterate once as one 1 map per vector
+            if(mit->first == name){
+                if(mit->second.func == true){
+                    return mit->second.fv.t.s;
+                }else{
+                    return mit->second.vv.s;
+                }
+            }
+        }
+    }
 }
