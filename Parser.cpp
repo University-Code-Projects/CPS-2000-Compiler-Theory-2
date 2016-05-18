@@ -35,7 +35,82 @@ ASTNode * Parser::Parse(){
     //std::cout<< "Final Token : "<< CurrToken.toString() << std::endl;
     //std::cout << "Returning Node" << std::endl;
     return rootNode;
+}
 
+
+ASTNode *Parser::ParseRepl() {
+    ASTNode * repl = nullptr;
+    if(CurrToken.token_type == Lexer::TOK_comment){
+        CurrToken = lex.getNextToken();
+        return repl;
+    }
+    //std::cout << CurrToken.toString() << std::endl;
+    switch (CurrToken.token_type){
+        case Lexer::TOK_var:
+            //std::cout<< "Variable Decleration"  << std::endl;
+            repl = ParseVariableDecl();
+            break;
+        case Lexer::TOK_set:
+            //std::cerr<< "Variable Assignment"  << std::endl;
+            repl = ParseAssignment();
+            //std::cerr << "Return from statement" << std::endl;
+            //std::cerr << CurrToken.toString() << std::endl;
+
+            break;
+        case Lexer::TOK_write:
+            //std::cout<< "Write Statement"  << std::endl;
+            repl = ParseWriteStatement();
+            break;
+        case Lexer::TOK_return:
+            //std::cout<< "Return Statement"  << std::endl;
+            repl = ParseReturnStatement();
+            break;
+        case Lexer::TOK_def:
+            //std::cout<< "Function Decleration"  << std::endl;
+            repl = ParseFunctionDecl();
+            break;
+        case Lexer::TOK_if:
+            //std::cout<< "If Statement"  << std::endl;
+            repl = ParseIfStatement();
+            break;
+        case Lexer::TOK_while:
+            //std::cout<< "While Statement"  << std::endl;
+            repl = ParseWhileStatement();
+            break;
+
+        case Lexer::TOK_punc:
+            if(CurrToken.id == "{") {
+                //std::cout << "Block Statement" << std::endl;
+                repl = ParseBlock();
+            }
+            break;
+        case Lexer::TOK_integer:
+            repl = ParseExpression();
+            break;
+
+        case Lexer::TOK_realInt:
+            repl = ParseExpression();
+            break;
+        case Lexer::TOK_unary:
+            repl = ParseUnary();
+            break;
+
+        case Lexer::TOK_identifier:
+            repl = ParseExpression();
+            break;
+        case Lexer::TOK_string:
+            repl = ParseExpression();
+            break;
+        case Lexer::TOK_bool:
+            repl = ParseExpression();
+            break;
+        default:
+            //std::cout << CurrToken.toString() << std::endl;
+            Error("No statement found");
+            break;
+    }
+
+    return repl;
 }
 
 ASTStatementNode * Parser::ParseStatement(){

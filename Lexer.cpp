@@ -18,14 +18,29 @@ Lexer::Lexer(std::string p_filename) {
 
 Lexer::Lexer(Lexer &Lex) {
     std::cout << "Address: "<< &Lex << std::endl;
-
     inputText = Lex.getProgramToText();
     charIndex = 0;
-    std::cout << "From the constructor itself"<<std::endl<<inputText << std::endl;
+    std::cout << "From the constructor itself"<<std::endl<< inputText << std::endl;
 }
 
 Lexer::~Lexer() {
     std::cout << "Object was deconstructed" << std::endl;
+}
+
+
+Lexer::Lexer() {}
+
+void Lexer::LexerRepl(std::string command) {
+    std::cout << "Entry in Lex Repl" << std::endl;
+    inputText = command;
+    charIndex =0;
+    std::cout << "Input text " << inputText<< std::endl;
+}
+
+void Lexer::LexerRepl(Lexer &lexer) {
+    std::cout << "Entry in Lex Repl &" << std::endl;
+    inputText = lexer.inputText;
+    charIndex =0;
 }
 
 std::string Lexer::getProgramToText(){

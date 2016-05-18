@@ -15,10 +15,13 @@ class Lexer {
 public:
 
     Lexer(std::string p_filename);
-
     Lexer(Lexer&);
-
     virtual ~Lexer();
+
+    Lexer();
+    void LexerRepl(std::string command);
+    void LexerRepl(Lexer&);
+
 
     //All possible token types and their associated value.
     enum TOK_Type{TOK_eof = -1, TOK_type = -2, TOK_bool = -3, TOK_integer = -4,
@@ -70,7 +73,6 @@ public:
         }
 
         std::string toString();
-
     };
 
     std::string getProgramToText();
@@ -91,7 +93,6 @@ private:
     std::string commentGet();
     std::string blockGet();
     std::string relationalOpGet();
-
 };
 
 

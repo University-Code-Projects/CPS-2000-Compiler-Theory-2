@@ -9,12 +9,15 @@
       <sourceFolder url="file://$MODULE_DIR$/Visitors/Visitor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Visitors/XMLPrint.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Visitors/SemanticAnalysis.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Parser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/REPL.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/SymbolTable.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/SymbolTable.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Lexer.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Parser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Parser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/REPL.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTVariableDeclNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTStatementNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTFunctionDeclNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTBinaryNode.h" isTestSource="false" />
@@ -25,22 +28,21 @@
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTBlockNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTFormalParametersNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTIdentifierNode.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTWhileNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTWriteNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTFormalParameterNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTIntegerNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTStringNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTExpressionNode.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTAssignmentNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTWhileNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTFunctionCallNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTReturnNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTActualParametersNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTFloatNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTBoolNode.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTVariableDeclNode.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ASTNodes/ASTAssignmentNode.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ASTNodes/Include.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Parser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SymbolTable.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Lexer.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

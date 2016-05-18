@@ -12,10 +12,14 @@
 class Parser{
 public:
     Parser(Lexer &lexer);
+
+    //void ParserREPL(Lexer &lexer);
+
     virtual  ~Parser(){};
 
     ASTNode * Parse();
 
+    ASTNode * ParseRepl();
 private:
     Lexer::Token CurrToken;
     Lexer::Token Peek;
