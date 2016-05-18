@@ -218,13 +218,15 @@ void SemanticAnalysis::visit(ASTVariableDeclNode *node) {
     typeSet(node->Type);
     SymbolTable::primitive_type identType = this->Type;
 
+
     node->Identifier->Accept(this);
+    std::string name = this->ident;
 
     this->exists = true;
     node->Expr->Accept(this);
 
-    if(this->st.inCurrentScope(this->ident)){
-        Error("Variable is already defined in the current scope");
+    if(this->st.inCurrentScope(name)){
+        Error("Variable " + name +" is already defined in the current scope");
     }else if(this->st.isParam(this->funcName, this->funcType,this->ident)){
         Error("Variable is already defined in as a Parameter");
     }else{

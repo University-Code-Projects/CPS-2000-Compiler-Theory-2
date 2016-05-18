@@ -11,8 +11,9 @@
 
 class Parser{
 public:
-    Parser(Lexer &lexer);
+    Parser(bool text,Lexer &lexer);
 
+    //Parser(bool type,Lexer &lexer);
     //void ParserREPL(std::string command);
 
     virtual  ~Parser(){};

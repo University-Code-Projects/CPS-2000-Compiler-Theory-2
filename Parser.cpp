@@ -4,10 +4,9 @@
 
 #include "Parser.h"
 
-Parser::Parser(Lexer &pLexer) : lex(pLexer){
+Parser::Parser(bool text,Lexer &pLexer) : lex(text,pLexer){
     //std::cout << "Entry in Parser Constructor" << std::endl;
 }
-
 
 ASTNode * Parser::Parse(){
     std::cout<< "Parser Entry" << std::endl;
@@ -27,6 +26,8 @@ ASTNode * Parser::Parse(){
         //CurrToken = lex.getNextToken();
         if(statement != nullptr) {
             rootNode->addStatement(statement);
+        }else{
+            break;
         }
         //statement->Accept(v);
 
@@ -38,8 +39,64 @@ ASTNode * Parser::Parse(){
     return rootNode;
 }
 
-
 ASTNode *Parser::ParseRepl() {
+    //std::cout<< "Parser Repl" << std::endl;
+    ASTProgramNode *rootNode = new ASTProgramNode();
+    ASTStatementNode * statement = nullptr;
+    CurrToken = lex.getNextToken();
+
+    while((CurrToken.token_type != Lexer::TOK_eof)&&(CurrToken.token_type != Lexer::TOK_error)){
+        //std::cout << "Going into state"<< CurrToken.toString() << std::endl;
+        statement = ParseStatement();
+        //std::cout <<"Coming from state" << CurrToken.toString() << std::endl;
+
+        //save to the root node as a child
+        //CurrToken = lex.getNextToken();
+        if(statement != nullptr) {
+            rootNode->addStatement(statement);
+        }else{
+            //std::cout << "Statement found to be nullprt" << std::endl;
+            //std::cout << CurrToken.toString() << std::endl;
+            ASTNode * repl = nullptr;
+            switch (CurrToken.token_type){
+                case Lexer::TOK_integer:
+                    repl = ParseExpression();
+                    break;
+
+                case Lexer::TOK_realInt:
+                    repl = ParseExpression();
+                    break;
+                case Lexer::TOK_unary:
+                    repl = ParseUnary();
+                    break;
+                case Lexer::TOK_identifier:
+                    repl = ParseExpression();
+                    break;
+                case Lexer::TOK_string:
+                    repl = ParseExpression();
+                    break;
+                case Lexer::TOK_bool:
+                    repl = ParseExpression();
+                    break;
+            }
+            return repl;
+            break;
+        }
+        //statement->Accept(v);
+        //std::cout << "Before iteration" << CurrToken.toString() << std::endl;
+    }
+    //std::cout << "Printing All the Statements" << std::endl;
+    //rootNode->Accept(v);
+    //std::cout<< "Final Token : "<< CurrToken.toString() << std::endl;
+    //std::cout << "Returning Node" << std::endl;
+    return rootNode;
+
+
+}
+
+/*
+ASTNode *Parser::ParseRepl() {
+    std::cout << "REPL Parse" << std::endl;
     ASTNode * repl = nullptr;
     if(CurrToken.token_type == Lexer::TOK_comment){
         CurrToken = lex.getNextToken();
@@ -113,9 +170,9 @@ ASTNode *Parser::ParseRepl() {
 
     return repl;
 }
+*/
 
 ASTStatementNode * Parser::ParseStatement(){
-
     ASTStatementNode * statement = nullptr;
     //std::cout << "Entry in Parse Statement" << std::endl;
     //std::cout << CurrToken.toString() << std::endl;
@@ -164,9 +221,11 @@ ASTStatementNode * Parser::ParseStatement(){
                 statement = ParseBlock();
             }
             break;
+
         default:
             //std::cout << CurrToken.toString() << std::endl;
-            Error("No statement found");
+            //std::cerr << "No statement found" << std::endl;
+            //Error("No statement found");
             break;
     }
 
@@ -299,11 +358,11 @@ ASTStatementNode * Parser::ParseWriteStatement(){
 
     //consuming current token which is the write token;
     CurrToken = lex.getNextToken();
-
+    //std::cout << "Before Expr "<<CurrToken.toString() << std::endl;
     //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     ASTExpressionNode * expr = ParseExpression();
 
-
+    //std::cout << "After Expr" <<CurrToken.toString() << std::endl;
     //SOMETHING HEERE IS HAPPENEING AND DUNNO WHAT
     //CurrToken.toString();
 
@@ -315,8 +374,9 @@ ASTStatementNode * Parser::ParseWriteStatement(){
     }else{
         if(CurrToken.id[0] == ';'){
             //consume the ';'
-            CurrToken = lex.getNextToken();
             statement = new ASTWriteNode(expr);
+            CurrToken = lex.getNextToken();
+
 
         }else{
             Error("';' was not found in Write");

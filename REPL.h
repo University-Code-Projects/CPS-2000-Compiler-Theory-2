@@ -14,14 +14,16 @@ class REPL{
 private :
     std::ifstream file;
     SymbolTable st;
+    ASTStatementNode *funcCall;
 
-
-    float ans;
+    int in;
+    float fl;
+    bool bo;
+    std::string str;
     std::string eval;
     Lexer *lex;
     Parser * parser;
-//    auto node;
-    //InterpreterExecution *i;
+    InterpreterExecution *i;
 
 
 public:
@@ -29,6 +31,7 @@ public:
     void evalution();
     bool loadFile(std::string name);
     void cmdFunctionPrint();
+    void ansResult(SymbolTable::primitive_type type);
 };
 
 

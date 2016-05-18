@@ -7,25 +7,28 @@
 #include "Visitors/SemanticAnalysis.h"
 #include "Visitors/InterpreterExecution.h"
 
-///home/cps200x/ClionProjects/Assignment_5/test2
-
+//#load "/home/cps200x/ClionProjects/Assignment_5/test2"
 
 REPL::REPL() {
-
     file.clear();
     while(st.deleteScope()){
         st.deleteScope();
     }
 
     this->eval = "";
-    this->ans = 0;
-    this->lex = new Lexer();
-    this->parser = new Parser(*lex);
 
+    in =0;
+    fl= 0.0;
+    bo = false;
+    str = "";
+
+    this->lex = new Lexer();
+    this->parser = new Parser(false,*lex);
+    i = new InterpreterExecution(this->st);
+    this->funcCall = nullptr;
 }
 
 void REPL::evalution() {
-    std::cout << "Instructions for this REPL Session" << std::endl;
     cmdFunctionPrint();
     while(this->eval != "#quit"){
         std::cout << "MLi> ";
@@ -34,7 +37,7 @@ void REPL::evalution() {
             if(this->eval == "#st"){
                 this->st.scopePrint();
             }else if(this->eval == "#ans"){
-                std::cout << this->ans << std::endl;
+                //std::cout << this-> << std::endl;
             }else if(this->eval == "#info"){
                 cmdFunctionPrint();
             }else if(this->eval == "#quit"){
@@ -48,11 +51,10 @@ void REPL::evalution() {
                     fileName+=this->eval[i];
                 }
                 if(this->loadFile(fileName)){
-                    std::cout << "Script was opened" << std::endl;
 
                 }else{
                     std::cout << "Script could not be opened" << std::endl;
-                    break;
+                    //break;
                 }
             }else {
                 std::cout << "Incorrect Command Given" << std::endl;
@@ -60,27 +62,29 @@ void REPL::evalution() {
             continue;
         }
 
-        //std::cout << "Going into Lexer "<< std::endl;
 
-        //Lexer *lex = new Lexer();
-        this->lex->LexerRepl(this->eval);
-        Parser * parser = new Parser(this->eval,*lex);
+        switch (i->typeGet()){
+
+        }
+
+
+        Lexer *lex = new Lexer(false, this->eval);
+        Parser * parser = new Parser(true,*lex);
+
         auto rootNode = parser->ParseRepl();
 
+        *i = InterpreterExecution(this->st);
+        //std::cout << "After Parse" << std::endl;
+        i->funcCallSet(funcCall);
+        XMLPrint * v = new XMLPrint();
+        rootNode->Accept(v);
 
-        InterpreterExecution *i = new InterpreterExecution(this->st);
         rootNode->Accept(i);
+        this->st = i->st;
 
-        //this->lex = new Lexer();
-        //this->parser = new Parser(*lex);
-
-
-
-        //auto rootNode = parser->Parse();
-
-
-
-
+        ansResult(i->typeGet());
+        //std::cout << "Printing REPL" << std::endl;
+        //this->st.scopePrint();
     }
     std::cout << "REPL Session ended" << std::endl;
 
@@ -100,13 +104,13 @@ bool REPL::loadFile(std::string name) {
         std::cout << "File open was successful" << std::endl;
 
         Lexer *lex1 = new Lexer(name);
-        Parser * parser = new Parser(*lex1);
+        Parser * parser = new Parser(false,*lex1);
         auto rootNode = parser->Parse();
 
 
-        InterpreterExecution *i = new InterpreterExecution(this->st);
+        *i = InterpreterExecution(this->st);
         rootNode->Accept(i);
-
+        funcCall = i->funcCallGet();
         //Lexer(name);
         //Parser(*this->lex);
         //InterpreterExecution *i = new InterpreterExecution();
@@ -114,24 +118,20 @@ bool REPL::loadFile(std::string name) {
         //this->parser->Parse()->Accept(i);
         //i->st.scopePrint();
 
-        std::cout << "PRINTING FROM REPL" << std::endl;
-        this->st = i->st;
-        this->st.scopePrint();
+        //std::cout << "PRINTING FROM REPL" << std::endl;
 
+        this->st = i->st;
+        //this->st.scopePrint();
+        std::cout << "Script was opened" << std::endl;
+        //file.close();
         return true;
     }else{
         return false;
     }
-
-
-
-
-
-
-    return false;
 }
 
 void REPL::cmdFunctionPrint() {
+    std::cout << "---------------Instructions for this REPL Session---------------" << std::endl;
     std::cout << "'#load' to load a script (must enter directory)" << std::endl;
     std::cout << "'#quit' to end the session" << std::endl;
     std::cout << "'#st' display the contents of the symbol-table" << std::endl;
@@ -139,3 +139,41 @@ void REPL::cmdFunctionPrint() {
     std::cout << "'#info' print instructions" << std::endl;
 }
 
+void REPL::ansResult(SymbolTable::primitive_type type){
+    switch (type){
+        case 0:
+            in = std::stoi(i->valuePrint(type));
+            std::cout << "Val ans : int = " << in<< std::endl;
+            fl =0;
+            bo = false;
+            str = "";
+            break;
+        case 1:
+            fl = std::stof(i->valuePrint(type));
+            std::cout << "Val ans : real = "<< fl << std::endl;
+            in =0;
+            bo = false;
+            str = "";
+            break;
+        case 2:
+            //bo = std::sto st(i->valuePrint(type));
+            if(i->valuePrint(type) == "true"){
+                bo = true;
+            }else{
+                bo = false;
+            }
+            std::cout << "Val ans : bool = " <<  i->valuePrint(type)<< std::endl;
+            fl =0;
+            in = 0;
+            str = "";
+            break;
+        case 3:
+            std::cout << "Val ans : string = " << i->valuePrint(type)<< std::endl;
+            str = i->valuePrint(type);
+            fl =0;
+            bo = false;
+            in = 0;
+            break;
+    }
+    //this->st.insertInScope("ans",i->typeGet());
+}

@@ -15,12 +15,14 @@ class Lexer {
 public:
 
     Lexer(std::string p_filename);
-    Lexer(Lexer&);
+    Lexer(bool type,std::string p_filename);
+
+    Lexer(bool text,Lexer&);
     virtual ~Lexer();
 
     Lexer();
-    void LexerRepl(std::string command);
-    void LexerRepl(Lexer&);
+    //void LexerRepl(std::string command);
+    //void LexerRepl(Lexer&);
 
 
     //All possible token types and their associated value.
@@ -83,6 +85,8 @@ public:
     Token tokenPeek();
 
 private:
+    bool text;
+
     std::ifstream file;
     int charIndex;
     std::string inputText;

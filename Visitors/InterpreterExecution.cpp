@@ -9,11 +9,29 @@ InterpreterExecution::InterpreterExecution() {
 }
 
 InterpreterExecution::InterpreterExecution(SymbolTable scopes) {
+    //std::cout << "constructor : " << scopes.scopeStack.size() << std::endl;
     if(scopes.scopeStack.empty()){
         InterpreterExecution();
     }else{
+        //scopes.scopePrint();
         this->st = scopes;
+        //this->st.scopePrint();
     }
+}
+
+SymbolTable::primitive_type InterpreterExecution::typeGet() {
+    return this->Type;
+}
+
+std::string InterpreterExecution::valueGet(SymbolTable::primitive_type type) {
+}
+
+void InterpreterExecution::funcCallSet(ASTStatementNode *call) {
+    this->funcCall = call;
+}
+
+ASTStatementNode *InterpreterExecution::funcCallGet() {
+    return this->funcCall;
 }
 
 void InterpreterExecution::typeSet(std::string type) {
@@ -73,7 +91,7 @@ std::string InterpreterExecution::valuePrint(SymbolTable::primitive_type type) {
 
 void InterpreterExecution::Error(std::string error) {
     std::cerr << "Semantic Error : " << error << std::endl;
-    exit(1);
+   // exit(1);
 }
 
 void InterpreterExecution::visit(ASTNode *node) {}
@@ -83,43 +101,83 @@ void InterpreterExecution::visit(ASTExpressionNode *node) {}
 void InterpreterExecution::visit(ASTStatementNode *node) {}
 
 void InterpreterExecution::visit(ASTProgramNode *node) {
-    InterpreterExecution(this->st);
+    //InterpreterExecution(this->st);
     //this->st = SymbolTable();
 
-    this->Type = SymbolTable::primitive_type::n;
-    this->funcType = SymbolTable::primitive_type::n;
+    if(this->st.scopeStack.empty()) {
+        this->Type = SymbolTable::primitive_type::n;
+        this->funcType = SymbolTable::primitive_type::n;
 
-    this->ident = "";
-    this->operation = "";
-    this->funcName = "";
+        this->ident = "";
+        this->operation = "";
+        this->funcName = "";
 
-    this->exists = false;
-    this->param = false;
-    this->ret = false;
-    this->func = false;
+        this->exists = false;
+        this->param = false;
+        this->ret = false;
+        this->func = false;
 
-    this->funcCall = nullptr;
+        this->funcCall = nullptr;
 
-    this->funcParam.clear();
+        this->funcParam.clear();
 
-    if(this->st.createScope() == true){
-        std::cout << "Global Scope created" << std::endl;
+        if (this->st.createScope() == true) {
+            //std::cout << "Global Scope created" << std::endl;
+            int j = node->statements.size();
+
+            for (int i = 0; i < j; i++) {
+                //std::cout << i+1 <<std::endl;
+                node->statements.at(i)->Accept(this);
+                //this->st.scopePrint();
+            }
+
+            //if(this->st.deleteScope() == true){
+            //    std::cout << "Global Scope Deleted" << std::endl;
+            //}else{
+            //    Error("Could not delete Scope");
+            //}
+        } else {
+            Error("Error creating Global Scope");
+
+        }
+    }else{
+
+        //setting the values of the current instance
+        std::multimap<std::string, SymbolTable::stValue>::iterator rit;
+        for(int i = this->st.scopeStack.size()-1; i >= 0; i--){
+
+            for(rit = this->st.scopeStack.at(i).begin(); rit != this->st.scopeStack.at(i).end(); rit++){
+                if(rit->second.func){
+                    this->funcType = rit->second.fv.t.t;
+                    this->funcName = rit->first;
+
+                    for(int k =0 ; k < rit->second.fv.param.size(); k++){
+                        this->funcParam.push_back(rit->second.fv.param.at(k));
+                    }
+                    //this->funcParam = rit->second.fv.param;
+
+                    this->funcCall = funcCallGet();
+                    //this->funcCall =
+                }else{
+                    this->ident = rit->first;
+                    //this->operation = "";
+                    this->Type = rit->second.vv.t;
+                    this->exists = true;
+                    this->func = false;
+                    this->param = false;
+                }
+
+            }
+        }
+
         int j = node->statements.size();
 
-        for(int i =0; i < j; i++){
+        for (int i = 0; i < j; i++) {
             //std::cout << i+1 <<std::endl;
             node->statements.at(i)->Accept(this);
 
             //this->st.scopePrint();
         }
-
-        //if(this->st.deleteScope() == true){
-        //    std::cout << "Global Scope Deleted" << std::endl;
-        //}else{
-        //    Error("Could not delete Scope");
-        //}
-    }else{
-        Error("Error creating Global Scope");
 
     }
 }
@@ -430,13 +488,15 @@ void InterpreterExecution::visit(ASTVariableDeclNode *node) {
     typeSet(node->Type);
     SymbolTable::primitive_type identType = this->Type;
 
+
     node->Identifier->Accept(this);
+    std::string name = this->ident;
 
     this->exists = true;
     node->Expr->Accept(this);
 
-    if(this->st.inCurrentScope(this->ident)){
-        Error("Variable is already defined in the current scope");
+    if(this->st.inCurrentScope(name)){
+        Error("Variable " + name +" is already defined in the current scope");
     }else if(this->st.isParam(this->funcName, this->funcType,this->ident)){
         Error("Variable is already defined in as a Parameter");
     }else{
@@ -532,6 +592,8 @@ void InterpreterExecution::visit(ASTSubExpressionNode *node) {
 }
 
 void InterpreterExecution::visit(ASTFunctionCallNode *node) {
+
+
     this->exists = true;
     this->ret = false;
 
@@ -540,8 +602,12 @@ void InterpreterExecution::visit(ASTFunctionCallNode *node) {
     node->Parameters->Accept(this);
 
     this->func = true;
-
+    std::cout << "Function Call" << std::endl;
+    if(funcCall == nullptr){
+        std::cout << "Funciton Call is a nullptr" << std::endl;
+    }
     this->funcCall->Accept(this);
+    std::cout << "Funciton Return" << std::endl;
 
     this->func = false;
 }
@@ -768,6 +834,8 @@ void InterpreterExecution::visit(ASTWhileNode *node) {
 
 void InterpreterExecution::visit(ASTBlockNode *node) {
 
+    std::cout << "Entry in block" << std::endl;
+    this->newBlock = true;
     if(this->st.createScope()){
         //std::cout << "Creating an inner scope" << std::endl;
         int j = node->statements.size();
@@ -777,6 +845,7 @@ void InterpreterExecution::visit(ASTBlockNode *node) {
         }
         //this->st.scopePrint();
         if(this->st.deleteScope()){
+            this->newBlock = false;
             //std::cout << "Block Scope Deleted" << std::endl;
         }else{
             Error("Could not delete Scope");

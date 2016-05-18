@@ -11,16 +11,38 @@ Lexer::Lexer(std::string p_filename) {
     file.open(p_filename);
     if(file){
         std::cout << "File '" << p_filename << "' was opened successfully." << std::endl;
+        text = false;
     }else{
         std::cout << "File '" << p_filename << "' could no be opened." << std::endl;
     }
 }
+Lexer::Lexer(bool type,std::string p_filename) {
+    //std::cout << "Entry in this constrctor : " << std::endl;
+    if (type) {
+        std::cout << " file " << std::endl;
+        file.open(p_filename);
+        if (file) {
+            std::cout << "File '" << p_filename << "' was opened successfully." << std::endl;
+            text = false;
+        } else {
+            std::cout << "File '" << p_filename << "' could no be opened." << std::endl;
+        }
+    }else{
+        //std::cout << " text " << std::endl;
+        command = p_filename + "  ";
+        text = true;
+    }
 
-Lexer::Lexer(Lexer &Lex) {
-    std::cout << "Address: "<< &Lex << std::endl;
-    inputText = Lex.getProgramToText();
+}
+Lexer::Lexer(bool text,Lexer &Lex) {
+    //std::cout << "Address: " << &Lex << std::endl;
+    if (text) {
+        inputText = Lex.command;
+    } else {
+        inputText = Lex.getProgramToText();
+    }
     charIndex = 0;
-    std::cout << "From the constructor itself"<<std::endl<< inputText << std::endl;
+    //std::cout << "From the constructor itself"<<std::endl<< inputText << std::endl;
 }
 
 Lexer::~Lexer() {
@@ -30,6 +52,7 @@ Lexer::~Lexer() {
 
 Lexer::Lexer() {}
 
+/*
 void Lexer::LexerRepl(std::string com) {
     std::cout << "Entry in Lex Repl : " << com << std::endl;
     command = com;
@@ -37,7 +60,7 @@ void Lexer::LexerRepl(std::string com) {
     inputText = command;
     std::cout << "Input text " << inputText<< std::endl;
 }
-
+*/
 //void Lexer::LexerRepl(Lexer &lexer) {
 //    std::cout << "Entry in Lex Repl &" << std::endl;
 //    inputText = lexer.inputText;
@@ -193,7 +216,7 @@ std::string Lexer::commentGet() {
 }
 
 Lexer::Token Lexer::getNextToken() {
-    if((unsigned int) charIndex == inputText.length()-1){
+    if((unsigned int) charIndex == inputText.length()){
         //std::cout << "char index == length" << std::endl;
         return (Lexer::Token());
     }
@@ -342,6 +365,7 @@ Lexer::Token Lexer::getNextToken() {
         }
 
         lastChar = inputText[charIndex];
+
         if((unsigned int) charIndex == inputText.length()){
             //std::cout << "char index == length" << std::endl;
             return (Lexer::Token());

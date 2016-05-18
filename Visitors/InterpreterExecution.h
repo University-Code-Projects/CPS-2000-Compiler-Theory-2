@@ -30,6 +30,7 @@ private:
     bool param;
     bool ret;
     bool func;
+    bool newBlock;
 
     int iValue;
     float rValue;
@@ -43,10 +44,17 @@ public:
     InterpreterExecution();
     InterpreterExecution(SymbolTable scopes);
 
+
+    void funcCallSet(ASTStatementNode * call);
+    ASTStatementNode * funcCallGet();
+
+    SymbolTable::primitive_type typeGet();
+    std::string valueGet(SymbolTable::primitive_type type);
+
+
+
     void typeSet(std::string type);
-
     std::string typePrint(SymbolTable::primitive_type type);
-
     std::string valuePrint(SymbolTable::primitive_type type);
 
     void Error(std::string error);
