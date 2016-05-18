@@ -604,3 +604,16 @@ std::string SymbolTable::getStringValue(std::string name) {
         }
     }
 }
+
+void SymbolTable::setType(std::string name,primitive_type type) {
+    for(int i = 0 ; i < this->scopeStack.size(); i ++){
+        std::multimap<std::string, stValue>::iterator mit;
+        for(mit = this->scopeStack.at(this->scopeStack.size()-i-1).begin(); mit != this->scopeStack.at(this->scopeStack.size()-i-1).end(); mit++) {//should only iterate once as one 1 map per vector
+            if(mit->first == name){
+                //this->scopeStack.at(this->scopeStack.size()-i-1).
+                mit->second.vv.t = type;
+                return;
+            }
+        }
+    }
+}

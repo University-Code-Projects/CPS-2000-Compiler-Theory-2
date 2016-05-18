@@ -227,12 +227,12 @@ void SemanticAnalysis::visit(ASTVariableDeclNode *node) {
 
     if(this->st.inCurrentScope(name)){
         Error("Variable " + name +" is already defined in the current scope");
-    }else if(this->st.isParam(this->funcName, this->funcType,this->ident)){
+    }else if(this->st.isParam(this->funcName, this->funcType,name)){
         Error("Variable is already defined in as a Parameter");
     }else{
         if(this->Type != identType){
             Error("Type of Identifier and Expression do not match");
-        }else if(this->st.insertInScope(this->ident, this->Type)){
+        }else if(this->st.insertInScope(name, this->Type)){
             //std::cout << "Variable Added" << std::endl;
             //this->st.scopePrint();
         }else{
@@ -363,8 +363,6 @@ void SemanticAnalysis::visit(ASTFormalParameterNode *node) {
     }
 */
     SymbolTable::varValue var = this->st.varValues(this->Type);
-    std::cerr <<"Parameter" <<var.t << std::endl;
-
     this->para.insert(std::pair<std::string, SymbolTable::varValue>(this->ident,var));
     //this->para = std::pair<std::string, SymbolTable::varValue>(this->ident, var);
 

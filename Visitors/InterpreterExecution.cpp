@@ -23,9 +23,6 @@ SymbolTable::primitive_type InterpreterExecution::typeGet() {
     return this->Type;
 }
 
-std::string InterpreterExecution::valueGet(SymbolTable::primitive_type type) {
-}
-
 void InterpreterExecution::funcCallSet(ASTStatementNode *call) {
     this->funcCall = call;
 }
@@ -90,7 +87,8 @@ std::string InterpreterExecution::valuePrint(SymbolTable::primitive_type type) {
 }
 
 void InterpreterExecution::Error(std::string error) {
-    std::cerr << "Semantic Error : " << error << std::endl;
+    std::cout << "Semantic Error : " << error << std::endl;
+    this->sem = true;
    // exit(1);
 }
 
@@ -103,7 +101,7 @@ void InterpreterExecution::visit(ASTStatementNode *node) {}
 void InterpreterExecution::visit(ASTProgramNode *node) {
     //InterpreterExecution(this->st);
     //this->st = SymbolTable();
-
+    //this->sem = false;
     if(this->st.scopeStack.empty()) {
         this->Type = SymbolTable::primitive_type::n;
         this->funcType = SymbolTable::primitive_type::n;
@@ -497,26 +495,26 @@ void InterpreterExecution::visit(ASTVariableDeclNode *node) {
 
     if(this->st.inCurrentScope(name)){
         Error("Variable " + name +" is already defined in the current scope");
-    }else if(this->st.isParam(this->funcName, this->funcType,this->ident)){
+    }else if(this->st.isParam(this->funcName, this->funcType,name)){
         Error("Variable is already defined in as a Parameter");
     }else{
         if(this->Type != identType){
             Error("Type of Identifier and Expression do not match");
-        }else if(this->st.insertInScope(this->ident, this->Type)){
+        }else if(this->st.insertInScope(name, this->Type)){
             //std::cout << "Variable Added" << std::endl;
             //std::cout <<"Contents of equation : " << valuePrint(this->Type) << std::endl;
             switch (this->Type){
                 case 0:
-                    this->st.setValue(this->ident,this->iValue);
+                    this->st.setValue(name,this->iValue);
                     break;
                 case 1:
-                    this->st.setValue(this->ident,this->rValue);
+                    this->st.setValue(name,this->rValue);
                     break;
                 case 2:
-                    this->st.setValue(this->ident,this->bValue);
+                    this->st.setValue(name,this->bValue);
                     break;
                 case 3:
-                    this->st.setValue(this->ident,this->sValue);
+                    this->st.setValue(name,this->sValue);
                     break;
             }
             //this->st.setValue(this->ident,this->iValue);

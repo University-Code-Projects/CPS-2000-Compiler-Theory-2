@@ -173,7 +173,7 @@ void XMLPrint::visit(ASTWriteNode *node) {
     if (node->Expr != nullptr) {
         node->Expr->Accept(this);
     } else {
-        std::cerr << "Null Expression" << std::endl;
+       // std::cerr << "Null Expression" << std::endl;
     }
     for(int i =0; i < this->indent; i++){
         this->out+= " ";

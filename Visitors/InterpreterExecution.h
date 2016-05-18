@@ -40,6 +40,8 @@ private:
     ASTStatementNode * funcCall;
 
 public:
+    bool sem = false;
+
     SymbolTable st;
     InterpreterExecution();
     InterpreterExecution(SymbolTable scopes);
@@ -49,8 +51,6 @@ public:
     ASTStatementNode * funcCallGet();
 
     SymbolTable::primitive_type typeGet();
-    std::string valueGet(SymbolTable::primitive_type type);
-
 
 
     void typeSet(std::string type);

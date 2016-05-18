@@ -62,7 +62,6 @@ ASTNode *Parser::ParseRepl() {
                 case Lexer::TOK_integer:
                     repl = ParseExpression();
                     break;
-
                 case Lexer::TOK_realInt:
                     repl = ParseExpression();
                     break;
@@ -77,6 +76,11 @@ ASTNode *Parser::ParseRepl() {
                     break;
                 case Lexer::TOK_bool:
                     repl = ParseExpression();
+                    break;
+                case Lexer::TOK_punc:
+                    if(CurrToken.id == "("){
+                        repl = ParseSimpleExpression();
+                    }
                     break;
             }
             return repl;

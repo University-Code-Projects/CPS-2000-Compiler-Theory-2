@@ -36,8 +36,6 @@ void REPL::evalution() {
         if(this->eval[0] == '#'){
             if(this->eval == "#st"){
                 this->st.scopePrint();
-            }else if(this->eval == "#ans"){
-                //std::cout << this-> << std::endl;
             }else if(this->eval == "#info"){
                 cmdFunctionPrint();
             }else if(this->eval == "#quit"){
@@ -67,7 +65,6 @@ void REPL::evalution() {
 
         }
 
-
         Lexer *lex = new Lexer(false, this->eval);
         Parser * parser = new Parser(true,*lex);
 
@@ -80,11 +77,10 @@ void REPL::evalution() {
         rootNode->Accept(v);
 
         rootNode->Accept(i);
-        this->st = i->st;
-
-        ansResult(i->typeGet());
-        //std::cout << "Printing REPL" << std::endl;
-        //this->st.scopePrint();
+        if(!(i->sem)){
+            this->st = i->st;
+            ansResult(i->typeGet());
+        }
     }
     std::cout << "REPL Session ended" << std::endl;
 
@@ -135,7 +131,6 @@ void REPL::cmdFunctionPrint() {
     std::cout << "'#load' to load a script (must enter directory)" << std::endl;
     std::cout << "'#quit' to end the session" << std::endl;
     std::cout << "'#st' display the contents of the symbol-table" << std::endl;
-    std::cout << "'#ans' display most recent reuslt" << std::endl;
     std::cout << "'#info' print instructions" << std::endl;
 }
 
@@ -143,7 +138,7 @@ void REPL::ansResult(SymbolTable::primitive_type type){
     switch (type){
         case 0:
             in = std::stoi(i->valuePrint(type));
-            std::cout << "Val ans : int = " << in<< std::endl;
+            std::cout << "Val ans : int = " << in << std::endl;
             fl =0;
             bo = false;
             str = "";
@@ -175,5 +170,54 @@ void REPL::ansResult(SymbolTable::primitive_type type){
             in = 0;
             break;
     }
-    //this->st.insertInScope("ans",i->typeGet());
+    if(this->st.inScope("ans")){
+        if(this->st.getType("ans") == i->typeGet()){
+            switch (i->typeGet()){
+                case 0:
+                    this->st.setValue("ans",in);
+                    break;
+                case 1:
+                    this->st.setValue("ans",fl);
+                    break;
+                case 2:
+                    this->st.setValue("ans",bo);
+                    break;
+                case 3:
+                    this->st.setValue("ans",str);
+                    break;
+            }
+        }else{
+            this->st.setType("ans",i->typeGet());
+                switch (i->typeGet()){
+                    case 0:
+                        this->st.setValue("ans",in);
+                        break;
+                    case 1:
+                        this->st.setValue("ans",fl);
+                        break;
+                    case 2:
+                        this->st.setValue("ans",bo);
+                        break;
+                    case 3:
+                        this->st.setValue("ans",str);
+                        break;
+                }
+        }
+    }else{
+        this->st.insertInScope("ans",i->typeGet());
+        switch (i->typeGet()){
+            case 0:
+                this->st.setValue("ans",in);
+                break;
+            case 1:
+                this->st.setValue("ans",fl);
+                break;
+            case 2:
+                this->st.setValue("ans",bo);
+                break;
+            case 3:
+                this->st.setValue("ans",str);
+                break;
+        }
+    }
 }

@@ -21,10 +21,10 @@ int main() {
 
 
     rootNode->Accept(v);
-    //rootNode->Accept(s);
+    rootNode->Accept(s);
     rootNode->Accept(i);
 
-    REPL *r = new REPL();
-    r->evalution();
+    //REPL *r = new REPL();
+    //r->evalution();
     return 0;
 }

@@ -97,10 +97,6 @@ public:
     bool getBoolValue(std::string funcName,std::string name);
     std::string getStringValue(std::string funcName,std::string name);
 
-
-
-
-
     bool setValue(std::string name, int value);
     bool setValue(std::string name, float value);
     bool setValue(std::string name, bool value);
@@ -110,6 +106,9 @@ public:
     float getFloatValue(std::string name);
     bool getBoolValue(std::string name);
     std::string getStringValue(std::string name);
+
+    void setType(std::string name,primitive_type type);
+
 };
 
 #endif //ASSIGNMENT_5_SYMBOLTABLE_H
