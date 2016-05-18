@@ -13,16 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05beb8a5-4b4e-4205-8f46-7eb293f3407f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.cpp" afterPath="$PROJECT_DIR$/Lexer.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.h" afterPath="$PROJECT_DIR$/Lexer.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Parser.cpp" afterPath="$PROJECT_DIR$/Parser.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Parser.h" afterPath="$PROJECT_DIR$/Parser.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/REPL.cpp" afterPath="$PROJECT_DIR$/REPL.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/REPL.h" afterPath="$PROJECT_DIR$/REPL.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Visitors/InterpreterExecution.cpp" afterPath="$PROJECT_DIR$/Visitors/InterpreterExecution.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Visitors/InterpreterExecution.h" afterPath="$PROJECT_DIR$/Visitors/InterpreterExecution.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp" afterPath="$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
     </list>
     <ignored path="Assignment_5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,14 +33,14 @@
     <favorites_list name="Assignment_5" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4428845">
+    <splitter split-orientation="horizontal" split-proportion="0.5558392">
       <split-first>
         <leaf>
           <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.cpp">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="22" column="24" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="24" />
+                  <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
                   <folding>
                     <element signature="e#0#18#0" expanded="true" />
                   </folding>
@@ -83,27 +74,29 @@
           <file leaf-file-name="InterpreterExecution.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.37867078">
-                  <caret line="500" column="63" selection-start-line="486" selection-start-column="4" selection-end-line="500" selection-end-column="63" />
+                <state vertical-scroll-proportion="0.7270408">
+                  <caret line="810" column="13" selection-start-line="810" selection-start-column="13" selection-end-line="810" selection-end-column="13" />
                   <folding>
-                    <element signature="e#828#1217#0" expanded="false" />
-                    <element signature="e#1219#1634#0" expanded="false" />
-                    <element signature="e#2259#2389#0" expanded="false" />
-                    <element signature="e#2566#5094#0" expanded="false" />
-                    <element signature="e#5096#5279#0" expanded="false" />
-                    <element signature="e#5281#5461#0" expanded="false" />
-                    <element signature="e#5463#5640#0" expanded="false" />
-                    <element signature="e#5642#5826#0" expanded="false" />
-                    <element signature="e#14891#15956#0" expanded="false" />
-                    <element signature="e#19831#19950#0" expanded="false" />
-                    <element signature="e#20419#22012#0" expanded="false" />
-                    <element signature="e#22014#22832#0" expanded="false" />
-                    <element signature="e#22834#23661#0" expanded="false" />
-                    <element signature="e#23663#24356#0" expanded="false" />
-                    <element signature="e#24358#24628#0" expanded="false" />
-                    <element signature="e#24630#27087#0" expanded="false" />
-                    <element signature="e#27089#27883#0" expanded="false" />
-                    <element signature="e#27885#28621#0" expanded="false" />
+                    <element signature="e#156#475#0" expanded="false" />
+                    <element signature="e#477#563#0" expanded="false" />
+                    <element signature="e#565#658#0" expanded="false" />
+                    <element signature="e#660#744#0" expanded="false" />
+                    <element signature="e#746#1135#0" expanded="false" />
+                    <element signature="e#1137#1552#0" expanded="false" />
+                    <element signature="e#1554#2175#0" expanded="false" />
+                    <element signature="e#5060#5243#0" expanded="false" />
+                    <element signature="e#5245#5425#0" expanded="false" />
+                    <element signature="e#5427#5604#0" expanded="false" />
+                    <element signature="e#5606#5790#0" expanded="false" />
+                    <element signature="e#14855#15920#0" expanded="false" />
+                    <element signature="e#19753#19872#0" expanded="false" />
+                    <element signature="e#20341#21934#0" expanded="false" />
+                    <element signature="e#21936#22754#0" expanded="false" />
+                    <element signature="e#22756#23583#0" expanded="false" />
+                    <element signature="e#23585#24278#0" expanded="false" />
+                    <element signature="e#24280#24550#0" expanded="false" />
+                    <element signature="e#24552#27009#0" expanded="false" />
+                    <element signature="e#27931#28667#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -113,7 +106,7 @@
             <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+                  <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
@@ -122,20 +115,60 @@
           <file leaf-file-name="Parser.cpp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Parser.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-15.096774">
-                  <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+                <state vertical-scroll-proportion="-6.2580647">
+                  <caret line="240" column="4" selection-start-line="240" selection-start-column="4" selection-end-line="240" selection-end-column="4" />
                   <folding>
-                    <element signature="e#7704#7813#0" expanded="false" />
-                    <element signature="e#7815#9909#0" expanded="false" />
-                    <element signature="e#9911#11552#0" expanded="false" />
-                    <element signature="e#12639#13246#0" expanded="false" />
-                    <element signature="e#13248#16068#0" expanded="false" />
-                    <element signature="e#16070#17871#0" expanded="false" />
-                    <element signature="e#17873#19164#0" expanded="false" />
-                    <element signature="e#19166#20247#0" expanded="false" />
-                    <element signature="e#20249#20489#0" expanded="false" />
-                    <element signature="e#24401#25395#0" expanded="false" />
+                    <element signature="e#8002#10096#0" expanded="false" />
+                    <element signature="e#10098#11739#0" expanded="false" />
+                    <element signature="e#12826#13433#0" expanded="false" />
+                    <element signature="e#13435#16255#0" expanded="false" />
+                    <element signature="e#16257#18058#0" expanded="false" />
+                    <element signature="e#18060#19351#0" expanded="false" />
+                    <element signature="e#19353#20434#0" expanded="false" />
+                    <element signature="e#20436#20676#0" expanded="false" />
+                    <element signature="e#24588#25582#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SemanticAnalysis.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="365" column="4" selection-start-line="365" selection-start-column="4" selection-end-line="365" selection-end-column="4" />
+                  <folding>
+                    <element signature="e#31#72#0" expanded="false" />
+                    <element signature="e#74#459#0" expanded="false" />
+                    <element signature="e#874#998#0" expanded="false" />
+                    <element signature="e#2069#2143#0" expanded="false" />
+                    <element signature="e#2145#2218#0" expanded="false" />
+                    <element signature="e#2220#2292#0" expanded="false" />
+                    <element signature="e#2294#2370#0" expanded="false" />
+                    <element signature="e#3157#3938#0" expanded="false" />
+                    <element signature="e#4416#5357#0" expanded="false" />
+                    <element signature="e#7426#8619#0" expanded="false" />
+                    <element signature="e#8621#8736#0" expanded="false" />
+                    <element signature="e#8738#8894#0" expanded="false" />
+                    <element signature="e#8896#9765#0" expanded="false" />
+                    <element signature="e#9767#10055#0" expanded="false" />
+                    <element signature="e#10057#10844#0" expanded="false" />
+                    <element signature="e#11877#12286#0" expanded="false" />
+                    <element signature="e#12288#12395#0" expanded="false" />
+                    <element signature="e#12397#12985#0" expanded="false" />
+                    <element signature="e#12987#13520#0" expanded="false" />
+                    <element signature="e#13522#14071#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="XMLPrint.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="175" column="9" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="9" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -172,47 +205,14 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="REPL.cpp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="REPL.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/REPL.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+                <state vertical-scroll-proportion="1.8416076">
+                  <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
                   <folding>
                     <element signature="e#41#58#0" expanded="true" />
-                    <element signature="e#2409#3455#0" expanded="false" />
-                    <element signature="e#3457#3936#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SemanticAnalysis.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.71091443">
-                  <caret line="230" column="63" selection-start-line="230" selection-start-column="63" selection-end-line="230" selection-end-column="63" />
-                  <folding>
-                    <element signature="e#31#72#0" expanded="false" />
-                    <element signature="e#74#459#0" expanded="false" />
-                    <element signature="e#874#998#0" expanded="false" />
-                    <element signature="e#2069#2143#0" expanded="false" />
-                    <element signature="e#2145#2218#0" expanded="false" />
-                    <element signature="e#2220#2292#0" expanded="false" />
-                    <element signature="e#2294#2370#0" expanded="false" />
-                    <element signature="e#3157#3938#0" expanded="false" />
-                    <element signature="e#4416#5357#0" expanded="false" />
-                    <element signature="e#7440#8633#0" expanded="false" />
-                    <element signature="e#8635#8750#0" expanded="false" />
-                    <element signature="e#8752#8908#0" expanded="false" />
-                    <element signature="e#8910#9779#0" expanded="false" />
-                    <element signature="e#9781#10069#0" expanded="false" />
-                    <element signature="e#10071#10858#0" expanded="false" />
-                    <element signature="e#10860#11940#0" expanded="false" />
-                    <element signature="e#11942#12351#0" expanded="false" />
-                    <element signature="e#12353#12460#0" expanded="false" />
-                    <element signature="e#12462#13050#0" expanded="false" />
-                    <element signature="e#13052#13585#0" expanded="false" />
-                    <element signature="e#13587#14136#0" expanded="false" />
+                    <element signature="e#3728#6402#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -268,7 +268,6 @@
         <option value="$PROJECT_DIR$/ASTNodes/ASTFunctionCallNode.h" />
         <option value="$PROJECT_DIR$/Visitors/XMLPrint.h" />
         <option value="$PROJECT_DIR$/ASTNodes/ASTUnaryNode.h" />
-        <option value="$PROJECT_DIR$/Visitors/XMLPrint.cpp" />
         <option value="$PROJECT_DIR$/test5" />
         <option value="$PROJECT_DIR$/test6" />
         <option value="$PROJECT_DIR$/test8" />
@@ -281,19 +280,20 @@
         <option value="$PROJECT_DIR$/test7" />
         <option value="$PROJECT_DIR$/Visitors/SemanticAnalysis.h" />
         <option value="$PROJECT_DIR$/test3" />
-        <option value="$PROJECT_DIR$/SymbolTable.h" />
-        <option value="$PROJECT_DIR$/SymbolTable.cpp" />
         <option value="$PROJECT_DIR$/Lexer.h" />
         <option value="$PROJECT_DIR$/Parser.h" />
         <option value="$PROJECT_DIR$/Lexer.cpp" />
         <option value="$PROJECT_DIR$/test2" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/REPL.h" />
-        <option value="$PROJECT_DIR$/Visitors/InterpreterExecution.h" />
         <option value="$PROJECT_DIR$/Parser.cpp" />
+        <option value="$PROJECT_DIR$/SymbolTable.h" />
+        <option value="$PROJECT_DIR$/SymbolTable.cpp" />
+        <option value="$PROJECT_DIR$/Visitors/InterpreterExecution.h" />
         <option value="$PROJECT_DIR$/REPL.cpp" />
-        <option value="$PROJECT_DIR$/Visitors/InterpreterExecution.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp" />
+        <option value="$PROJECT_DIR$/Visitors/XMLPrint.cpp" />
+        <option value="$PROJECT_DIR$/Visitors/InterpreterExecution.cpp" />
       </list>
     </option>
   </component>
@@ -306,7 +306,7 @@
     <option name="x" value="65" />
     <option name="y" value="24" />
     <option name="width" value="1855" />
-    <option name="height" value="1056" />
+    <option name="height" value="959" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -502,7 +502,19 @@
       <option name="project" value="LOCAL" />
       <updated>1463576736109</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Change to Variable Declaration and working on ans of the repl">
+      <created>1463595208532</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1463595208532</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Best Version">
+      <created>1463601251877</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1463601251877</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -515,17 +527,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="24" width="1855" height="959" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14465065" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14465065" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26173097" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49322212" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32830626" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3274244" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28675705" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47447795" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -556,11 +568,13 @@
     <MESSAGE value="Best Version of the Interpreter Execution Pass  and Symbol Table" />
     <MESSAGE value="Working on REPL" />
     <MESSAGE value="Before changes to lexer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Before changes to lexer" />
+    <MESSAGE value="Change to Variable Declaration and working on ans of the repl" />
+    <MESSAGE value="Best Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Best Version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -786,13 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.2853186">
           <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -827,31 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SymbolTable.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="73" selection-start-line="69" selection-start-column="73" selection-end-line="69" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SymbolTable.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="80" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="80" />
-          <folding>
-            <element signature="e#26#117#0" expanded="false" />
-            <element signature="e#317#364#0" expanded="false" />
-            <element signature="e#511#551#0" expanded="false" />
-            <element signature="e#756#796#0" expanded="false" />
-            <element signature="e#1031#1071#0" expanded="false" />
-            <element signature="e#1390#1454#0" expanded="false" />
-            <element signature="e#1911#1971#0" expanded="false" />
-            <element signature="e#3580#3620#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Lexer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -873,16 +855,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -910,6 +882,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SymbolTable.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="614" column="23" selection-start-line="614" selection-start-column="23" selection-end-line="614" selection-end-column="23" />
+          <folding>
+            <element signature="e#26#117#0" expanded="false" />
+            <element signature="e#180#315#0" expanded="false" />
+            <element signature="e#317#364#0" expanded="false" />
+            <element signature="e#317#509#0" expanded="false" />
+            <element signature="e#511#551#0" expanded="false" />
+            <element signature="e#511#753#0" expanded="false" />
+            <element signature="e#756#796#0" expanded="false" />
+            <element signature="e#756#1029#0" expanded="false" />
+            <element signature="e#1031#1071#0" expanded="false" />
+            <element signature="e#1031#1388#0" expanded="false" />
+            <element signature="e#1390#1454#0" expanded="false" />
+            <element signature="e#1390#1909#0" expanded="false" />
+            <element signature="e#1911#1971#0" expanded="false" />
+            <element signature="e#1911#2373#0" expanded="false" />
+            <element signature="e#2375#3578#0" expanded="false" />
+            <element signature="e#3580#3620#0" expanded="false" />
+            <element signature="e#3580#7975#0" expanded="false" />
+            <element signature="e#7977#9224#0" expanded="false" />
+            <element signature="e#9226#10322#0" expanded="false" />
+            <element signature="e#10324#11441#0" expanded="false" />
+            <element signature="e#11443#12494#0" expanded="false" />
+            <element signature="e#12496#13614#0" expanded="false" />
+            <element signature="e#13616#14673#0" expanded="false" />
+            <element signature="e#14675#15628#0" expanded="false" />
+            <element signature="e#15630#16587#0" expanded="false" />
+            <element signature="e#16589#17544#0" expanded="false" />
+            <element signature="e#17546#18510#0" expanded="false" />
+            <element signature="e#18512#19447#0" expanded="false" />
+            <element signature="e#19449#20423#0" expanded="false" />
+            <element signature="e#20425#21361#0" expanded="false" />
+            <element signature="e#21363#22306#0" expanded="false" />
+            <element signature="e#22308#22922#0" expanded="false" />
+            <element signature="e#22924#23546#0" expanded="false" />
+            <element signature="e#23548#24164#0" expanded="false" />
+            <element signature="e#24166#24792#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SymbolTable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/REPL.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8416076">
+          <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
+          <folding>
+            <element signature="e#41#58#0" expanded="true" />
+            <element signature="e#3728#6402#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Lexer.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -931,76 +974,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.h">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding />
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Parser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.096774">
-          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+        <state vertical-scroll-proportion="-6.2580647">
+          <caret line="240" column="4" selection-start-line="240" selection-start-column="4" selection-end-line="240" selection-end-column="4" />
           <folding>
-            <element signature="e#7704#7813#0" expanded="false" />
-            <element signature="e#7815#9909#0" expanded="false" />
-            <element signature="e#9911#11552#0" expanded="false" />
-            <element signature="e#12639#13246#0" expanded="false" />
-            <element signature="e#13248#16068#0" expanded="false" />
-            <element signature="e#16070#17871#0" expanded="false" />
-            <element signature="e#17873#19164#0" expanded="false" />
-            <element signature="e#19166#20247#0" expanded="false" />
-            <element signature="e#20249#20489#0" expanded="false" />
-            <element signature="e#24401#25395#0" expanded="false" />
+            <element signature="e#8002#10096#0" expanded="false" />
+            <element signature="e#10098#11739#0" expanded="false" />
+            <element signature="e#12826#13433#0" expanded="false" />
+            <element signature="e#13435#16255#0" expanded="false" />
+            <element signature="e#16257#18058#0" expanded="false" />
+            <element signature="e#18060#19351#0" expanded="false" />
+            <element signature="e#19353#20434#0" expanded="false" />
+            <element signature="e#20436#20676#0" expanded="false" />
+            <element signature="e#24588#25582#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/REPL.cpp">
+    <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding>
-            <element signature="e#41#58#0" expanded="true" />
-            <element signature="e#2409#3455#0" expanded="false" />
-            <element signature="e#3457#3936#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37867078">
-          <caret line="500" column="63" selection-start-line="486" selection-start-column="4" selection-end-line="500" selection-end-column="63" />
-          <folding>
-            <element signature="e#828#1217#0" expanded="false" />
-            <element signature="e#1219#1634#0" expanded="false" />
-            <element signature="e#2259#2389#0" expanded="false" />
-            <element signature="e#2566#5094#0" expanded="false" />
-            <element signature="e#5096#5279#0" expanded="false" />
-            <element signature="e#5281#5461#0" expanded="false" />
-            <element signature="e#5463#5640#0" expanded="false" />
-            <element signature="e#5642#5826#0" expanded="false" />
-            <element signature="e#14891#15956#0" expanded="false" />
-            <element signature="e#19831#19950#0" expanded="false" />
-            <element signature="e#20419#22012#0" expanded="false" />
-            <element signature="e#22014#22832#0" expanded="false" />
-            <element signature="e#22834#23661#0" expanded="false" />
-            <element signature="e#23663#24356#0" expanded="false" />
-            <element signature="e#24358#24628#0" expanded="false" />
-            <element signature="e#24630#27087#0" expanded="false" />
-            <element signature="e#27089#27883#0" expanded="false" />
-            <element signature="e#27885#28621#0" expanded="false" />
-          </folding>
+          <caret line="175" column="9" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71091443">
-          <caret line="230" column="63" selection-start-line="230" selection-start-column="63" selection-end-line="230" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="365" column="4" selection-start-line="365" selection-start-column="4" selection-end-line="365" selection-end-column="4" />
           <folding>
             <element signature="e#31#72#0" expanded="false" />
             <element signature="e#74#459#0" expanded="false" />
@@ -1011,18 +1024,46 @@
             <element signature="e#2294#2370#0" expanded="false" />
             <element signature="e#3157#3938#0" expanded="false" />
             <element signature="e#4416#5357#0" expanded="false" />
-            <element signature="e#7440#8633#0" expanded="false" />
-            <element signature="e#8635#8750#0" expanded="false" />
-            <element signature="e#8752#8908#0" expanded="false" />
-            <element signature="e#8910#9779#0" expanded="false" />
-            <element signature="e#9781#10069#0" expanded="false" />
-            <element signature="e#10071#10858#0" expanded="false" />
-            <element signature="e#10860#11940#0" expanded="false" />
-            <element signature="e#11942#12351#0" expanded="false" />
-            <element signature="e#12353#12460#0" expanded="false" />
-            <element signature="e#12462#13050#0" expanded="false" />
-            <element signature="e#13052#13585#0" expanded="false" />
-            <element signature="e#13587#14136#0" expanded="false" />
+            <element signature="e#7426#8619#0" expanded="false" />
+            <element signature="e#8621#8736#0" expanded="false" />
+            <element signature="e#8738#8894#0" expanded="false" />
+            <element signature="e#8896#9765#0" expanded="false" />
+            <element signature="e#9767#10055#0" expanded="false" />
+            <element signature="e#10057#10844#0" expanded="false" />
+            <element signature="e#11877#12286#0" expanded="false" />
+            <element signature="e#12288#12395#0" expanded="false" />
+            <element signature="e#12397#12985#0" expanded="false" />
+            <element signature="e#12987#13520#0" expanded="false" />
+            <element signature="e#13522#14071#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7270408">
+          <caret line="810" column="13" selection-start-line="810" selection-start-column="13" selection-end-line="810" selection-end-column="13" />
+          <folding>
+            <element signature="e#156#475#0" expanded="false" />
+            <element signature="e#477#563#0" expanded="false" />
+            <element signature="e#565#658#0" expanded="false" />
+            <element signature="e#660#744#0" expanded="false" />
+            <element signature="e#746#1135#0" expanded="false" />
+            <element signature="e#1137#1552#0" expanded="false" />
+            <element signature="e#1554#2175#0" expanded="false" />
+            <element signature="e#5060#5243#0" expanded="false" />
+            <element signature="e#5245#5425#0" expanded="false" />
+            <element signature="e#5427#5604#0" expanded="false" />
+            <element signature="e#5606#5790#0" expanded="false" />
+            <element signature="e#14855#15920#0" expanded="false" />
+            <element signature="e#19753#19872#0" expanded="false" />
+            <element signature="e#20341#21934#0" expanded="false" />
+            <element signature="e#21936#22754#0" expanded="false" />
+            <element signature="e#22756#23583#0" expanded="false" />
+            <element signature="e#23585#24278#0" expanded="false" />
+            <element signature="e#24280#24550#0" expanded="false" />
+            <element signature="e#24552#27009#0" expanded="false" />
+            <element signature="e#27931#28667#0" expanded="false" />
           </folding>
         </state>
       </provider>

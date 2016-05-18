@@ -797,14 +797,18 @@ void InterpreterExecution::visit(ASTIfStatementNode *node) {
         if(this->bValue){
             node->Block->Accept(this);
         }else{
-            node->ElseBlock->Accept(this);
+            if(node->ElseBlock != nullptr){
+                node->ElseBlock->Accept(this);
+            }
         }
 
     }else if(this->st.getType(this->ident) == 2) {//identifier in if is found to be a boolean
         if(this->bValue){
             node->Block->Accept(this);
         }else{
-            node->ElseBlock->Accept(this);
+            if(node->ElseBlock != nullptr){
+                node->ElseBlock->Accept(this);
+            }
         }
     }else{
         Error("Operator " + this->operation + " is not allowed in if statement, expecting a relation Operation");
