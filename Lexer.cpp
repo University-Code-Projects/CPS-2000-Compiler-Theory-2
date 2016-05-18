@@ -30,18 +30,19 @@ Lexer::~Lexer() {
 
 Lexer::Lexer() {}
 
-void Lexer::LexerRepl(std::string command) {
-    std::cout << "Entry in Lex Repl" << std::endl;
+void Lexer::LexerRepl(std::string com) {
+    std::cout << "Entry in Lex Repl : " << com << std::endl;
+    command = com;
+    std::cout << command << std::endl;
     inputText = command;
-    charIndex =0;
     std::cout << "Input text " << inputText<< std::endl;
 }
 
-void Lexer::LexerRepl(Lexer &lexer) {
-    std::cout << "Entry in Lex Repl &" << std::endl;
-    inputText = lexer.inputText;
-    charIndex =0;
-}
+//void Lexer::LexerRepl(Lexer &lexer) {
+//    std::cout << "Entry in Lex Repl &" << std::endl;
+//    inputText = lexer.inputText;
+//    charIndex =0;
+//}
 
 std::string Lexer::getProgramToText(){
     std::cout << "Entry in program to text function" << std::endl;

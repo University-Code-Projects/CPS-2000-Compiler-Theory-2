@@ -5,7 +5,15 @@
 #include "InterpreterExecution.h"
 
 InterpreterExecution::InterpreterExecution() {
+    this->st = SymbolTable();
+}
 
+InterpreterExecution::InterpreterExecution(SymbolTable scopes) {
+    if(scopes.scopeStack.empty()){
+        InterpreterExecution();
+    }else{
+        this->st = scopes;
+    }
 }
 
 void InterpreterExecution::typeSet(std::string type) {
@@ -75,7 +83,8 @@ void InterpreterExecution::visit(ASTExpressionNode *node) {}
 void InterpreterExecution::visit(ASTStatementNode *node) {}
 
 void InterpreterExecution::visit(ASTProgramNode *node) {
-    this->st = SymbolTable();
+    InterpreterExecution(this->st);
+    //this->st = SymbolTable();
 
     this->Type = SymbolTable::primitive_type::n;
     this->funcType = SymbolTable::primitive_type::n;
@@ -100,13 +109,15 @@ void InterpreterExecution::visit(ASTProgramNode *node) {
         for(int i =0; i < j; i++){
             //std::cout << i+1 <<std::endl;
             node->statements.at(i)->Accept(this);
+
             //this->st.scopePrint();
         }
-        if(this->st.deleteScope() == true){
-            std::cout << "Global Scope Deleted" << std::endl;
-        }else{
-            Error("Could not delete Scope");
-        }
+
+        //if(this->st.deleteScope() == true){
+        //    std::cout << "Global Scope Deleted" << std::endl;
+        //}else{
+        //    Error("Could not delete Scope");
+        //}
     }else{
         Error("Error creating Global Scope");
 

@@ -8,8 +8,9 @@ Parser::Parser(Lexer &pLexer) : lex(pLexer){
     //std::cout << "Entry in Parser Constructor" << std::endl;
 }
 
+
 ASTNode * Parser::Parse(){
-    //std::cout<< "Parser Entry" << std::endl;
+    std::cout<< "Parser Entry" << std::endl;
 
     ASTProgramNode *rootNode = new ASTProgramNode();
 
@@ -33,7 +34,7 @@ ASTNode * Parser::Parse(){
     //std::cout << "Printing All the Statements" << std::endl;
     //rootNode->Accept(v);
     //std::cout<< "Final Token : "<< CurrToken.toString() << std::endl;
-    //std::cout << "Returning Node" << std::endl;
+    std::cout << "Returning Node" << std::endl;
     return rootNode;
 }
 

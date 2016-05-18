@@ -13,7 +13,7 @@ class Parser{
 public:
     Parser(Lexer &lexer);
 
-    //void ParserREPL(Lexer &lexer);
+    //void ParserREPL(std::string command);
 
     virtual  ~Parser(){};
 

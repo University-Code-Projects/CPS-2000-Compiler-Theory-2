@@ -14,7 +14,7 @@
 class InterpreterExecution : public Visitor{
 private:
 
-    SymbolTable st;
+
     SymbolTable::primitive_type Type;
 
     SymbolTable::primitive_type funcType;
@@ -39,8 +39,9 @@ private:
     ASTStatementNode * funcCall;
 
 public:
-
+    SymbolTable st;
     InterpreterExecution();
+    InterpreterExecution(SymbolTable scopes);
 
     void typeSet(std::string type);
 

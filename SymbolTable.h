@@ -67,6 +67,9 @@ public:
 
     SymbolTable();
 
+    SymbolTable(std::vector<std::multimap<std::string, stValue>> scopes);
+
+
     bool createScope();
     bool deleteScope();
 

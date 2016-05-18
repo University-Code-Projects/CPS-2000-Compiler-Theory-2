@@ -7,6 +7,11 @@ SymbolTable::SymbolTable() {
     this->scopeStack.clear();
 }
 
+SymbolTable::SymbolTable(std::vector<std::multimap<std::string, stValue>> scopes) {
+    SymbolTable();
+    this->scopeStack = scopes;
+}
+
 /*
  * Creating a Scope on top (most recent)
  */
@@ -29,6 +34,7 @@ bool SymbolTable::deleteScope() {
         return true;
     }
 }
+
 
 /*
  * Adding a Variable to the Scope

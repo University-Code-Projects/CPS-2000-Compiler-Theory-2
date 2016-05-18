@@ -87,6 +87,8 @@ private:
     int charIndex;
     std::string inputText;
 
+    std::string command;
+
     float digitGet();
     std::string identifierGet();
     std::string stringGet();

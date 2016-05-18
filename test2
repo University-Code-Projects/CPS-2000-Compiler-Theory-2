@@ -1,21 +1,8 @@
 
-
-var b : int = 5; //declare y and set it to 1.0
-
-var y : real = 1.0; //declare y and set it to 1.0
-
-set y = 2.2;
-
-var x : real = 1.0; //declare y and set it to 1.0
-
-set y = y * x; //declare y and set it to 1.0
-
-
 def funcPow(x : real, n : int, y: real) :real
 {
     if( n>=0 )
     {
-        write "if is true";
         while(n>0)
         {
             set y = y * x;  //Assignment y = y *x;
@@ -24,7 +11,6 @@ def funcPow(x : real, n : int, y: real) :real
     }
     else
     {
-        write "if is false";
         while(n<0)
         {
             set y = y / x;    //Assignment y = y / x;
@@ -34,9 +20,7 @@ def funcPow(x : real, n : int, y: real) :real
     return y;               //return y as the result
 }
 
-write "Function Call";
-
-write funcPow(2.0, 3, 2.0);
+//write funcPow(2.0, 3, 2.0);
 
 
 
