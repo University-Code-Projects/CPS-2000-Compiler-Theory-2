@@ -14,16 +14,11 @@ class Lexer {
 
 public:
 
+    Lexer();
     Lexer(std::string p_filename);
     Lexer(bool type,std::string p_filename);
-
     Lexer(bool text,Lexer&);
     virtual ~Lexer();
-
-    Lexer();
-    //void LexerRepl(std::string command);
-    //void LexerRepl(Lexer&);
-
 
     //All possible token types and their associated value.
     enum TOK_Type{TOK_eof = -1, TOK_type = -2, TOK_bool = -3, TOK_integer = -4,
@@ -77,28 +72,30 @@ public:
         std::string toString();
     };
 
+    //use file to set contents of inputText
     std::string getProgramToText();
 
     // Get token impemented using Token type
     Token getNextToken();
 
+    //check what the next token is
     Token tokenPeek();
 
 private:
     bool text;
 
-    std::ifstream file;
-    int charIndex;
-    std::string inputText;
+    std::ifstream file;//file given by user
+    int charIndex;//current position in the inputText
+    std::string inputText;//contents of the file
 
-    std::string command;
+    std::string command;//intruction from repl
 
-    float digitGet();
-    std::string identifierGet();
-    std::string stringGet();
-    std::string commentGet();
-    std::string blockGet();
-    std::string relationalOpGet();
+    float digitGet();//get digit
+    std::string identifierGet();//get identifier
+    std::string stringGet();//get string
+    std::string commentGet();//get single comment
+    std::string blockGet();//get block comment
+    std::string relationalOpGet();//get relational operation
 };
 
 

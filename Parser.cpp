@@ -11,6 +11,9 @@ Parser::Parser(bool text,Lexer &pLexer) : lex(text,pLexer){
 ASTNode * Parser::Parse(){
     std::cout<< "Parser Entry" << std::endl;
 
+
+
+
     ASTProgramNode *rootNode = new ASTProgramNode();
 
     ASTStatementNode * statement = nullptr;
@@ -18,6 +21,7 @@ ASTNode * Parser::Parse(){
     CurrToken = lex.getNextToken();
 
     while((CurrToken.token_type != Lexer::TOK_eof)&&(CurrToken.token_type != Lexer::TOK_error)){
+        //std::cout<< CurrToken.toString() << std::endl;
         //std::cout << "Going into state"<< CurrToken.toString() << std::endl;
         statement = ParseStatement();
         //std::cout <<"Coming from state" << CurrToken.toString() << std::endl;

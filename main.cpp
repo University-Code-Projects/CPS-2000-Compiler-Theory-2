@@ -9,7 +9,7 @@ int main() {
     std::cout << "Entry in Main" << std::endl;
 
     //Lexer *lex1 = new Lexer("/home/cps200x/Desktop/test.txt");
-    Lexer *lex1 = new Lexer("/home/cps200x/ClionProjects/Assignment_5/test2");
+    Lexer *lex1 = new Lexer("/home/cps200x/ClionProjects/Assignment_5/test4");
     Parser * parser = new Parser(false,*lex1);
     auto rootNode = parser->Parse();
 
@@ -20,9 +20,9 @@ int main() {
 
 
 
-    rootNode->Accept(v);
-    rootNode->Accept(s);
-    rootNode->Accept(i);
+    //rootNode->Accept(v);
+    //rootNode->Accept(s);
+    //rootNode->Accept(i);
 
     //REPL *r = new REPL();
     //r->evalution();

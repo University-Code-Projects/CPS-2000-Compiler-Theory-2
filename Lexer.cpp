@@ -4,9 +4,10 @@
 
 #include "Lexer.h"
 
-/*
- * Constructor, exit if file is not unacceptable
- */
+
+Lexer::Lexer() {}
+
+//Constructor, exit if file is not unacceptable
 Lexer::Lexer(std::string p_filename) {
     file.open(p_filename);
     if(file){
@@ -16,9 +17,10 @@ Lexer::Lexer(std::string p_filename) {
         std::cout << "File '" << p_filename << "' could no be opened." << std::endl;
     }
 }
+
+//constructor called from the parser
 Lexer::Lexer(bool type,std::string p_filename) {
-    //std::cout << "Entry in this constrctor : " << std::endl;
-    if (type) {
+    if (type) {//if it is a file
         std::cout << " file " << std::endl;
         file.open(p_filename);
         if (file) {
@@ -27,57 +29,35 @@ Lexer::Lexer(bool type,std::string p_filename) {
         } else {
             std::cout << "File '" << p_filename << "' could no be opened." << std::endl;
         }
-    }else{
-        //std::cout << " text " << std::endl;
+    }else{//if it is a command(for repl)
         command = p_filename + "  ";
         text = true;
     }
 
 }
+
+//initialisation through the parser
 Lexer::Lexer(bool text,Lexer &Lex) {
-    //std::cout << "Address: " << &Lex << std::endl;
-    if (text) {
+    if (text) {//only a command is given
         inputText = Lex.command;
     } else {
-        inputText = Lex.getProgramToText();
+        inputText = Lex.getProgramToText();//file is given
     }
     charIndex = 0;
-    //std::cout << "From the constructor itself"<<std::endl<< inputText << std::endl;
 }
 
 Lexer::~Lexer() {
-    std::cout << "Object was deconstructed" << std::endl;
+//    std::cout << "Object was deconstructed" << std::endl;
 }
 
-
-Lexer::Lexer() {}
-
-/*
-void Lexer::LexerRepl(std::string com) {
-    std::cout << "Entry in Lex Repl : " << com << std::endl;
-    command = com;
-    std::cout << command << std::endl;
-    inputText = command;
-    std::cout << "Input text " << inputText<< std::endl;
-}
-*/
-//void Lexer::LexerRepl(Lexer &lexer) {
-//    std::cout << "Entry in Lex Repl &" << std::endl;
-//    inputText = lexer.inputText;
-//    charIndex =0;
-//}
-
+//store the contents of the file in a inputText
 std::string Lexer::getProgramToText(){
-    std::cout << "Entry in program to text function" << std::endl;
     std::string currentLine = "";
     inputText = "";//initializing the private var that stores the entire project as a string/char
     charIndex = 0;
     bool eoffound = false;
 
-
-
     while(getline(file, currentLine)){
-
         if(file.eof()) {
             eoffound = true;
             break;
@@ -100,12 +80,11 @@ std::string Lexer::getProgramToText(){
                 break;
             }
         }
-
     }
-    std::cout << "Length of Text: " << inputText.length()<<std::endl;
     return inputText;
 }
 
+//used to get block comments
 std::string Lexer::blockGet(){
     char lastChar = inputText[charIndex];
     std::string ret = "";
@@ -132,6 +111,7 @@ std::string Lexer::blockGet(){
     return ret;
 }
 
+//used to get a string
 std::string Lexer::stringGet(){
     char lastChar = inputText[charIndex];
     std::string ret = "";
@@ -156,6 +136,7 @@ std::string Lexer::stringGet(){
     return ret;
 }
 
+//used to get identifier
 std::string Lexer::identifierGet(){
     char lastChar = inputText[charIndex];
     std::string word = "";
@@ -167,6 +148,7 @@ std::string Lexer::identifierGet(){
     return word;
 }
 
+//get a digit
 float Lexer::digitGet() {
     char lastChar = inputText[charIndex];
     std::string curr = "";
@@ -187,6 +169,7 @@ float Lexer::digitGet() {
     return num;
 }
 
+//get < > <= >= == !=
 std::string Lexer::relationalOpGet(){
     char lastChar = inputText[charIndex];
     std::string boolOp = "";
@@ -199,6 +182,7 @@ std::string Lexer::relationalOpGet(){
     return boolOp;
 }
 
+//get single line comment
 std::string Lexer::commentGet() {
     char lastChar = inputText[charIndex];
     std::string comment;
@@ -215,14 +199,15 @@ std::string Lexer::commentGet() {
     return comment;
 }
 
+//function that interacts between the parser
 Lexer::Token Lexer::getNextToken() {
-    if((unsigned int) charIndex == inputText.length()){
-        //std::cout << "char index == length" << std::endl;
+    if((unsigned int) charIndex == inputText.length()){//eof is reached
         return (Lexer::Token());
     }
+
     char lastChar = inputText[charIndex];
     while(charIndex != inputText.length()-1) {
-        while ((isspace(lastChar) || lastChar == '\n') && lastChar != EOF) {//skipping any whitespaces
+        while ((isspace(lastChar) || lastChar == '\n') && lastChar != EOF) {//skipping any whitespaces and \n
             charIndex++;
             lastChar = inputText[charIndex];
         }
@@ -241,9 +226,9 @@ Lexer::Token Lexer::getNextToken() {
             if (lastChar == '.') {
                 ans = num + digitGet();
                 lastChar = inputText[charIndex];
-                if (lastChar == '.') {
+                if (lastChar == '.') {//error cannot have a float with 2 decimal places
                     std::string inco = "";
-                    while ((lastChar == '.') || (isdigit(lastChar))) {
+                    while ((lastChar == '.') || (isdigit(lastChar))) {//consuming all the incorrect value
                         inco += lastChar;
                         charIndex++;
                         lastChar = inputText[charIndex];
@@ -276,7 +261,7 @@ Lexer::Token Lexer::getNextToken() {
             return (Lexer::Token(TOK_string, stringLit));
         }
 
-        if(lastChar == '/') {//for comments
+        if(lastChar == '/') {//for comments or division
             charIndex++;
             if (inputText[charIndex] == '/') {
                 std::string comm = "";
@@ -307,12 +292,7 @@ Lexer::Token Lexer::getNextToken() {
         if((lastChar == '>')||(lastChar == '<')||(lastChar == '=')||(lastChar == '!')){
             std::string boolop = relationalOpGet();
             if(boolop.length() == 2){
-                //char equal = boolop[0];
-                //if(equal == '='){
-                //    return (Lexer::Token(TOK_punc, equal));
-                //}else{
                 return (Lexer::Token(TOK_realationOp,boolop));
-                //}
             }else{
                 char equal = boolop[0];
                 if(equal == '='){
@@ -320,8 +300,6 @@ Lexer::Token Lexer::getNextToken() {
                 }else{
                     return (Lexer::Token(TOK_realationOp,boolop[0]));
                 }
-
-                //return (Lexer::Token(TOK_realationOp,boolop));
             }
         }
 
@@ -367,19 +345,13 @@ Lexer::Token Lexer::getNextToken() {
         lastChar = inputText[charIndex];
 
         if((unsigned int) charIndex == inputText.length()){
-            //std::cout << "char index == length" << std::endl;
             return (Lexer::Token());
         }
-        /*
-        while (!(isspace(lastChar) || lastChar == '\n') && lastChar != EOF) {//skipping any whitespaces
-            charIndex++;
-            lastChar = inputText[charIndex];
-        }
-         */
         return (Lexer::Token(TOK_error, "Error no token retreived"));
     }
 }
 
+//check what the next token is
 Lexer::Token Lexer::tokenPeek() {
     int prevIndex=charIndex;
     Lexer::Token peek = getNextToken();
@@ -387,6 +359,8 @@ Lexer::Token Lexer::tokenPeek() {
     return (peek);
 }
 
+//print the token type and its contents
+//used for debugging
 std::string Lexer::Token::toString() {
     std::string result = "<";
     std::string type;
