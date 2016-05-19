@@ -21,6 +21,30 @@ public:
     virtual ~Lexer();
 
     //All possible token types and their associated value.
+    /*
+     * TOK_eof ---------- end of file reached
+     * TOK_type --------- type of variable (int/real/bool/string)
+     * TOK_bool --------- a token which is a boolean, contains true/ false
+     * TOK_integer ------ a token which is an integer contains the value of the integer
+     * TOK_realInt ------ a token which is a real contains the value of the real number
+     * TOK_string ------- a token which is an string contains the value of the string
+     * TOK_identifier --- a token which is an identifier contains the name of the identifier
+     * TOK_multOp ------- a token which is an multiplication operation (* / and)
+     * TOK_addOp -------- a token which is an additive operation (+ - or)
+     * TOK_realationOp -- a token which is an additive operation ( < > != <= >= ==)
+     * TOK_error -------- a token which is found is incorrect and cannot be stored as it is not defined in the EBNF
+     * TOK_errorNum ----- a token which is an number but has the incorrect format example 2.369.58.1
+     * TOK_punc --------- a token which is a punctuation that can store (= : ; ( ) { } ,)
+     * TOK_def ---------- a token which is used to identify a function definition 'def'
+     * TOK_set ---------- a token which is used to identify a variable assignment'set'
+     * TOK_var ---------- a token which is used to identify a variable declaration 'var'
+     * TOK_write -------- a token which is used to identify a write to output 'write'
+     * TOK_if ----------- a token which is used to identify an if statement (if else)
+     * TOK_while -------- a token which is used to identify a while loop 'while'
+     * TOK_comment ------ a token which is used to identify when a single line comment or block comment is found
+     * TOK_unary -------- a token used to identify a unary operation (for this case 'not'), even though the + and - are unary they are not saved as unary but checked in the parser
+     * TOK_return ------- a token used to identify a return statement 'return'
+     */
     enum TOK_Type{TOK_eof = -1, TOK_type = -2, TOK_bool = -3, TOK_integer = -4,
         TOK_realInt = -5, TOK_string = -6, TOK_identifier = -7,TOK_multOp = -8,
         TOK_addOp = -9, TOK_realationOp = -10, TOK_error = -11,TOK_errorNum = -12,

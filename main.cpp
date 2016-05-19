@@ -20,9 +20,9 @@ int main() {
 
 
 
-    //rootNode->Accept(v);
-    //rootNode->Accept(s);
-    //rootNode->Accept(i);
+    rootNode->Accept(v);
+    rootNode->Accept(s);
+    rootNode->Accept(i);
 
     //REPL *r = new REPL();
     //r->evalution();

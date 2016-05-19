@@ -4,63 +4,46 @@
 
 #include "Parser.h"
 
-Parser::Parser(bool text,Lexer &pLexer) : lex(text,pLexer){
-    //std::cout << "Entry in Parser Constructor" << std::endl;
+Parser::Parser(bool text,Lexer &pLexer) : lex(text,pLexer){}
+
+void * Parser::Error(const char *str){
+    std::cerr << "Syntax Error : " << str << std::endl;
+    exit(1);
 }
 
 ASTNode * Parser::Parse(){
-    std::cout<< "Parser Entry" << std::endl;
-
-
-
-
     ASTProgramNode *rootNode = new ASTProgramNode();
-
     ASTStatementNode * statement = nullptr;
 
+    //getting the 1st token
     CurrToken = lex.getNextToken();
 
     while((CurrToken.token_type != Lexer::TOK_eof)&&(CurrToken.token_type != Lexer::TOK_error)){
-        //std::cout<< CurrToken.toString() << std::endl;
-        //std::cout << "Going into state"<< CurrToken.toString() << std::endl;
+        //get the correct statement from ParseStatement();
         statement = ParseStatement();
-        //std::cout <<"Coming from state" << CurrToken.toString() << std::endl;
-
-        //save to the root node as a child
-        //CurrToken = lex.getNextToken();
+        //save to the root node as a child if it is not a nullptr
         if(statement != nullptr) {
             rootNode->addStatement(statement);
         }else{
             break;
         }
-        //statement->Accept(v);
-
     }
-    //std::cout << "Printing All the Statements" << std::endl;
-    //rootNode->Accept(v);
-    //std::cout<< "Final Token : "<< CurrToken.toString() << std::endl;
-    std::cout << "Returning Node" << std::endl;
     return rootNode;
 }
 
 ASTNode *Parser::ParseRepl() {
-    //std::cout<< "Parser Repl" << std::endl;
     ASTProgramNode *rootNode = new ASTProgramNode();
     ASTStatementNode * statement = nullptr;
+
     CurrToken = lex.getNextToken();
 
     while((CurrToken.token_type != Lexer::TOK_eof)&&(CurrToken.token_type != Lexer::TOK_error)){
-        //std::cout << "Going into state"<< CurrToken.toString() << std::endl;
         statement = ParseStatement();
-        //std::cout <<"Coming from state" << CurrToken.toString() << std::endl;
-
         //save to the root node as a child
-        //CurrToken = lex.getNextToken();
         if(statement != nullptr) {
             rootNode->addStatement(statement);
         }else{
-            //std::cout << "Statement found to be nullprt" << std::endl;
-            //std::cout << CurrToken.toString() << std::endl;
+            //check for expression
             ASTNode * repl = nullptr;
             switch (CurrToken.token_type){
                 case Lexer::TOK_integer:
@@ -88,170 +71,71 @@ ASTNode *Parser::ParseRepl() {
                     break;
             }
             return repl;
-            break;
         }
-        //statement->Accept(v);
-        //std::cout << "Before iteration" << CurrToken.toString() << std::endl;
     }
-    //std::cout << "Printing All the Statements" << std::endl;
-    //rootNode->Accept(v);
-    //std::cout<< "Final Token : "<< CurrToken.toString() << std::endl;
-    //std::cout << "Returning Node" << std::endl;
     return rootNode;
-
-
 }
-
-/*
-ASTNode *Parser::ParseRepl() {
-    std::cout << "REPL Parse" << std::endl;
-    ASTNode * repl = nullptr;
-    if(CurrToken.token_type == Lexer::TOK_comment){
-        CurrToken = lex.getNextToken();
-        return repl;
-    }
-    //std::cout << CurrToken.toString() << std::endl;
-    switch (CurrToken.token_type){
-        case Lexer::TOK_var:
-            //std::cout<< "Variable Decleration"  << std::endl;
-            repl = ParseVariableDecl();
-            break;
-        case Lexer::TOK_set:
-            //std::cerr<< "Variable Assignment"  << std::endl;
-            repl = ParseAssignment();
-            //std::cerr << "Return from statement" << std::endl;
-            //std::cerr << CurrToken.toString() << std::endl;
-
-            break;
-        case Lexer::TOK_write:
-            //std::cout<< "Write Statement"  << std::endl;
-            repl = ParseWriteStatement();
-            break;
-        case Lexer::TOK_return:
-            //std::cout<< "Return Statement"  << std::endl;
-            repl = ParseReturnStatement();
-            break;
-        case Lexer::TOK_def:
-            //std::cout<< "Function Decleration"  << std::endl;
-            repl = ParseFunctionDecl();
-            break;
-        case Lexer::TOK_if:
-            //std::cout<< "If Statement"  << std::endl;
-            repl = ParseIfStatement();
-            break;
-        case Lexer::TOK_while:
-            //std::cout<< "While Statement"  << std::endl;
-            repl = ParseWhileStatement();
-            break;
-
-        case Lexer::TOK_punc:
-            if(CurrToken.id == "{") {
-                //std::cout << "Block Statement" << std::endl;
-                repl = ParseBlock();
-            }
-            break;
-        case Lexer::TOK_integer:
-            repl = ParseExpression();
-            break;
-
-        case Lexer::TOK_realInt:
-            repl = ParseExpression();
-            break;
-        case Lexer::TOK_unary:
-            repl = ParseUnary();
-            break;
-
-        case Lexer::TOK_identifier:
-            repl = ParseExpression();
-            break;
-        case Lexer::TOK_string:
-            repl = ParseExpression();
-            break;
-        case Lexer::TOK_bool:
-            repl = ParseExpression();
-            break;
-        default:
-            //std::cout << CurrToken.toString() << std::endl;
-            Error("No statement found");
-            break;
-    }
-
-    return repl;
-}
-*/
 
 ASTStatementNode * Parser::ParseStatement(){
+    //initialise it as a null pointer
     ASTStatementNode * statement = nullptr;
-    //std::cout << "Entry in Parse Statement" << std::endl;
-    //std::cout << CurrToken.toString() << std::endl;
-
+    //cannot parse a comment thus return a null pointer
     if(CurrToken.token_type == Lexer::TOK_comment){
         CurrToken = lex.getNextToken();
         return statement;
     }
-    //std::cout << CurrToken.toString() << std::endl;
+
     switch (CurrToken.token_type){
         case Lexer::TOK_var:
-            //std::cout<< "Variable Decleration"  << std::endl;
+            //Variable Declaration
             statement = ParseVariableDecl();
             break;
         case Lexer::TOK_set:
-            //std::cerr<< "Variable Assignment"  << std::endl;
+            //Variable Assignment
             statement = ParseAssignment();
-        //std::cerr << "Return from statement" << std::endl;
-            //std::cerr << CurrToken.toString() << std::endl;
-
             break;
         case Lexer::TOK_write:
-            //std::cout<< "Write Statement"  << std::endl;
+            //Write Statement
             statement = ParseWriteStatement();
             break;
         case Lexer::TOK_return:
-            //std::cout<< "Return Statement"  << std::endl;
+            //Return Statement
             statement = ParseReturnStatement();
             break;
         case Lexer::TOK_def:
-            //std::cout<< "Function Decleration"  << std::endl;
+            //Function Declaration
             statement = ParseFunctionDecl();
             break;
         case Lexer::TOK_if:
-            //std::cout<< "If Statement"  << std::endl;
+            //If Statement
             statement = ParseIfStatement();
             break;
         case Lexer::TOK_while:
-            //std::cout<< "While Statement"  << std::endl;
+            //While Statement
             statement = ParseWhileStatement();
             break;
 
         case Lexer::TOK_punc:
             if(CurrToken.id == "{") {
-                //std::cout << "Block Statement" << std::endl;
+                //Block Statement
                 statement = ParseBlock();
             }
             break;
 
         default:
-            //std::cout << CurrToken.toString() << std::endl;
             //std::cerr << "No statement found" << std::endl;
             //Error("No statement found");
             break;
     }
-
-    //std::cout << CurrToken.toString() << std::endl;
     return statement;
 }
 
-void * Parser::Error(const char *str){
-    std::cerr << "Syntax Error : " << str << std::endl;
-    exit(1);
-}
-
 ASTStatementNode * Parser::ParseVariableDecl(){
-    //std::cout << "Entry in Parse Variable Declaration" << std::endl;
-
+    //declaration of nodes
     ASTExpressionNode * identifier = nullptr;
     ASTExpressionNode * expr = nullptr;
     ASTVariableDeclNode * declartion = nullptr;
+
     //consuming current token;
     CurrToken = lex.getNextToken();
     if(CurrToken.token_type != Lexer::TOK_identifier){
@@ -261,7 +145,7 @@ ASTStatementNode * Parser::ParseVariableDecl(){
         //afterwards link the the ASTStatementNode
     }
     CurrToken = lex.getNextToken();
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
+
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("':' was not found in Variable Declaration");
     }
@@ -271,10 +155,11 @@ ASTStatementNode * Parser::ParseVariableDecl(){
     if(CurrToken.token_type != Lexer::TOK_type){
         Error("Identifier TYPE was not found in Variable Declaration");
     }
+
     std::string type = CurrToken.id;
 
+    //consuming the identifier
     CurrToken = lex.getNextToken();
-    //std::cout << CurrToken.toString() << std::endl;
 
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("'=' was not found in Variable Declaration");
@@ -284,9 +169,7 @@ ASTStatementNode * Parser::ParseVariableDecl(){
         }else{
             //consuming the '='
             CurrToken = lex.getNextToken();
-            //std::cout << CurrToken.toString() << std::endl;
             expr = ParseExpression();
-            //std::cout << CurrToken.toString() << std::endl;
         }
     }
 
@@ -294,26 +177,17 @@ ASTStatementNode * Parser::ParseVariableDecl(){
         Error("';' was not found");
     }else{
         if(CurrToken.id == ";"){
-            //save the variable declartaion to the program node
-
             //consume the ';'
             declartion = new ASTVariableDeclNode(identifier,expr,type);
             CurrToken = lex.getNextToken();
-
         }else{
             Error("';' was not found");
         }
-
     }
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     return declartion;
 }
 
 ASTStatementNode * Parser::ParseAssignment(){
-
-    //std::cout << "Entry in Parse Assignment" << std::endl;
-    //std::string statement = CurrToken.id;
-
     ASTAssignmentNode * statement = nullptr;
     ASTExpressionNode * identifier = nullptr;
     ASTExpressionNode * expr = nullptr;
@@ -328,7 +202,6 @@ ASTStatementNode * Parser::ParseAssignment(){
     }
 
     CurrToken = lex.getNextToken();
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("'=' was not found in Variable Assignment");
     }else{
@@ -354,28 +227,16 @@ ASTStatementNode * Parser::ParseAssignment(){
         }
 
     }
-    //std::cout << CurrToken.toString() << std::endl;
-    //std::cerr << "Assingment Return " << std::endl;
     return statement;
 }
 
 ASTStatementNode * Parser::ParseWriteStatement(){
-    //std::cout << "Entry in Parse Write" << std::endl;
 
     ASTWriteNode * statement = nullptr;
 
     //consuming current token which is the write token;
     CurrToken = lex.getNextToken();
-    //std::cout << "Before Expr "<<CurrToken.toString() << std::endl;
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     ASTExpressionNode * expr = ParseExpression();
-
-    //std::cout << "After Expr" <<CurrToken.toString() << std::endl;
-    //SOMETHING HEERE IS HAPPENEING AND DUNNO WHAT
-    //CurrToken.toString();
-
-
-    //std::cerr<< "Current Token : "<< CurrToken.toString() << std::endl;
 
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("';' was not found in Write");
@@ -384,20 +245,15 @@ ASTStatementNode * Parser::ParseWriteStatement(){
             //consume the ';'
             statement = new ASTWriteNode(expr);
             CurrToken = lex.getNextToken();
-
-
         }else{
             Error("';' was not found in Write");
         }
     }
-    //std::cout << "Returning Statement" << std::endl;
     return statement;
 }
 
 ASTStatementNode * Parser::ParseReturnStatement() {
-    //std::cout << "Entry in Parse Return" << std::endl;
     ASTReturnNode * statement = nullptr;
-
     //consuming the token return
     CurrToken = lex.getNextToken();
     ASTExpressionNode * expr = ParseExpression();
@@ -416,13 +272,9 @@ ASTStatementNode * Parser::ParseReturnStatement() {
 }
 
 ASTStatementNode * Parser::ParseFunctionDecl(){
-    //std::cout << "Entry in Parse Function Declaration" << std::endl;
-    //ASTStatementNode * statement = nullptr;
-
     ASTFunctionDeclNode * functionDecl = nullptr;
     ASTExpressionNode * identifier = nullptr;
     ASTFormalParametersNode * params = nullptr;
-
 
     //consuming current token;
     CurrToken = lex.getNextToken();
@@ -433,7 +285,6 @@ ASTStatementNode * Parser::ParseFunctionDecl(){
         //afterwards link the the ASTStatementNode
     }
     CurrToken = lex.getNextToken();
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("'(' was not found in Function Declaration");
     }else{
@@ -454,23 +305,6 @@ ASTStatementNode * Parser::ParseFunctionDecl(){
         }
     }
 
-    //ASTFormalParametersNode * params = ParseFormalParams();
-
-    //CurrToken = lex.getNextToken();
-    //std::cout<< ">>>Current Token : "<< CurrToken.toString() << std::endl;
-//being done in previous else statement
-/*
-    if(CurrToken.token_type != Lexer::TOK_punc){
-        Error("Formal Parameters were set incorrectly as no ')' was found");
-    }else{
-        if(CurrToken.id != ")"){
-            Error("Formal Parameters were set incorrectly as no ')' was found");
-        }
-    }
-  */
-    //consuming the )
-    //CurrToken = lex.getNextToken();
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("':' was not found in Function Declaration");
     }else{
@@ -480,13 +314,10 @@ ASTStatementNode * Parser::ParseFunctionDecl(){
             CurrToken = lex.getNextToken();
         }
     }
-
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     std::string type = CurrToken.id;
 
     //consuming the type
     CurrToken = lex.getNextToken();
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     //link block to statment
     ASTStatementNode * block = ParseBlock();
 
@@ -495,9 +326,6 @@ ASTStatementNode * Parser::ParseFunctionDecl(){
 }
 
 ASTStatementNode * Parser::ParseIfStatement(){
-
-    //std::cout << "Entry in Parse If Statement" << std::endl;
-    //std::string statement = CurrToken.id;
     ASTIfStatementNode * statement = nullptr;
     ASTExpressionNode * expr = nullptr;
     ASTStatementNode * block = nullptr;
@@ -517,7 +345,6 @@ ASTStatementNode * Parser::ParseIfStatement(){
         }
     }
 
-    //std::cout << CurrToken.toString() << std::endl;
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("')' was not found in If Statement");
     }else{
@@ -528,10 +355,8 @@ ASTStatementNode * Parser::ParseIfStatement(){
         }
     }
 
-    //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
     //link block to statement
     block = ParseBlock();
-    //Cu
     if(CurrToken.token_type != Lexer::TOK_if){
         statement = new ASTIfStatementNode(expr,block,nullptr);
     }else{
@@ -540,7 +365,6 @@ ASTStatementNode * Parser::ParseIfStatement(){
         }else{
             //consuming else
             CurrToken = lex.getNextToken();
-            //std::cout<< "Current Token : "<< CurrToken.toString() << std::endl;
             //link block to statement
             ASTStatementNode * blockElse = ParseBlock();
             statement = new ASTIfStatementNode(expr,block,blockElse);
@@ -635,60 +459,52 @@ ASTExpressionNode * Parser::ParseIdentifier(){
 }
 
 ASTExpressionNode * Parser::ParseExpression(){
-    //std::cout << "Entry in Parse Expression" << std::endl;
 
     //save it as a new expr
+    //an expression must a simple expression as defined by the grammar
     ASTExpressionNode * simpleExpr = ParseSimpleExpression();
 
+    //an expression can be made up of simple expression, or
+    // simple expression relationOperation simple expression
     while(CurrToken.token_type == Lexer::TOK_realationOp){
-        //std::cout << "Add Op found next" << std::endl;
         ASTExpressionNode * binOp = ParseBinaryOperation(2, simpleExpr);
         simpleExpr = binOp;
-        //std::cout << CurrToken.toString() << std::endl;
     }
-
     return simpleExpr;
 }
 
 ASTExpressionNode * Parser::ParseSimpleExpression(){
-    //std::cout << "Entry in Parse Simple Expression" << std::endl;
     //save it as a new SimpleExpr
     ASTExpressionNode * term = ParseTerm();
 
-    //std::cout << CurrToken.toString() << std::endl;
+    //an simple expression can be made up of term, or
+    // term addOperation term
     while(CurrToken.token_type == Lexer::TOK_addOp){
-        //std::cout << "Add Op found next" << std::endl;
+        //"Add Op found next"
         ASTExpressionNode * binOp = ParseBinaryOperation(1, term);
         term = binOp;
-        //std::cout << CurrToken.toString() << std::endl;
     }
     return term;
 }
 
 ASTExpressionNode * Parser::ParseTerm(){
-    //std::cout << "Entry in Parse Term" << std::endl;
     //save it as a new Term
     ASTExpressionNode * lhs = ParseFactor();
 
-    //std::cout << "RETURN FROM FACTOR" << std::endl;
-
-    //XMLPrint * v = new XMLPrint();
-    //lhs->Accept(v);
-    //std::cerr << CurrToken.toString() << std::endl;
+    //an term can be made up of a factor, or
+    // factor multiplication Operation factor
     while(CurrToken.token_type == Lexer::TOK_multOp){
-
-        //std::cout << "Mult Op found next" << std::endl;
+        //Mult Op found next
         ASTExpressionNode * binOp = ParseBinaryOperation(0, lhs);
         lhs = binOp;
-        //std::cout << CurrToken.toString() << std::endl;
     }
     return lhs;
 }
 
 ASTExpressionNode * Parser::ParseFactor(){
-    //std::cout << "Entry in Parse Factor" << std::endl;
-    //std::cout << CurrToken.toString() << std::endl;
-
+    /*
+     *
+     */
     ASTExpressionNode * ans = nullptr;
 
     switch (CurrToken.token_type) {
