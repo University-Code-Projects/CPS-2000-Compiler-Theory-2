@@ -11,12 +11,10 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05beb8a5-4b4e-4205-8f46-7eb293f3407f" name="Default" comment="">
+    <list default="true" id="05beb8a5-4b4e-4205-8f46-7eb293f3407f" name="Default" comment="Comments added to the functions">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lexer.h" afterPath="$PROJECT_DIR$/Lexer.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Parser.cpp" afterPath="$PROJECT_DIR$/Parser.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Parser.h" afterPath="$PROJECT_DIR$/Parser.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/REPL.cpp" afterPath="$PROJECT_DIR$/REPL.cpp" />
     </list>
     <ignored path="Assignment_5.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,51 +35,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Parser.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Parser.cpp">
+      <file leaf-file-name="Lexer.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Lexer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46024096">
-              <caret line="505" column="7" selection-start-line="505" selection-start-column="7" selection-end-line="505" selection-end-column="7" />
-              <folding>
-                <element signature="e#123#232#0" expanded="false" />
-                <element signature="e#234#838#0" expanded="false" />
-                <element signature="e#840#2338#0" expanded="false" />
-                <element signature="e#3917#5607#0" expanded="false" />
-                <element signature="e#5609#6961#0" expanded="false" />
-                <element signature="e#6963#7564#0" expanded="false" />
-                <element signature="e#7566#8115#0" expanded="false" />
-                <element signature="e#8117#9968#0" expanded="false" />
-                <element signature="e#11446#12737#0" expanded="false" />
-                <element signature="e#12739#13820#0" expanded="false" />
-                <element signature="e#13822#14062#0" expanded="false" />
-                <element signature="e#14064#14585#0" expanded="false" />
-                <element signature="e#14587#14999#0" expanded="false" />
-                <element signature="e#15001#15400#0" expanded="false" />
-                <element signature="e#17557#18551#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="302" column="13" selection-start-line="302" selection-start-column="13" selection-end-line="302" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lexer.h" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Lexer.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Lexer.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.25516403">
+              <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
               <folding>
-                <element signature="e#409#2396#0" expanded="false" />
                 <element signature="e#2833#3772#1" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Parser.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="55" column="86" selection-start-line="55" selection-start-column="86" selection-end-line="55" selection-end-column="86" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -141,7 +112,6 @@
         <option value="$PROJECT_DIR$/SymbolTable.h" />
         <option value="$PROJECT_DIR$/SymbolTable.cpp" />
         <option value="$PROJECT_DIR$/Visitors/InterpreterExecution.h" />
-        <option value="$PROJECT_DIR$/REPL.cpp" />
         <option value="$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp" />
         <option value="$PROJECT_DIR$/Visitors/XMLPrint.cpp" />
         <option value="$PROJECT_DIR$/Visitors/InterpreterExecution.cpp" />
@@ -150,6 +120,7 @@
         <option value="$PROJECT_DIR$/Parser.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/Parser.cpp" />
+        <option value="$PROJECT_DIR$/REPL.cpp" />
       </list>
     </option>
   </component>
@@ -162,7 +133,7 @@
     <option name="x" value="65" />
     <option name="y" value="24" />
     <option name="width" value="893" />
-    <option name="height" value="943" />
+    <option name="height" value="950" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -208,6 +179,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Visitors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment_5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ASTNodes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -354,7 +353,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463617734131</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Comments added to the functions">
+      <created>1463644405479</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1463644405479</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -367,27 +372,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="893" height="943" extended-state="6" />
+    <frame x="65" y="24" width="893" height="950" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17931035" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40229884" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31205675" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946634" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47399527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39728883" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31205675" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47399527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.073085845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39728883" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -411,11 +416,12 @@
     <MESSAGE value="Change to Variable Declaration and working on ans of the repl" />
     <MESSAGE value="Best Version" />
     <MESSAGE value="Comments added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments added" />
+    <MESSAGE value="Comments added to the functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments added to the functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -571,7 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,57 +601,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/REPL.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4270463">
-          <caret line="133" column="4" selection-start-line="133" selection-start-column="4" selection-end-line="133" selection-end-column="4" />
-          <folding>
-            <element signature="e#41#58#0" expanded="false" />
-            <element signature="e#3728#6402#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="175" column="9" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Visitors/SemanticAnalysis.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="365" column="4" selection-start-line="365" selection-start-column="4" selection-end-line="365" selection-end-column="4" />
-          <folding>
-            <element signature="e#31#72#0" expanded="false" />
-            <element signature="e#74#459#0" expanded="false" />
-            <element signature="e#874#998#0" expanded="false" />
-            <element signature="e#2069#2143#0" expanded="false" />
-            <element signature="e#2145#2218#0" expanded="false" />
-            <element signature="e#2220#2292#0" expanded="false" />
-            <element signature="e#2294#2370#0" expanded="false" />
-            <element signature="e#3157#3938#0" expanded="false" />
-            <element signature="e#4416#5357#0" expanded="false" />
-            <element signature="e#7426#8619#0" expanded="false" />
-            <element signature="e#8621#8736#0" expanded="false" />
-            <element signature="e#8738#8894#0" expanded="false" />
-            <element signature="e#8896#9765#0" expanded="false" />
-            <element signature="e#9767#10055#0" expanded="false" />
-            <element signature="e#10057#10844#0" expanded="false" />
-            <element signature="e#11877#12286#0" expanded="false" />
-            <element signature="e#12288#12395#0" expanded="false" />
-            <element signature="e#12397#12985#0" expanded="false" />
-            <element signature="e#12987#13520#0" expanded="false" />
-            <element signature="e#13522#14071#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49466193">
-          <caret line="233" column="25" selection-start-line="233" selection-start-column="25" selection-end-line="233" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -668,14 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.613879">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/REPL.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7064057">
-          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,17 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lexer.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
-          <folding>
-            <element signature="e#409#2396#0" expanded="false" />
-            <element signature="e#2833#3772#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Parser.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -772,17 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.79518074">
           <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Lexer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.640625">
-          <caret line="306" column="8" selection-start-line="305" selection-start-column="8" selection-end-line="306" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -790,7 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.036144577">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -806,30 +732,102 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.072289154">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Parser.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46024096">
-          <caret line="505" column="7" selection-start-line="505" selection-start-column="7" selection-end-line="505" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
             <element signature="e#123#232#0" expanded="false" />
             <element signature="e#234#838#0" expanded="false" />
             <element signature="e#840#2338#0" expanded="false" />
+            <element signature="e#2340#3915#0" expanded="false" />
             <element signature="e#3917#5607#0" expanded="false" />
             <element signature="e#5609#6961#0" expanded="false" />
             <element signature="e#6963#7564#0" expanded="false" />
             <element signature="e#7566#8115#0" expanded="false" />
             <element signature="e#8117#9968#0" expanded="false" />
+            <element signature="e#9970#11444#0" expanded="false" />
             <element signature="e#11446#12737#0" expanded="false" />
             <element signature="e#12739#13820#0" expanded="false" />
             <element signature="e#13822#14062#0" expanded="false" />
             <element signature="e#14064#14585#0" expanded="false" />
             <element signature="e#14587#14999#0" expanded="false" />
             <element signature="e#15001#15400#0" expanded="false" />
-            <element signature="e#17557#18551#0" expanded="false" />
+            <element signature="e#15402#18740#0" expanded="false" />
+            <element signature="e#15449#15673#0" expanded="false" />
+            <element signature="e#18742#19335#0" expanded="false" />
+            <element signature="e#19337#20233#0" expanded="false" />
+            <element signature="e#20235#20867#0" expanded="false" />
+            <element signature="e#20869#21322#0" expanded="false" />
+            <element signature="e#21324#21597#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/REPL.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visitors/XMLPrint.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3345587">
+          <caret line="175" column="9" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/REPL.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="24" />
+          <folding>
+            <element signature="e#3681#6355#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Visitors/InterpreterExecution.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="214" column="58" selection-start-line="214" selection-start-column="58" selection-end-line="214" selection-end-column="58" />
+          <folding>
+            <element signature="e#2506#5058#0" expanded="false" />
+            <element signature="e#5060#5243#0" expanded="false" />
+            <element signature="e#5245#5425#0" expanded="false" />
+            <element signature="e#5427#5604#0" expanded="false" />
+            <element signature="e#5606#5790#0" expanded="false" />
+            <element signature="e#5792#8440#0" expanded="false" />
+            <element signature="e#8442#14853#0" expanded="false" />
+            <element signature="e#14855#15920#0" expanded="false" />
+            <element signature="e#15922#17457#0" expanded="false" />
+            <element signature="e#17459#19751#0" expanded="false" />
+            <element signature="e#19753#19872#0" expanded="false" />
+            <element signature="e#19874#20339#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lexer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="302" column="13" selection-start-line="302" selection-start-column="13" selection-end-line="302" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lexer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25516403">
+          <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
+          <folding>
+            <element signature="e#2833#3772#1" expanded="false" />
           </folding>
         </state>
       </provider>

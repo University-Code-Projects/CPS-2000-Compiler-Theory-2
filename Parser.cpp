@@ -503,7 +503,16 @@ ASTExpressionNode * Parser::ParseTerm(){
 
 ASTExpressionNode * Parser::ParseFactor(){
     /*
-     *
+     * A factor is made up of the following
+     *  Literal
+     *      Boolean
+     *      Integer
+     *      Real
+     *      String
+     *  Identifier
+     *  Function Call
+     *  Sub Expression
+     *  Unary
      */
     ASTExpressionNode * ans = nullptr;
 
@@ -535,24 +544,14 @@ ASTExpressionNode * Parser::ParseFactor(){
         case Lexer::TOK_identifier: {
             ASTExpressionNode * id = ParseIdentifier();
 
-
             Lexer::Token peek = lex.tokenPeek();
             if(peek.id == "("){//function call found
-
-
                 //consuming the Identifier
                 ASTIdentifierNode * ident = new ASTIdentifierNode(CurrToken.id);
                 CurrToken = lex.getNextToken();
                 //consuming the '('
                 CurrToken = lex.getNextToken();//getting the equation
-
                 ASTActualParametersNode * params = ParseActualParams();
-
-                //ParseSubExpression();
-
-                //std::cerr << "Checking after parsee actual param" << std::endl;
-                //std::cerr << CurrToken.toString() << std::endl;
-
                 if(CurrToken.token_type != Lexer::TOK_punc){
                     Error("')' was not found in Function Call");
                 }else{
@@ -560,47 +559,17 @@ ASTExpressionNode * Parser::ParseFactor(){
                         Error("')' was not found in Function Call");
                     }
                 }
-
                 ASTFunctionCallNode * funcCall = new ASTFunctionCallNode(ident,params);
-
                 ans = funcCall;
-
-                //std::cerr << "Function Call" <<CurrToken.toString() << std::endl;
-                /*
-                if(CurrToken.id[0] == ')'){
-                    ASTExpressionNode * param = nullptr;
-                }else{
-
-                    if(funcDecl) {
-                        ASTExpressionNode *param = ParseActualParams();
-                        CurrToken = lex.getNextToken();//getting the ')'
-                        if (CurrToken.id != ")") {
-                            Error("')' was not found at end of Parameters");
-                        } else {
-                            ans = param;
-                        }
-                    }else{
-                        ASTExpressionNode *param = ParseActualParams();
-                        CurrToken = lex.getNextToken();//getting the ')'
-                        if (CurrToken.id != ")") {
-                            Error("')' was not found at end of Parameters");
-                        } else {
-                            ans = param;
-                        }
-                    }
-                }
-                */
             }else{//identifier found
                 ans = id;
             }
             break;
         }
 
-
         case Lexer::TOK_punc: {
             if (CurrToken.id == "(") {
                 CurrToken = lex.getNextToken();
-
 
                 ASTExpressionNode *expr = ParseExpression();
                 ASTSubExpressionNode *subExpr = new ASTSubExpressionNode(expr);
@@ -609,13 +578,7 @@ ASTExpressionNode * Parser::ParseFactor(){
                     Error("')' was not found at the end of the expression in Sub Expression Creation");
                 }
                 ans = subExpr;//new sub expression node
-            } /*else if(CurrToken.id == ")"){
-
-
-                //NO PARAMETERS FOUND HENCE RETURN NULL
-
-                //return ans;
-            }*/
+            }   //return ans;
             else{
                 Error("Token is of the incorrect format");
             }
@@ -623,36 +586,15 @@ ASTExpressionNode * Parser::ParseFactor(){
         }
 
         case Lexer::TOK_unary: {
-            //std::string symbol = CurrToken.id;
             ASTUnaryNode * unary = ParseUnary();
-            //XMLPrint * v = new XMLPrint();
-            //unary->Accept(v);
             return unary;
-            //unary = ans;
-            //ASTExpressionNode * unary = ParseExpression();
-            //ans = new ASTBinaryNode(symbol,unary, nullptr);
-            //ans = ParseBinaryOperation(1,unary);
-            //ans = symbol+unary;
-
-            //return ans;
-            break;
         }
         case Lexer::TOK_addOp:{
             if(CurrToken.id == "or"){
                 Error("'or' found when '+'/ '-' was expected");
             }
-            //std::string symbol = CurrToken.id;
-            //CurrToken=lex.getNextToken();
-            //ASTExpressionNode * unary = ParseExpression();
-            //ans = new ASTBinaryNode(symbol, unary, nullptr);
-            //ans = ParseBinaryOperation(1,unary);
-            //ans = symbol+unary;
             ASTExpressionNode * unary = ParseUnary();
             return unary;
-            unary = ans;
-            //XMLPrint * v = new XMLPrint();
-            //unary->Accept(v);
-            return ans;
         }
         default:{
             Error("Token was not recognised in Parse Factor");
@@ -661,40 +603,16 @@ ASTExpressionNode * Parser::ParseFactor(){
 
     //consuming the factor
     CurrToken = lex.getNextToken();
-    //std::cout << CurrToken.toString() << std::endl;
     return ans;
 }
-/*
-ASTExpressionNode *Parser::ParseActualParam() {
 
-    ASTExpressionNode * params = nullptr;
-    ASTExpressionNode * ident = ParseIdentifier();
-    CurrToken = lex.getNextToken();
-    if(CurrToken.id != ":"){
-        Error("Formal Parameters are set incorrectly, ':' was not found");
-    }
-    CurrToken = lex.getNextToken();
-    if(CurrToken.token_type != Lexer::TOK_type){
-        Error("Formal Parameters are set incorrect the type was not found");
-    }
-    params = new ASTFormalParameterNode(ident, CurrToken.id);
-    //consuming the type
-    CurrToken = lex.getNextToken();
-    return params;
-
-
-    return nullptr;
-}
-*/
 ASTActualParametersNode * Parser::ParseActualParams(){
-    //std::cout << "Entry in Parse Actual Params" << std::endl;
-
+    //Parse Actual Params
     ASTActualParametersNode * actualParameter = new ASTActualParametersNode();
     if(CurrToken.id == ")"){
         return actualParameter;
     }else {
         ASTExpressionNode *params = ParseExpression();
-
         actualParameter->addParameter(params);
 
         while (CurrToken.id[0] == ',') {
@@ -704,30 +622,14 @@ ASTActualParametersNode * Parser::ParseActualParams(){
             actualParameter->addParameter(params);
         }
         return actualParameter;
-
     }
-/*
-
-    ASTExpressionNode * params = ParseExpression();
-
-    if(lex.tokenPeek().id == ","){
-        CurrToken = lex.getNextToken();//getting the ','
-        CurrToken = lex.getNextToken();//getting the expression
-        params = ParseActualParams();
-    }else{
-        return params;
-    }
-  */
 }
 
 ASTExpressionNode * Parser::ParseBinaryOperation(int prec, ASTExpressionNode * lhs){
-    //std::cout << "Entry in Binary Operation " <<std::endl;
-    //std::cout << CurrToken.toString() <<std::endl;
-
+    //Parse Binary Operation
     //link currToken (operation) to lhs then do the switch statement
     std::string operation = CurrToken.id;
     CurrToken = lex.getNextToken();
-    //std::cout << CurrToken.toString() <<std::endl;
     ASTExpressionNode * rhs;
     switch (prec){
         case 0:{//multOp
@@ -753,8 +655,7 @@ ASTExpressionNode * Parser::ParseBinaryOperation(int prec, ASTExpressionNode * l
 }
 
 ASTExpressionNode * Parser::ParseFormalParam() {
-    //std::cout << "Entry in Parse Formal Param" << std::endl;
-    //std::cout << CurrToken.toString() << std::endl;
+    //Entry in Parse Formal Param
     ASTExpressionNode * params = nullptr;
     ASTExpressionNode * ident = ParseIdentifier();
     CurrToken = lex.getNextToken();
@@ -772,9 +673,7 @@ ASTExpressionNode * Parser::ParseFormalParam() {
 }
 
 ASTFormalParametersNode * Parser::ParseFormalParams() {
-    //std::cout << "Entry in Parse Formal Params" << std::endl;
-    //std::cout << CurrToken.toString() << std::endl;
-    //ASTExpressionNode * formalParams = new ASTFormalParametersNode();
+    //Parse Formal Params
     ASTFormalParametersNode * formalParameter = new ASTFormalParametersNode();
     ASTExpressionNode * params = ParseFormalParam();
 
@@ -789,18 +688,12 @@ ASTFormalParametersNode * Parser::ParseFormalParams() {
 }
 
 ASTUnaryNode *Parser::ParseUnary() {
-    //std::cerr << "entry in parse" << std::endl;
     std::string symbol = CurrToken.id;
     //consuming the unary token
     CurrToken = lex.getNextToken();
 
     ASTExpressionNode * expr = ParseExpression();
 
-    //ASTUnaryNode *unary = new ASTUnaryNode(symbol,expr);
     ASTUnaryNode * unary = new ASTUnaryNode(symbol,expr);
-
-    //std::cout << "FROM PARSE UNARY" << std::endl;
-    //XMLPrint * v = new XMLPrint();
-    //unary->Accept(v);
     return unary;
 }

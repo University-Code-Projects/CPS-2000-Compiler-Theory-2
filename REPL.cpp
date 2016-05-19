@@ -42,7 +42,6 @@ void REPL::evalution() {
                 break;
             }else if((this->eval[1] == 'l')&&(this->eval[2] == 'o')&&(this->eval[3] == 'a')&&(this->eval[4] == 'd')){
                 std::string fileName = "";
-
                 //getting the file name
                 //removing the #load, the whitespace and the first "
                 for (int i =7; i < this->eval.size(); i++){
@@ -61,9 +60,9 @@ void REPL::evalution() {
         }
 
 
-        switch (i->typeGet()){
+        //switch (i->typeGet()){
 
-        }
+        //}
 
         Lexer *lex = new Lexer(false, this->eval);
         Parser * parser = new Parser(true,*lex);
@@ -71,7 +70,7 @@ void REPL::evalution() {
         auto rootNode = parser->ParseRepl();
 
         *i = InterpreterExecution(this->st);
-        //std::cout << "After Parse" << std::endl;
+
         i->funcCallSet(funcCall);
         XMLPrint * v = new XMLPrint();
         rootNode->Accept(v);
