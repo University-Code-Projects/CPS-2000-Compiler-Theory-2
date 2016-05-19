@@ -12,6 +12,7 @@ void * Parser::Error(const char *str){
 }
 
 ASTNode * Parser::Parse(){
+
     ASTProgramNode *rootNode = new ASTProgramNode();
     ASTStatementNode * statement = nullptr;
 
@@ -25,6 +26,7 @@ ASTNode * Parser::Parse(){
         if(statement != nullptr) {
             rootNode->addStatement(statement);
         }else{
+            //tok error found
             break;
         }
     }
@@ -77,6 +79,7 @@ ASTNode *Parser::ParseRepl() {
 }
 
 ASTStatementNode * Parser::ParseStatement(){
+    //going to check what type of expression the token holds
     //initialise it as a null pointer
     ASTStatementNode * statement = nullptr;
     //cannot parse a comment thus return a null pointer
@@ -197,6 +200,7 @@ ASTStatementNode * Parser::ParseAssignment(){
     if(CurrToken.token_type != Lexer::TOK_identifier){
         Error("Identifier was not found in Variable Assignment");
     }else{
+        //getting the new AST Identifier Node
         identifier = ParseIdentifier();
         //afterwards link the the ASTStatementNode
     }
@@ -209,6 +213,7 @@ ASTStatementNode * Parser::ParseAssignment(){
             Error("'=' was not found in Variable Assignment");
         }else{
             CurrToken = lex.getNextToken();
+            //getting the new AST Expression Node
             expr = ParseExpression();
             //afterwards link the the ASTStatementNode
         }
@@ -218,7 +223,7 @@ ASTStatementNode * Parser::ParseAssignment(){
         Error("';' was not found in Assignment");
     }else{
         if(CurrToken.id == ";"){
-            //save the variable declartaion to the program node
+            //save the variable declaration to the program node
             //consume the ';'
             statement = new ASTAssignmentNode(identifier,expr);
             CurrToken = lex.getNextToken();
@@ -410,7 +415,7 @@ ASTStatementNode * Parser::ParseWhileStatement(){
 }
 
 ASTStatementNode * Parser::ParseBlock(){
-    //std::cout << "Entry in Parse Block" << std::endl;
+    //Parse Block"
     ASTBlockNode * block = new ASTBlockNode();
     ASTStatementNode * statement = nullptr;
 
@@ -425,18 +430,19 @@ ASTStatementNode * Parser::ParseBlock(){
         }
     }
 
+    //since a block is made up of statements, need to parse statement
     statement = ParseStatement();
     if(statement != nullptr) {
         block->addStatement(statement);
     }
 
+    //if the next statement is not a } continue parsing statements until finding }
     while(CurrToken.id[0] != '}') {
         statement = ParseStatement();
         if (statement != nullptr) {
             block->addStatement(statement);
         }
     }
-
 
     if(CurrToken.token_type != Lexer::TOK_punc){
         Error("'}' was not found in Block");
@@ -467,6 +473,7 @@ ASTExpressionNode * Parser::ParseExpression(){
     //an expression can be made up of simple expression, or
     // simple expression relationOperation simple expression
     while(CurrToken.token_type == Lexer::TOK_realationOp){
+        //saving them as a tree
         ASTExpressionNode * binOp = ParseBinaryOperation(2, simpleExpr);
         simpleExpr = binOp;
     }
