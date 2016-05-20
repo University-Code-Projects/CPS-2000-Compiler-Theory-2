@@ -81,6 +81,8 @@ std::string Lexer::getProgramToText(){
             }
         }
     }
+    inputText += '\n';
+    inputText += '\n';
     return inputText;
 }
 

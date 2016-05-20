@@ -25,7 +25,6 @@ bool SymbolTable::createScope() {
  * Deleting the most recent Scope
  */
 bool SymbolTable::deleteScope() {
-
     if(this->scopeStack.size() < 1){
         //this->scopePrint();
         return false;
@@ -96,22 +95,11 @@ bool SymbolTable::isParam(std::string funcName, primitive_type funcType, std::st
                     std::map<std::string, varValue >::iterator it;
                     for(int i = 0; i < mit->second.fv.param.size(); i++){
                         for(it = mit->second.fv.param.at(i).begin();it != mit->second.fv.param.at(i).end(); it++ ){
-                            if(it->first == name){
+                            if(it->first == name){//name given matches the parameter name
                                 return true;
                             }
                         }
-
                     }
-
-/*
-                    for(it = mit->second.fv.param.begin();it != mit->second.fv.param.end(); it++ ){
-                        if(it->first == name){
-                            return true;
-                        }
-                    }
-*/
-
-
                 }
             }
         }
@@ -189,19 +177,19 @@ void SymbolTable::scopePrint() {
                             switch (it->second.t) {
                                 case 0:
                                     std::cout << " Type : " << "int    ";
-                                    std::cout << " Value : " << it->second.i<< "\t";
+                                    //std::cout << " Value : " << it->second.i<< "\t";
                                     break;
                                 case 1:
                                     std::cout << " Type : " << "real   ";
-                                    std::cout << " Value : " << it->second.r << "\t";
+                                    //std::cout << " Value : " << it->second.r << "\t";
                                     break;
                                 case 2:
                                     std::cout << " Type : " << "bool   ";
-                                    std::cout << " Value : " << it->second.b << "\t";
+                                    //std::cout << " Value : " << it->second.b << "\t";
                                     break;
                                 case 3:
                                     std::cout << " Type : " << "string ";
-                                    std::cout << " Value : " << it->second.s << "\t";
+                                    //std::cout << " Value : " << it->second.s << "\t";
                                     break;
 
                             }

@@ -1,4 +1,0 @@
-var x : int = 1 ; //declare y and set it to 1.0
-var y : real = 1; //declare y and set it to 1.0
-set y = y / x;    //Assignment y = y / x;
-write y * 9.8;

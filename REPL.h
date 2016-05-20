@@ -29,9 +29,9 @@ private :
 public:
     REPL();
     void evalution();
-    bool loadFile(std::string name);
-    void cmdFunctionPrint();
-    void ansResult(SymbolTable::primitive_type type);
+    bool loadFile(std::string name);//used to load a file
+    void cmdFunctionPrint();//print all the commands
+    void ansResult(SymbolTable::primitive_type type);//change the value of ans in the symbol table
 };
 
 

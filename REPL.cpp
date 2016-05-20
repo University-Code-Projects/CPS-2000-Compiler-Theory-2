@@ -7,8 +7,6 @@
 #include "Visitors/SemanticAnalysis.h"
 #include "Visitors/InterpreterExecution.h"
 
-//#load "/home/cps200x/ClionProjects/Assignment_5/test2"
-
 REPL::REPL() {
     file.clear();
     while(st.deleteScope()){
@@ -30,14 +28,18 @@ REPL::REPL() {
 
 void REPL::evalution() {
     cmdFunctionPrint();
+    bool xml = false;
+
     while(this->eval != "#quit"){
         std::cout << "MLi> ";
         getline(std::cin,this->eval);
         if(this->eval[0] == '#'){
             if(this->eval == "#st"){
                 this->st.scopePrint();
-            }else if(this->eval == "#info"){
+            }else if(this->eval == "#info") {
                 cmdFunctionPrint();
+            }else if(this->eval == "#xml"){
+                xml = true;
             }else if(this->eval == "#quit"){
                 break;
             }else if((this->eval[1] == 'l')&&(this->eval[2] == 'o')&&(this->eval[3] == 'a')&&(this->eval[4] == 'd')){
@@ -59,21 +61,20 @@ void REPL::evalution() {
             continue;
         }
 
-
-        //switch (i->typeGet()){
-
-        //}
-
         Lexer *lex = new Lexer(false, this->eval);
         Parser * parser = new Parser(true,*lex);
 
         auto rootNode = parser->ParseRepl();
 
-        *i = InterpreterExecution(this->st);
+        *i = InterpreterExecution(this->st);//check for semantic erros and add in the symbol table
 
-        i->funcCallSet(funcCall);
-        XMLPrint * v = new XMLPrint();
-        rootNode->Accept(v);
+        i->funcCallSet(funcCall);//used to keep note of the most recent function call
+
+        if(xml){
+            XMLPrint * v = new XMLPrint();
+            rootNode->Accept(v);
+            xml = false;
+        }
 
         rootNode->Accept(i);
         if(!(i->sem)){
@@ -82,7 +83,6 @@ void REPL::evalution() {
         }
     }
     std::cout << "REPL Session ended" << std::endl;
-
 }
 
 bool REPL::loadFile(std::string name) {
@@ -106,17 +106,7 @@ bool REPL::loadFile(std::string name) {
         *i = InterpreterExecution(this->st);
         rootNode->Accept(i);
         funcCall = i->funcCallGet();
-        //Lexer(name);
-        //Parser(*this->lex);
-        //InterpreterExecution *i = new InterpreterExecution();
-
-        //this->parser->Parse()->Accept(i);
-        //i->st.scopePrint();
-
-        //std::cout << "PRINTING FROM REPL" << std::endl;
-
         this->st = i->st;
-        //this->st.scopePrint();
         std::cout << "Script was opened" << std::endl;
         //file.close();
         return true;
@@ -131,6 +121,7 @@ void REPL::cmdFunctionPrint() {
     std::cout << "'#quit' to end the session" << std::endl;
     std::cout << "'#st' display the contents of the symbol-table" << std::endl;
     std::cout << "'#info' print instructions" << std::endl;
+    std::cout << "'#xml' print the xml of the next instruction to be given" << std::endl;
 }
 
 void REPL::ansResult(SymbolTable::primitive_type type){

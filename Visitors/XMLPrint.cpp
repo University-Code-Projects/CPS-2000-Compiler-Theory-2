@@ -17,7 +17,7 @@ void XMLPrint::visit(ASTStatementNode *node) {}
 void XMLPrint::visit(ASTProgramNode *node) {
     this->out = "";
     this->indent = 0;
-    std::cout << "Number of Nodes :" << node->statements.size() <<std::endl;
+    //std::cout << "Number of Nodes :" << node->statements.size() <<std::endl;
     std::cout << "<Program>" << std::endl;
     int j = node->statements.size();
     for(int i =0; i < j; i++){

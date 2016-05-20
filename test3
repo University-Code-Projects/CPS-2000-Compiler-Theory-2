@@ -1,83 +1,13 @@
 
-var a : int = 5*5;
-var bef : string = "Before";
-
-var af : string = "After";
-
-write a;
-write bef;
-
-
-write "before write";
-
-write "after write";
-
-write bef;
-
-def funcSquare(x:real) : real{
-    write "value of x is ";
-    write x;
-    return x*x;
-}
-
-write "Before function call";
-
-write funcSquare(2.0);
-
-write "After func Call";
-
-/*
-var a : int = 5*5;
-var g : int = 5*4;
-var b : real = 5.5 - 5.4;
-var c : bool = false;
-var h : bool = true;
-var d : string = "testing" + " for pluss";
-var bef : string = "Before";
-var af : string = "After";
-
-write a;
-write bef;
-set a = a+5;
-write af;
-write a;
-
-//write a;
-//write b;
-//write c;
-//write d;
-
-if(h and c){
-
-write "If is true";
-}else{
-write "If is false";
-}
-
 var n : int = 5;
 
-if( n>=0 )
+if( n+0 )
     {
-        write "If is true";
-        while(n>0)
-        {
-            write "while is true";
-            write n;
-            //set y = y * x;  //Assignment y = y *x;
-            set n = n -1;   //Assignment n = n-1;
-            write n;
-        }
-
+        write "expression is true";
     }
     else
     {
-        write "Else is true";
-        while(n<0)
-        {
-            //set y = y / x;    //Assignment y = y / x;
-            //set n = n + 1;    //Assignment n = n + 1;
-        }
+        write "expression is false";
     }
 
-*/
 

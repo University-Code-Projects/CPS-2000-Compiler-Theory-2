@@ -1,8 +1,6 @@
 #include "SemanticAnalysis.h"
 
-SemanticAnalysis::SemanticAnalysis() {
-
-}
+SemanticAnalysis::SemanticAnalysis() {}
 
 void SemanticAnalysis::typeSet(std::string type) {
     if(type == "real"){
@@ -61,19 +59,15 @@ void SemanticAnalysis::visit(ASTProgramNode *node) {
     this->funcParam.clear();
 
     if(this->st.createScope() == true){
-        std::cout << "Global Scope created" << std::endl;
+        //std::cout << "Global Scope created" << std::endl;
         int j = node->statements.size();
 
         for(int i =0; i < j; i++){
-            std::cout << i+1 <<std::endl;
             node->statements.at(i)->Accept(this);
-            this->st.scopePrint();
         }
 
-        this->st.scopePrint();
-
         if(this->st.deleteScope() == true){
-            std::cout << "Global Scope Deleted" << std::endl;
+            //std::cout << "Global Scope Deleted" << std::endl;
         }else{
             Error("Could not delete Scope");
         }
@@ -83,6 +77,7 @@ void SemanticAnalysis::visit(ASTProgramNode *node) {
     }
 }
 
+//setting the type according to the literal
 void SemanticAnalysis::visit(ASTIntegerNode *node) {
     typeSet("int");
 }
@@ -100,10 +95,9 @@ void SemanticAnalysis::visit(ASTStringNode *node) {
 }
 
 void SemanticAnalysis::visit(ASTIdentifierNode *node) {
-    //this->ident = node->value;
 
-    if(this->param){
-        this->ident = node->value;
+    if(this->param){//is a formal paramter
+        this->ident = node->value;//get the identifier that the parameter will be set to
     }else {
         if (this->exists) {//check if a varibale exists
             if (this->st.inScope(node->value)) {//found in the current scope/ any previous scopes
@@ -190,12 +184,12 @@ void SemanticAnalysis::visit(ASTBinaryNode *node) {
         typeRhs = this->Type;
     }
 
-    if(typeLhs != typeRhs){
+    if(typeLhs != typeRhs){//check if lhs and rhs match
         Error(typePrint(typeLhs) + " and " + typePrint(typeRhs) + " cannot be evaluated, since both are different type" );
     }else{
         this->Type = typeLhs;
     }
-    this->operation = node->operation;
+    this->operation = node->operation;//get the operation to do on the lhs and rhs
 }
 
 void SemanticAnalysis::visit(ASTUnaryNode *node) {
@@ -225,16 +219,15 @@ void SemanticAnalysis::visit(ASTVariableDeclNode *node) {
     this->exists = true;
     node->Expr->Accept(this);
 
-    if(this->st.inCurrentScope(name)){
+    if(this->st.inCurrentScope(name)){//identifier is in current scope
         Error("Variable " + name +" is already defined in the current scope");
-    }else if(this->st.isParam(this->funcName, this->funcType,name)){
+    }else if(this->st.isParam(this->funcName, this->funcType,name)){//identifier is a parameter
         Error("Variable is already defined in as a Parameter");
     }else{
         if(this->Type != identType){
             Error("Type of Identifier and Expression do not match");
         }else if(this->st.insertInScope(name, this->Type)){
             //std::cout << "Variable Added" << std::endl;
-            //this->st.scopePrint();
         }else{
             Error("Variable was not added");
         }
@@ -353,19 +346,9 @@ void SemanticAnalysis::visit(ASTFormalParameterNode *node) {
     if(this->st.isParam(this->funcName,this->funcType, this->ident)){
         Error("Identifier " + this->ident + " is alreay defined as a parameter");
     }
-    /*
-    for(int j =0; j < this->funcParam.size(); j++){
-        for(it = this->funcParam.at(j).begin(); it != this->funcParam.at(j).end(); it++){//should iterate only once
-            if(this->ident == it->first){
-                Error("Identifier " + this->ident + " is alreay defined as a parameter");
-            }
-        }
-    }
-*/
+
     SymbolTable::varValue var = this->st.varValues(this->Type);
     this->para.insert(std::pair<std::string, SymbolTable::varValue>(this->ident,var));
-    //this->para = std::pair<std::string, SymbolTable::varValue>(this->ident, var);
-
     this->param = false;
 }
 
@@ -376,14 +359,6 @@ void SemanticAnalysis::visit(ASTFormalParametersNode *node) {
         this->para.clear();
         node->parameters.at(i)->Accept(this);
         this->funcParam.push_back(para);
-
-        //this->funcParam.insert(para);
-
-
-
-
-        //this->funcParam.insert(para.size()-1,para);
-        //this->funcParam.push_back(para);
     }
 }
 
@@ -395,7 +370,7 @@ void SemanticAnalysis::visit(ASTWriteNode *node) {
 void SemanticAnalysis::visit(ASTIfStatementNode *node) {
     this->exists = true;
     node->Expression->Accept(this);
-    if((this->operation == ">") || (this->operation == "<") || (this->operation == "==") || (this->operation == "!=") || (this->operation == "<=") || (this->operation == ">=")|| (this->operation == "and")|| (this->operation == "or")|| (this->operation == "not")){
+    if((this->Type == 3)||(this->operation == ">") || (this->operation == "<") || (this->operation == "==") || (this->operation == "!=") || (this->operation == "<=") || (this->operation == ">=")|| (this->operation == "and")|| (this->operation == "or")|| (this->operation == "not")){
         node->Block->Accept(this);
         node->ElseBlock->Accept(this);
     }else{

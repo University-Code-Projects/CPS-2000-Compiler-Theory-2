@@ -15,7 +15,6 @@ class ASTBinaryNode;
 class ASTUnaryNode;
 class ASTSubExpressionNode;
 class ASTFunctionCallNode;
-//class ASTActualParams;
 class ASTIntegerNode;
 class ASTFloatNode;
 class ASTBoolNode;
@@ -47,8 +46,6 @@ public:
 
     virtual void visit(ASTSubExpressionNode *) =0;
     virtual void visit(ASTFunctionCallNode *) =0;
-
-    //virtual void visit(ASTActualParams *) =0;
 
     virtual void visit(ASTIntegerNode *) =0;
     virtual void visit(ASTFloatNode *) =0;

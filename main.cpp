@@ -6,10 +6,10 @@
 #include "REPL.h"
 
 int main() {
-    std::cout << "Entry in Main" << std::endl;
+    //std::cout << "Entry in Main" << std::endl;
 
-    //Lexer *lex1 = new Lexer("/home/cps200x/Desktop/test.txt");
-    Lexer *lex1 = new Lexer("/home/cps200x/ClionProjects/Assignment_5/test4");
+    /*
+    Lexer *lex1 = new Lexer("/home/cps200x/ClionProjects/Assignment_5/test3");
     Parser * parser = new Parser(false,*lex1);
     auto rootNode = parser->Parse();
 
@@ -23,8 +23,8 @@ int main() {
     rootNode->Accept(v);
     rootNode->Accept(s);
     rootNode->Accept(i);
-
-    //REPL *r = new REPL();
-    //r->evalution();
+    */
+    REPL *r = new REPL();
+    r->evalution();
     return 0;
 }

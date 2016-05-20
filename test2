@@ -1,6 +1,4 @@
 
-//test
-
 def funcPow(x : real, n : int, y: real) :real
 {
     if( n>=0 )

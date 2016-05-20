@@ -46,12 +46,13 @@ public:
     InterpreterExecution();
     InterpreterExecution(SymbolTable scopes);
 
-
+    //a new function call is found need to set to a new pointer
     void funcCallSet(ASTStatementNode * call);
+
+    //get the private variable funcCall
     ASTStatementNode * funcCallGet();
 
     SymbolTable::primitive_type typeGet();
-
 
     void typeSet(std::string type);
     std::string typePrint(SymbolTable::primitive_type type);

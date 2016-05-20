@@ -27,7 +27,7 @@ ASTNode * Parser::Parse(){
             rootNode->addStatement(statement);
         }else{
             //tok error found
-            break;
+            //break;
         }
     }
     return rootNode;
